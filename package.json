@@ -1,0 +1,9 @@
+{
+  "name": "somion-website",
+  "private": true,
+  "description": "Somion Web Services website: a static build of the standalone design export",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs"
+  }
+}
