@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>body{margin:0;font-family:'DM Sans',system-ui,sans-serif}@keyframes somionMenuIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}</style>
+</helmet>
+<div style="height:0;position:relative;z-index:61;font-family:'DM Sans',system-ui,sans-serif">
+  <header style="{{ barStyle }}">
+    <div style="max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <a href="Home.dc.html" aria-label="Somion home" style="{{ logoStyle }}"><img src="assets/somion-logo.png" alt="Somion Web Services" style="{{ logoImgStyle }}"></img></a>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+        <nav aria-label="Primary" style="{{ navStyle }}">
+          <sc-for list="{{ links }}" as="link" hint-placeholder-count="5">
+            <a href="{{ link.href }}" style="{{ link.style }}" style-hover="background:rgba(127,128,255,.16)" style-active="transform:scale(.97)">{{ link.label }}</a>
+          </sc-for>
+        </nav>
+      </sc-if>
+      <div style="display:flex;align-items:center;gap:8px;flex:none">
+        <div style="position:relative">
+          <button type="button" onClick="{{ toggleLang }}" aria-haspopup="listbox" aria-expanded="{{ langOpen }}" aria-label="Language: {{ langName }}" style="{{ ctlStyle }}" style-hover="border-color:rgba(124,125,255,.85);transform:translateY(-1px)" style-active="transform:scale(.96)">
+            <span style="{{ globeStyle }}"></span>
+            <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}"><span>{{ langShort }}</span></sc-if>
+          </button>
+          <sc-if value="{{ langOpen }}" hint-placeholder-val="{{ false }}">
+            <div role="listbox" aria-label="Language" style="position:absolute;right:0;top:48px;min-width:236px;background:#fff;border:1px solid #e5e7f2;border-radius:16px;box-shadow:0 24px 50px -20px rgba(8,19,62,.3);padding:6px;display:flex;flex-direction:column;gap:2px;z-index:70;animation:somionMenuIn .18s ease both">
+              <sc-for list="{{ langs }}" as="l" hint-placeholder-count="5">
+                <button type="button" role="option" aria-selected="{{ l.on }}" onClick="{{ l.pick }}" lang="{{ l.code }}" style="{{ l.style }}" style-hover="background:#f0f1fb">
+                  <span style="{{ l.codeStyle }}">{{ l.short }}</span><span style="font-weight:700">{{ l.name }}</span>
+                  <sc-if value="{{ l.on }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto;display:inline-block;width:14px;height:14px;background:#4e4feb;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span></sc-if>
+                </button>
+              </sc-for>
+              <div style="padding:8px 10px 6px;color:#8a91aa;font-size:11px;line-height:1.4;border-top:1px solid #f0f1fb;margin-top:4px">Translations are on the way. Content is shown in English for now.</div>
+            </div>
+          </sc-if>
+        </div>
+        <div style="position:relative">
+          <button type="button" onClick="{{ toggleCurrency }}" aria-haspopup="listbox" aria-expanded="{{ currencyOpen }}" style="{{ ctlStyle }}" style-hover="border-color:rgba(124,125,255,.85);transform:translateY(-1px)" style-active="transform:scale(.96)">
+            <span>{{ currency }}</span>
+            <span style="{{ chevronStyle }}"></span>
+          </button>
+          <sc-if value="{{ currencyOpen }}" hint-placeholder-val="{{ false }}">
+            <div role="listbox" style="position:absolute;right:0;top:48px;min-width:232px;background:#fff;border:1px solid #e5e7f2;border-radius:16px;box-shadow:0 24px 50px -20px rgba(8,19,62,.3);padding:6px;display:flex;flex-direction:column;gap:2px;z-index:70;animation:somionMenuIn .18s ease both">
+              <sc-for list="{{ currencies }}" as="c" hint-placeholder-count="3">
+                <button type="button" role="option" aria-selected="{{ c.on }}" onClick="{{ c.pick }}" style="{{ c.style }}" style-hover="background:#f0f1fb">
+                  <span style="{{ c.symStyle }}">{{ c.symbol }}</span><span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px"><span style="font-weight:700">{{ c.code }}</span><span style="color:#5d6480;font-weight:500;font-size:12px">{{ c.label }}</span></span>
+                  <sc-if value="{{ c.on }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto;display:inline-block;width:14px;height:14px;background:#4e4feb;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span></sc-if>
+                </button>
+              </sc-for>
+              <div style="padding:8px 10px 6px;color:#8a91aa;font-size:11px;line-height:1.4;border-top:1px solid #f0f1fb;margin-top:4px">Indicative rates. You are charged in your card currency.</div>
+            </div>
+          </sc-if>
+        </div>
+        <a href="Checkout.dc.html" aria-label="Cart" style="{{ cartStyle }}" style-hover="border-color:rgba(124,125,255,.85);transform:translateY(-1px)" style-active="transform:scale(.96)">
+          <span style="{{ cartIconStyle }}"></span>
+          <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+            <span style="position:absolute;top:-7px;right:-7px;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#4e4feb;color:#fff;font:800 11px/20px 'DM Sans',sans-serif;text-align:center;box-shadow:0 6px 14px -6px rgba(78,79,235,.7);border:2px solid #fff;box-sizing:content-box">{{ cartCount }}</span>
+          </sc-if>
+        </a>
+        <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+          <a href="{{ accountHref }}" aria-label="{{ accountAria }}" style="{{ ctaStyle }}" style-hover="transform:translateY(-2px);box-shadow:0 16px 32px -14px rgba(78,79,235,.85);filter:brightness(1.06)" style-active="transform:scale(.97)">
+            <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><span style="{{ avatarStyle }}">{{ initials }}</span></sc-if>
+            <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}"><span style="{{ ctaIconStyle }}"></span></sc-if>
+            <span>{{ accountLabel }}</span>
+          </a>
+        </sc-if>
+        <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}" style="{{ ctlStyle }}" style-hover="border-color:rgba(124,125,255,.85)" style-active="transform:scale(.96)">
+            <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}"><span style="{{ menuIconStyle }}"></span></sc-if>
+            <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><span style="{{ closeIconStyle }}"></span></sc-if>
+          </button>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid #e5e7f2;background:#fff;padding:12px clamp(16px,4vw,40px) 20px;display:flex;flex-direction:column;gap:6px;box-shadow:0 30px 50px -30px rgba(8,19,62,.35);animation:somionMenuIn .2s ease both">
+        <sc-for list="{{ links }}" as="link" hint-placeholder-count="5">
+          <a href="{{ link.href }}" style="{{ link.mobileStyle }}">{{ link.label }}</a>
+        </sc-for>
+        <a href="{{ accountHref }}" style="margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;height:50px;border-radius:12px;background:linear-gradient(135deg,#5c5df1,#4041d8);color:#fff;font:700 15px 'DM Sans',sans-serif;text-decoration:none"><span style="display:inline-block;width:17px;height:17px;background:#fff;mask:url(assets/icons/user.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/user.svg) center/contain no-repeat"></span>{{ accountLabel }}</a>
+      </div>
+    </sc-if>
+  </header>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:80},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;hosting&quot;,&quot;domains&quot;,&quot;about&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onDark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { mod: null, lang: 'en', langOpen: false, currency: 'USD', cartCount: 0, currencyOpen: false, menuOpen: false, desktop: true, scrolled: false };
+  componentDidMount() {
+    this.mq = window.matchMedia('(min-width: 1024px)');
+    this.onMq = () => this.setState({ desktop: this.mq.matches, menuOpen: false });
+    this.mq.addEventListener ? this.mq.addEventListener('change', this.onMq) : this.mq.addListener(this.onMq);
+    this.setState({ desktop: this.mq.matches, scrolled: window.scrollY > 24 });
+    import((window.__resources && window.__resources['./somion-data.js']) || './somion-data.js').then(mod => { const lang = mod.getLang(); try { document.documentElement.lang = lang; } catch (e) {} this.setState({ mod, lang, currency: mod.getCurrency(), cartCount: mod.getCart().length, account: mod.getAccount() }); });
+    this.onAcc = e => this.setState({ account: e.detail }); window.addEventListener('somion:account', this.onAcc);
+    this.onCart = e => this.setState({ cartCount: (e.detail || []).length });
+    this.onCur = e => this.setState({ currency: e.detail });
+    this.onDoc = e => { if ((this.state.currencyOpen || this.state.langOpen) && !e.target.closest('[role="listbox"]') && !e.target.closest('[aria-haspopup="listbox"]')) this.setState({ currencyOpen: false, langOpen: false }); };
+    this.onLang = e => this.setState({ lang: e.detail }); window.addEventListener('somion:lang', this.onLang);
+    this.onKey = e => { if (e.key === 'Escape' && (this.state.currencyOpen || this.state.langOpen)) this.setState({ currencyOpen: false, langOpen: false }); }; document.addEventListener('keydown', this.onKey);
+    this.onScroll = () => { const s = window.scrollY > 24; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('somion:cart', this.onCart); window.addEventListener('somion:currency', this.onCur);
+    document.addEventListener('click', this.onDoc, true); window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('storage', this.onStorage = () => { const m = this.state.mod; if (m) this.setState({ currency: m.getCurrency(), cartCount: m.getCart().length }); });
+  }
+  componentWillUnmount() { window.removeEventListener('somion:lang', this.onLang); document.removeEventListener('keydown', this.onKey); window.removeEventListener('somion:account', this.onAcc); window.removeEventListener('somion:cart', this.onCart); window.removeEventListener('somion:currency', this.onCur); document.removeEventListener('click', this.onDoc, true); window.removeEventListener('storage', this.onStorage); window.removeEventListener('scroll', this.onScroll); }
+  renderVals() {
+    const LANG_LIST = this.state.mod ? this.state.mod.LANGS : [{ code: 'en', short: 'EN', name: 'English' }];
+    const active = this.props.active || ''; const st = this.state;
+    // "dark" = transparent bar over the hero video (light-on-dark controls); "solid" = frosted bar after scrolling or on pages without a hero
+    const onDark = (this.props.onDark !== false) && !st.scrolled && !st.menuOpen;
+    const ink = onDark ? '#fff' : '#08133e', inkSoft = onDark ? 'rgba(255,255,255,.78)' : '#3f4660';
+    const glass = onDark ? 'rgba(255,255,255,.1)' : '#fff', glassBorder = onDark ? 'rgba(255,255,255,.22)' : '#e5e7f2';
+    const icon = (name, color, size) => ({ display: 'inline-block', width: size, height: size, background: color, mask: 'url(assets/icons/' + name + '.svg) center/contain no-repeat', WebkitMask: 'url(assets/icons/' + name + '.svg) center/contain no-repeat', transition: 'background .3s' });
+    const links = [['home', 'Home', 'Home.dc.html'], ['hosting', 'Hosting', 'Hosting.dc.html'], ['domains', 'Domains', 'Domains.dc.html'], ['about', 'About us', 'About.dc.html'], ['contact', 'Contact us', 'Contact.dc.html']].map(([id, label, href]) => {
+      const on = id === active;
+      return { id, label, href, active: on,
+        style: { display: 'inline-flex', alignItems: 'center', height: 36, padding: '0 16px', borderRadius: 999, textDecoration: 'none', whiteSpace: 'nowrap', font: "600 14px 'DM Sans', sans-serif", color: on ? (onDark ? '#fff' : '#2f30a8') : inkSoft, background: on ? (onDark ? 'rgba(255,255,255,.18)' : '#fff') : 'transparent', boxShadow: on && !onDark ? '0 6px 16px -10px rgba(8,19,62,.35)' : 'none', transition: 'background .3s, color .3s' },
+        mobileStyle: { display: 'flex', alignItems: 'center', height: 48, padding: '0 14px', borderRadius: 12, textDecoration: 'none', font: "600 16px 'DM Sans', sans-serif", color: on ? '#2f30a8' : '#08133e', background: on ? '#eeeefe' : 'transparent' } };
+    });
+    const m = st.mod; const cur = st.currency;
+    const rates = m ? m.RATES : { USD: { symbol: '$', label: 'USD · US dollar' }, CHF: { symbol: 'CHF', label: 'CHF · Swiss franc' }, EGP: { symbol: 'EGP', label: 'EGP · Egyptian pound' } };
+    const currencies = Object.keys(rates).map(code => { const on = code === cur; return { code, on, symbol: rates[code].symbol.trim().slice(0, 3), label: rates[code].label.split('·')[1].trim(),
+      style: { display: 'flex', alignItems: 'center', gap: 10, width: '100%', textAlign: 'left', padding: '8px 10px', borderRadius: 11, border: 0, cursor: 'pointer', font: "600 13px 'DM Sans', sans-serif", color: '#08133e', background: on ? '#eeeefe' : 'transparent' },
+      symStyle: { width: 34, height: 34, borderRadius: 10, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, background: on ? '#4e4feb' : '#f0f1fb', color: on ? '#fff' : '#2f30a8', flex: 'none' },
+      pick: () => { if (m) m.setCurrency(code); this.setState({ currency: code, currencyOpen: false }); } }; });
+    const ctl = { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, height: 40, minWidth: 40, padding: '0 10px', borderRadius: 12, border: '1px solid ' + glassBorder, background: glass, color: ink, font: "700 13px 'DM Sans', sans-serif", cursor: 'pointer', textDecoration: 'none', backdropFilter: onDark ? 'blur(10px)' : 'none', transition: 'background .3s, border-color .25s, color .3s, transform .22s cubic-bezier(.2,.7,.2,1)' };
+    return { links, currencies, currency: cur,
+      barStyle: { position: 'fixed', top: 0, left: 0, right: 0, zIndex: 60, background: onDark ? 'transparent' : 'rgba(251,251,254,.88)', backdropFilter: onDark ? 'none' : 'blur(18px) saturate(1.4)', WebkitBackdropFilter: onDark ? 'none' : 'blur(18px) saturate(1.4)', borderBottom: '1px solid ' + (onDark ? 'transparent' : 'rgba(229,231,242,.9)'), boxShadow: onDark ? 'none' : '0 12px 32px -24px rgba(8,19,62,.35)', transition: 'box-shadow .3s, background .3s, border-color .3s' },
+      logoStyle: { display: 'flex', alignItems: 'center', flex: 'none' },
+      logoImgStyle: { height: 36, width: 'auto', display: 'block', filter: onDark ? 'brightness(0) invert(1)' : 'none', transition: 'filter .3s' },
+      accountHref: 'Login.dc.html', accountLabel: st.account ? ((st.account.name || st.account.email || 'Account').split(/[\s@]/)[0]) : 'Login / Sign up', accountAria: st.account ? 'Your account' : 'Log in or create an account',
+      signedIn: !!st.account, signedOut: !st.account, initials: st.account && st.mod ? st.mod.initials(st.account.name || st.account.email) : '',
+      avatarStyle: { width: 26, height: 26, marginLeft: -8, borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', font: "800 11px 'Manrope', sans-serif", background: onDark ? 'linear-gradient(135deg,#7c7dff,#4e4feb)' : '#fff', color: onDark ? '#fff' : '#2f30a8', flex: 'none' },
+      ctaIconStyle: icon('user', onDark ? '#2f30a8' : '#fff', 16),
+      loginHover: onDark ? 'background:rgba(255,255,255,.12)' : 'background:#f0f1fb',
+      navStyle: { display: 'flex', alignItems: 'center', gap: 2, padding: 4, borderRadius: 999, background: onDark ? 'rgba(255,255,255,.1)' : '#f0f1fb', border: '1px solid ' + glassBorder, backdropFilter: onDark ? 'blur(10px)' : 'none', transition: 'background .3s, border-color .3s' },
+      ctlStyle: ctl, chevronStyle: icon('chevron-down', onDark ? 'rgba(255,255,255,.8)' : '#5d6480', 14),
+      cartStyle: Object.assign({}, ctl, { position: 'relative', padding: 0, width: 40 }), cartIconStyle: icon('shopping-cart', ink, 18),
+      loginStyle: { display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 14px', borderRadius: 12, color: ink, font: "700 14px 'DM Sans', sans-serif", textDecoration: 'none', transition: 'color .3s, background .2s, transform .15s' }, loginIconStyle: icon(st.account ? 'user' : 'log-in', ink, 16),
+      ctaStyle: { display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 18px', borderRadius: 12, background: onDark ? '#fff' : 'linear-gradient(135deg,#5c5df1,#4041d8)', color: onDark ? '#2f30a8' : '#fff', font: "700 14px 'DM Sans', sans-serif", textDecoration: 'none', whiteSpace: 'nowrap', boxShadow: onDark ? '0 12px 26px -12px rgba(5,13,37,.6)' : '0 12px 26px -12px rgba(78,79,235,.9)', transition: 'transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s, filter .2s, background .3s, color .3s' },
+      menuIconStyle: icon('menu', ink, 20), closeIconStyle: icon('x', '#08133e', 20),
+      currencyOpen: st.currencyOpen, toggleCurrency: () => this.setState(s => ({ currencyOpen: !s.currencyOpen, langOpen: false })),
+      langOpen: st.langOpen, toggleLang: () => this.setState(s => ({ langOpen: !s.langOpen, currencyOpen: false })),
+      langShort: (LANG_LIST.find(l => l.code === st.lang) || LANG_LIST[0]).short, langName: (LANG_LIST.find(l => l.code === st.lang) || LANG_LIST[0]).name, globeStyle: icon('globe', ink, 16),
+      langs: LANG_LIST.map(l => { const on = l.code === st.lang; return { code: l.code, short: l.short, name: l.name, on, pick: () => { if (m) m.setLang(l.code); this.setState({ lang: l.code, langOpen: false }); },
+        style: { display: 'flex', alignItems: 'center', gap: 10, width: '100%', textAlign: 'left', padding: '8px 10px', borderRadius: 11, border: 0, cursor: 'pointer', font: "600 13.5px 'DM Sans', sans-serif", color: '#08133e', background: on ? '#eeeefe' : 'transparent' },
+        codeStyle: { width: 34, height: 34, borderRadius: 10, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, letterSpacing: '.04em', background: on ? '#4e4feb' : '#f0f1fb', color: on ? '#fff' : '#2f30a8', flex: 'none' } }; }),
+      cartCount: st.cartCount, hasCart: st.cartCount > 0,
+      desktop: st.desktop, mobile: !st.desktop, menuOpen: st.menuOpen && !st.desktop, menuClosed: !(st.menuOpen && !st.desktop), toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })) };
+  }
+}
+</script>
+</body>
+</html>

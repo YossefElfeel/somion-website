@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>body{margin:0;background:#fbfbfe;font-family:'DM Sans',system-ui,sans-serif}a{color:#3435cc}a:hover{color:#4e4feb}</style>
+</helmet>
+<section ref="{{ rootRef }}" id="showcase" data-screen-label="Showcase" style="max-width:1180px;margin:0 auto;padding:112px clamp(16px,4vw,40px) 0;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
+  <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end;justify-content:space-between">
+    <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:12px;max-width:640px">
+      <span style="font:800 12px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#4e4feb">Everything essential</span>
+      <h2 data-words="1" style="margin:0;font:800 clamp(34px,4.4vw,56px)/1.02 'Manrope',sans-serif;letter-spacing:-.03em;text-wrap:balance">Hosting built around your next move.</h2>
+    </div>
+    <div style="flex:1 1 300px;max-width:440px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#5d6480">Choose with confidence. We keep the infrastructure in the background.</p>
+      <a href="Hosting.dc.html" style="display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:14px;background:#08133e;color:#fff;font:700 14.5px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s,background-color .2s" style-hover="background:#1b2458;transform:translateY(-2px);box-shadow:0 16px 30px -16px rgba(8,19,62,.6);color:#fff" style-active="transform:scale(.97)">View our plans<span style="display:inline-block;width:16px;height:16px;background:#fff;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+    </div>
+  </div>
+
+  <sc-if value="{{ isTabs }}" hint-placeholder-val="{{ false }}">
+    <div role="tablist" aria-label="How Somion works" style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;padding:6px;border-radius:20px;background:#f0f1fb;border:1px solid #e5e7f2">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <button type="button" role="tab" aria-selected="{{ s.on }}" onClick="{{ s.pick }}" style="{{ s.tabStyle }}">
+          <span style="{{ s.tabIcon }}"></span>
+          <span style="display:flex;flex-direction:column;gap:1px;text-align:left"><span style="font:800 10.5px 'DM Sans',sans-serif;letter-spacing:.14em;color:#8a91aa">{{ s.num }}</span><span style="font:800 15px 'Manrope',sans-serif">{{ s.label }}</span></span>
+          <span style="position:absolute;left:14px;right:14px;bottom:6px;height:2px;border-radius:2px;background:rgba(78,79,235,.12);overflow:hidden"><sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}"><span data-sc-progress="1" style="{{ fillStyle }}"></span></sc-if></span>
+        </button>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <div style="{{ bodyStyle }}">
+    <div style="flex:1 1 380px;min-width:0">
+      <sc-if value="{{ isScroll }}" hint-placeholder-val="{{ true }}">
+        <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+            <li data-step="{{ s.idx }}" style="{{ s.blockStyle }}">
+              <span style="position:absolute;left:0;top:12%;bottom:12%;width:3px;border-radius:3px;background:#e5e7f2;overflow:hidden"><span style="{{ s.railStyle }}"></span></span>
+              <span style="{{ s.numStyle }}"><span style="{{ s.dotStyle }}"></span>{{ s.num }} · {{ s.label }}</span>
+              <h3 style="margin:0;font:800 clamp(28px,3vw,40px)/1.06 'Manrope',sans-serif;letter-spacing:-.025em;text-wrap:balance">{{ s.title }}</h3>
+              <p style="margin:0;max-width:440px;font-size:17px;line-height:1.6;color:#5d6480">{{ s.text }}</p>
+              <a href="{{ s.href }}" style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;min-height:40px;font:700 14.5px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none" style-hover="color:#4e4feb">{{ s.cta }}<span style="display:inline-block;width:15px;height:15px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+            </li>
+          </sc-for>
+        </ol>
+      </sc-if>
+      <sc-if value="{{ isTabs }}" hint-placeholder-val="{{ false }}">
+        <div data-sc-swap="1" style="display:flex;flex-direction:column;gap:16px;padding:12px 0">
+          <span style="font:800 12px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#4e4feb">{{ cur.num }} · {{ cur.label }}</span>
+          <h3 style="margin:0;font:800 clamp(28px,3vw,40px)/1.06 'Manrope',sans-serif;letter-spacing:-.025em;text-wrap:balance">{{ cur.title }}</h3>
+          <p style="margin:0;max-width:460px;font-size:17px;line-height:1.6;color:#5d6480">{{ cur.text }}</p>
+          <ul style="list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ cur.points }}" as="pt" hint-placeholder-count="3"><li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#08133e"><span style="display:inline-block;width:16px;height:16px;flex:none;background:#4e4feb;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span>{{ pt }}</li></sc-for>
+          </ul>
+          <a href="{{ cur.href }}" style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;min-height:40px;font:700 14.5px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none" style-hover="color:#4e4feb">{{ cur.cta }}<span style="display:inline-block;width:15px;height:15px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="{{ stageWrapStyle }}">
+      <div onMouseEnter="{{ pause }}" style="position:relative;height:100%;border-radius:30px;overflow:hidden;isolation:isolate;background:linear-gradient(160deg,#131d5c 0%,#07122f 72%);box-shadow:0 50px 100px -50px rgba(8,19,62,.7)">
+        <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at 60% 40%,#000 25%,transparent 78%);-webkit-mask-image:radial-gradient(ellipse at 60% 40%,#000 25%,transparent 78%)"></div>
+        <div aria-hidden="true" style="position:absolute;right:-18%;top:-24%;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(124,125,255,.5),rgba(124,125,255,0));z-index:0"></div>
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="0">
+          <div style="{{ s.layerStyle }}">
+            <sc-if value="{{ s.isFit }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(16px,3vw,40px);overflow-y:auto">
+                <div style="width:100%;max-width:420px;display:flex;flex-direction:column;gap:18px;padding:26px;border-radius:24px;background:#fff;box-shadow:0 40px 80px -30px rgba(0,0,0,.55)">
+                  <span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#4e4feb">Find your fit</span>
+                  <span style="font:800 24px/1.15 'Manrope',sans-serif;letter-spacing:-.015em">What are you building?</span>
+                  <div style="display:flex;flex-wrap:wrap;gap:8px">
+                    <sc-for list="{{ fitChips }}" as="c" hint-placeholder-count="3"><button type="button" onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for>
+                  </div>
+                  <div data-sc-fit="1" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;border-radius:18px;background:#f5f5ff;border:1px solid #e3e4fb">
+                    <span style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font:800 18px 'Manrope',sans-serif">{{ fit.name }}</span><span style="font-size:13px;color:#5d6480">{{ fit.cat }}</span></span>
+                    <span style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span data-count="1" style="font:800 24px/1 'Manrope',sans-serif;letter-spacing:-.02em">{{ fit.price }}</span><span style="font-size:12px;color:#5d6480">per month</span></span>
+                  </div>
+                  <a href="{{ fit.href }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;height:50px;border-radius:14px;background:linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4);color:#fff;font:700 15px 'DM Sans',sans-serif;text-decoration:none;box-shadow:0 16px 32px -16px rgba(78,79,235,.95);transition:transform .22s cubic-bezier(.2,.7,.2,1),filter .2s" style-hover="transform:translateY(-2px);filter:brightness(1.08);color:#fff" style-active="transform:scale(.97)">Start with {{ fit.name }}<span style="display:inline-block;width:16px;height:16px;background:#fff;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ s.isImage }}" hint-placeholder-val="{{ false }}">
+              <div data-parallax=".06" data-parallax-scale="1.06" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(24px,4vw,56px)"><div role="img" aria-label="{{ s.alt }}" style="{{ s.imgStyle }}"></div></div>
+            </sc-if>
+            <sc-if value="{{ s.isImage }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:20px;bottom:20px;display:inline-flex;align-items:center;gap:10px;padding:10px 14px 10px 10px;border-radius:14px;background:rgba(8,12,48,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.16);color:#fff;font:700 13px 'DM Sans',sans-serif">
+              <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#7c7dff,#4e4feb);display:inline-flex;align-items:center;justify-content:center"><span style="{{ s.chipIcon }}"></span></span>{{ s.chip }}
+            </div></sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;mode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;scroll&quot;,&quot;tabs&quot;],&quot;default&quot;:&quot;scroll&quot;,&quot;tsType&quot;:&quot;'scroll'|'tabs'&quot;}}">
+class Component extends DCLogic {
+  state = { mod: null, currency: 'USD', active: 0, wide: true, fit: 'business', auto: true };
+  rootRef = React.createRef();
+  componentDidMount() {
+    this.mq = window.matchMedia('(min-width: 960px)'); this.onMq = () => this.setState({ wide: this.mq.matches });
+    this.mq.addEventListener ? this.mq.addEventListener('change', this.onMq) : this.mq.addListener(this.onMq); this.onMq();
+    import((window.__resources && window.__resources['./somion-data.js']) || './somion-data.js').then(mod => { this.setState({ mod, currency: mod.getCurrency() }); mod.revealOnScroll(document); });
+    this.onCur = e => this.setState({ currency: e.detail }); window.addEventListener('somion:currency', this.onCur);
+    this.vio = new IntersectionObserver(es => { this.inView = es[0].isIntersecting; if (this.inView) this.runProgress(); }, { threshold: .3 });
+    if (this.rootRef.current) this.vio.observe(this.rootRef.current);
+    this.timer = setInterval(() => { if (this.mode() === 'tabs' && this.state.auto && this.inView && document.visibilityState === 'visible') this.setState(s => ({ active: (s.active + 1) % 4 })); }, 5200);
+    setTimeout(() => this.bindSteps(), 50);
+  }
+  componentWillUnmount() { clearInterval(this.timer); window.removeEventListener('somion:currency', this.onCur); if (this.vio) this.vio.disconnect(); if (this.sio) this.sio.disconnect(); }
+  mode() { return this.props.mode === 'scroll' && this.state.wide ? 'scroll' : 'tabs'; }
+  bindSteps() {
+    if (this.sio) { this.sio.disconnect(); this.sio = null; }
+    const root = this.rootRef.current; if (!root || this.mode() !== 'scroll') return;
+    this.sio = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) this.setState({ active: Number(en.target.getAttribute('data-step')) || 0 }); }), { rootMargin: '-40% 0px -40% 0px' });
+    root.querySelectorAll('[data-step]').forEach(el => this.sio.observe(el));
+  }
+  runProgress() {
+    if (this.bar) { this.bar.cancel(); this.bar = null; }
+    if (this.mode() !== 'tabs' || !this.state.auto) return;
+    const el = this.rootRef.current && this.rootRef.current.querySelector('[data-sc-progress]'); if (!el || !el.animate) return;
+    this.bar = el.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 5200, easing: 'linear', fill: 'forwards' });
+  }
+  componentDidUpdate(ppIn, psIn) {
+    const pp = ppIn || {}, st = this.state, prev = this.prevState || {}; const ps = psIn || prev; this.prevState = { wide: st.wide, active: st.active, fit: st.fit, auto: st.auto };
+    const m = this.state.mod, root = this.rootRef.current;
+    if (ps.wide !== this.state.wide || pp.mode !== this.props.mode) setTimeout(() => this.bindSteps(), 30);
+    if (ps.active !== this.state.active && root && m) { if (this.mode() === 'tabs') { root.querySelectorAll('[data-sc-swap]').forEach(el => m.animateIn(el, { y: 14, dur: 520 })); this.runProgress(); } }
+    if (ps.fit !== this.state.fit && root && m) { const f = root.querySelector('[data-sc-fit]'); m.animateIn(f, { y: 8, dur: 380 }); const n = f && f.querySelector('[data-count]'); if (n) m.countUp(n); }
+    if (ps.auto && !this.state.auto && this.bar) { this.bar.cancel(); this.bar = null; }
+  }
+  renderVals() {
+    const m = this.state.mod, cur = this.state.currency, active = this.state.active, tabs = this.mode() === 'tabs';
+    const f = v => m ? m.fmt(v, cur) : '$' + v.toFixed(2);
+    const icon = (n, c, s) => ({ display: 'inline-block', width: s, height: s, flex: 'none', background: c, mask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat', WebkitMask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat' });
+    const STEPS = [
+      { label: 'Build', icon: 'layers', title: 'What are you building?', text: 'Tell us your goal and we\u2019ll point you to the right starting plan. WordPress, WooCommerce and Drupal install from cPanel.', points: ['WordPress, WooCommerce and Drupal ready', 'A recommended plan in one click', 'Free website migration'], href: 'Hosting.dc.html', cta: 'Explore hosting', fit: true, chip: 'Personal, business or store', chipIcon: 'sparkles' },
+      { label: 'Launch', icon: 'rocket', title: 'Powered by cPanel.', text: 'Connect your domain and go live. Free SSL is issued automatically and every plan runs on fast SSD storage.', points: ['Free SSL on every plan', 'cPanel control panel', 'Fast SSD storage'], href: 'Domains.dc.html', cta: 'Find your domain', img: 'assets/server-stack.png', size: 'contain', alt: 'Somion server stack', chip: 'Free SSL \u00b7 issued automatically', chipIcon: 'shield-check' },
+      { label: 'Grow', icon: 'zap', title: 'Speed that stays out of your way.', text: 'Fast storage and optimized hosting keep every interaction feeling immediate, with a global CDN as traffic grows.', points: ['Global CDN', 'Optimized for speed', 'Upgrade any time'], href: 'Compare.dc.html', cta: 'Compare plans', img: 'assets/cdn-map.jpg', size: 'card', alt: 'Global CDN map', chip: 'Load time 1.04s \u00b7 22% faster', chipIcon: 'gauge' },
+      { label: 'Manage', icon: 'shield-check', title: 'Your site is in good hands.', text: 'SSL, daily backups, and real people when you need a hand \u2014 around the clock.', points: ['Daily backups', '24/7 expert support', '30-day money-back guarantee'], href: 'Contact.dc.html', cta: 'Talk to Somion', img: 'assets/hosting-expert.png', size: 'contain', alt: 'Somion hosting expert', chip: '24/7 expert support', chipIcon: 'headphones' },
+    ];
+    const steps = STEPS.map((s, i) => { const on = i === active;
+      return Object.assign({}, s, { idx: i, num: String(i + 1).padStart(2, '0'), on, isFit: !!s.fit, isImage: !!s.img,
+        pick: () => this.setState({ active: i, auto: false }),
+        tabStyle: { position: 'relative', display: 'flex', alignItems: 'center', gap: 12, minHeight: 64, padding: '10px 14px 14px', borderRadius: 15, border: 0, cursor: 'pointer', color: '#08133e', background: on ? '#fff' : 'transparent', boxShadow: on ? '0 10px 26px -16px rgba(8,19,62,.45)' : 'none', transition: 'background .25s, box-shadow .25s' },
+        tabIcon: Object.assign(icon(s.icon, on ? '#4e4feb' : '#8a91aa', 20), { transition: 'background .25s' }),
+        blockStyle: { position: 'relative', minHeight: 'min(44vh, 400px)', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 14, padding: '20px 0 20px 34px', opacity: on ? 1 : .32, transition: 'opacity .5s ease' },
+        railStyle: { position: 'absolute', left: 0, top: 0, width: '100%', height: on ? '100%' : '0%', borderRadius: 3, background: 'linear-gradient(180deg,#7c7dff,#4e4feb)', transition: 'height .7s cubic-bezier(.2,.7,.2,1)' },
+        numStyle: { display: 'inline-flex', alignItems: 'center', gap: 10, font: "800 12px 'DM Sans', sans-serif", letterSpacing: '.14em', textTransform: 'uppercase', color: on ? '#4e4feb' : '#8a91aa', transition: 'color .4s' },
+        dotStyle: { width: 8, height: 8, borderRadius: '50%', background: on ? '#4e4feb' : '#c9ccdf', boxShadow: on ? '0 0 0 5px rgba(78,79,235,.15)' : 'none', transition: 'all .4s' },
+        layerStyle: { position: 'absolute', inset: 0, zIndex: 1, opacity: on ? 1 : 0, transform: on ? 'none' : 'scale(1.04) translateY(12px)', transition: 'opacity .7s ease, transform .9s cubic-bezier(.2,.7,.2,1)', pointerEvents: on ? 'auto' : 'none' },
+        imgStyle: s.size === 'card' ? { width: '100%', maxWidth: 520, aspectRatio: '16/10', borderRadius: 20, background: '#fff url(' + s.img + ') center/cover no-repeat', boxShadow: '0 40px 80px -30px rgba(0,0,0,.6)', border: '1px solid rgba(255,255,255,.2)' } : { width: '100%', height: '100%', background: 'url(' + s.img + ') center/contain no-repeat', filter: 'drop-shadow(0 40px 50px rgba(0,0,0,.45))' },
+        chipIcon: icon(s.chipIcon, '#fff', 15) }); });
+    const FIT = { personal: ['Personal site', 'shared-single'], business: ['Business site', 'shared-ultra'], store: ['Online store', 'wp-grow'] };
+    const fitChips = Object.keys(FIT).map(k => { const on = k === this.state.fit; return { label: FIT[k][0], pick: () => this.setState({ fit: k, auto: false }), style: { height: 40, padding: '0 16px', borderRadius: 999, border: '1px solid ' + (on ? '#4e4feb' : '#d6d8ed'), background: on ? '#4e4feb' : '#fff', color: on ? '#fff' : '#4f5672', font: "700 13px 'DM Sans', sans-serif", cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all .18s' } }; });
+    const fp = m ? m.planById(FIT[this.state.fit][1]) : null;
+    return { rootRef: this.rootRef, steps, cur: steps[active], isTabs: tabs, isScroll: !tabs, fitChips,
+      fit: fp ? { name: fp.name, cat: fp.catName, price: f(fp.price), href: 'Hosting.dc.html?cat=' + fp.cat + '&plan=' + fp.id } : { name: 'Ultra', cat: 'Shared Hosting (cPanel)', price: '$12.00', href: 'Hosting.dc.html' },
+      pause: () => { if (this.state.auto && tabs) this.setState({ auto: false }); },
+      fillStyle: { display: 'block', height: '100%', borderRadius: 2, background: '#4e4feb', transformOrigin: 'left', transform: this.state.auto ? 'scaleX(0)' : 'scaleX(1)' },
+      bodyStyle: tabs ? { marginTop: 28, display: 'flex', flexWrap: 'wrap', gap: '32px 56px', alignItems: 'center' } : { marginTop: 24, display: 'flex', gap: 56, alignItems: 'flex-start' },
+      stageWrapStyle: tabs ? { flex: '1.25 1 440px', minWidth: 0, height: this.state.wide ? 500 : 400 } : { flex: '1.2 1 0', minWidth: 0, position: 'sticky', top: 'max(104px, calc(50vh - 260px))', height: 'min(520px, 68vh)', marginTop: 20 } };
+  }
+}
+</script>
+</body>
+</html>

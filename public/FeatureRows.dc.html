@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>body{margin:0;background:#fbfbfe;font-family:'DM Sans',system-ui,sans-serif}a{color:#3435cc}a:hover{color:#4e4feb}
+@keyframes somionBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}</style>
+</helmet>
+<section data-screen-label="Feature rows" style="max-width:1180px;margin:0 auto;padding:112px clamp(16px,4vw,40px) 0;display:flex;flex-direction:column;gap:96px;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
+  <sc-for list="{{ rows }}" as="r" hint-placeholder-count="2">
+    <div style="{{ r.rowStyle }}">
+      <div data-reveal="1" style="flex:1 1 360px;max-width:500px;display:flex;flex-direction:column;align-items:flex-start;gap:18px">
+        <span style="display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px 0 8px;border-radius:999px;background:#eeeefe;color:#2f30a8;font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase"><span style="{{ r.eyebrowIcon }}"></span>{{ r.eyebrow }}</span>
+        <h2 data-words="1" style="margin:0;font:800 clamp(32px,4vw,50px)/1.03 'Manrope',sans-serif;letter-spacing:-.03em;text-wrap:balance">{{ r.title }}</h2>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#5d6480">{{ r.text }}</p>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px">
+          <sc-for list="{{ r.points }}" as="pt" hint-placeholder-count="3"><li style="display:flex;align-items:center;gap:11px;font-size:15.5px;color:#08133e"><span style="width:24px;height:24px;border-radius:50%;background:#eeeefe;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="display:inline-block;width:13px;height:13px;background:#4e4feb;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span></span>{{ pt }}</li></sc-for>
+        </ul>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:4px">
+          <a href="{{ r.href }}" style="display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 20px;border-radius:14px;background:#08133e;color:#fff;font:700 14.5px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s,background-color .2s" style-hover="background:#1b2458;transform:translateY(-2px);box-shadow:0 16px 30px -16px rgba(8,19,62,.6);color:#fff" style-active="transform:scale(.97)">{{ r.cta }}<span style="display:inline-block;width:16px;height:16px;background:#fff;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+          <span style="font:700 14px 'DM Sans',sans-serif;color:#2f30a8">{{ r.from }}</span>
+        </div>
+      </div>
+      <div data-reveal="1" style="flex:1.25 1 420px;min-width:0">
+        <div style="position:relative;aspect-ratio:16/11;border-radius:30px;overflow:hidden;isolation:isolate;background:#0a1148;box-shadow:0 50px 100px -50px rgba(8,19,62,.7)">
+          <div data-parallax=".1" data-parallax-scale="1.16" style="position:absolute;inset:0;z-index:0"><dc-import name="HeroVideo" src="assets/hero-loop.webm" tint="indigo" hint-size="100%,100%" style="width:100%;height:100%"></dc-import></div>
+          <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(5,9,38,0) 30%,rgba(5,9,38,.55) 100%)"></div>
+          <div style="position:absolute;right:18px;top:18px;z-index:1;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.94);color:#08133e;font:700 12.5px 'DM Sans',sans-serif;box-shadow:0 12px 24px -14px rgba(5,13,37,.6)"><span style="width:7px;height:7px;border-radius:50%;background:#2fb26b"></span>{{ r.chip }}</div>
+          <div style="position:absolute;left:clamp(16px,4%,28px);bottom:clamp(16px,5%,28px);z-index:1;width:min(78%,340px);display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:20px;background:rgba(10,16,60,.62);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.18);color:#fff;animation:somionBob 7s ease-in-out infinite">
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#7c7dff,#4e4feb);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="{{ r.cardIcon }}"></span></span><span style="display:flex;flex-direction:column;gap:1px;min-width:0"><span style="font:800 15px 'Manrope',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.cardTitle }}</span><span style="font-size:12px;color:rgba(255,255,255,.7)">{{ r.cardSub }}</span></span></div>
+            <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid rgba(255,255,255,.14)">
+              <sc-for list="{{ r.cardRows }}" as="cr" hint-placeholder-count="3"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;color:rgba(255,255,255,.9)"><span>{{ cr.k }}</span><span style="display:inline-flex;align-items:center;gap:6px;font-weight:700;color:#c7f7e2"><span style="display:inline-block;width:12px;height:12px;background:#61d6a6;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span>{{ cr.v }}</span></div></sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-for>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:1300}}">
+class Component extends DCLogic {
+  state = { mod: null, currency: 'USD' };
+  componentDidMount() {
+    import((window.__resources && window.__resources['./somion-data.js']) || './somion-data.js').then(mod => { this.setState({ mod, currency: mod.getCurrency() }); mod.revealOnScroll(document); });
+    this.onCur = e => this.setState({ currency: e.detail }); window.addEventListener('somion:currency', this.onCur);
+  }
+  componentWillUnmount() { window.removeEventListener('somion:currency', this.onCur); }
+  renderVals() {
+    const m = this.state.mod, cur = this.state.currency; const f = v => m ? m.fmt(v, cur) : '$' + v.toFixed(2);
+    const icon = (n, c, s) => ({ display: 'inline-block', width: s, height: s, flex: 'none', background: c, mask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat', WebkitMask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat' });
+    const from = id => { if (!m) return ''; const min = Math.min(...m.categoryById(id).plans.map(p => p.price)); return min === 0 ? 'Free plan available' : 'Plans from ' + f(min) + '/mo'; };
+    const R = [
+      { ic: 'mail', eyebrow: 'Email hosting', title: 'Business email on your own domain.', text: m ? m.categoryById('email').blurb : '', points: ['Up to 100 mailboxes', 'Spam filtering and antivirus', '24/7 expert support'], href: 'Hosting.dc.html?cat=email', cta: 'Explore Email Hosting', from: from('email'), chip: 'Mail 25 \u00b7 Most popular', cardIcon: 'mail-check', cardTitle: 'hello@yourbrand.com', cardSub: 'Inbox protected', cardRows: [{ k: 'Spam filter', v: 'On' }, { k: 'Antivirus', v: 'On' }, { k: 'Storage', v: '25 GB' }] },
+      { ic: 'layout-grid', eyebrow: 'Website Builder', title: 'Drag, drop, publish.', text: 'No code, hosted by Somion. Start free on an SWS subdomain, then add your own domain when you are ready.', points: ['Drag and drop editor', 'Your own domain from Starter', 'Online store on Pro'], href: 'Hosting.dc.html?cat=builder', cta: 'Explore Website Builder', from: from('builder'), chip: 'Start free', cardIcon: 'layout-grid', cardTitle: 'yourbrand.com', cardSub: 'Published just now', cardRows: [{ k: 'Editor', v: 'Drag & drop' }, { k: 'SWS badge', v: 'Removed' }, { k: 'SSL', v: 'Active' }] },
+    ];
+    return { rows: R.map((r, i) => Object.assign({}, r, { eyebrowIcon: icon(r.ic, '#4e4feb', 15), cardIcon: icon(r.cardIcon, '#fff', 16),
+      rowStyle: { display: 'flex', flexWrap: 'wrap', flexDirection: i % 2 ? 'row-reverse' : 'row', gap: '40px 72px', alignItems: 'center', justifyContent: 'space-between' } })) };
+  }
+}
+</script>
+</body>
+</html>

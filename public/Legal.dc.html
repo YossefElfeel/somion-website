@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>
+:focus-visible{outline:2px solid #6b6cf5;outline-offset:3px}::selection{background:#c7c9f9;color:#08133e}
+html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#3435cc}a:hover{color:#4e4feb}
+</style>
+</helmet>
+<div id="top" style="background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
+  <div style="height:73px"><dc-import name="Header" active="" on-dark="{{ false }}" hint-size="100%,73px"></dc-import></div>
+
+  <section data-screen-label="Legal intro" style="border-bottom:1px solid #e5e7f2;background:radial-gradient(800px 380px at 85% 0%,#e6e7ff 0%,rgba(230,231,255,0) 70%),#fbfbfe">
+    <div style="max-width:1180px;margin:0 auto;padding:56px clamp(16px,4vw,40px) 40px;display:flex;flex-direction:column;gap:14px">
+      <span style="font:800 12px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#4e4feb">Legal</span>
+      <h1 style="margin:0;max-width:760px;font:800 clamp(34px,4.6vw,56px)/1.02 'Manrope',sans-serif;letter-spacing:-.025em;text-wrap:balance">Terms, privacy and acceptable use.</h1>
+      <div role="note" style="display:flex;align-items:flex-start;gap:12px;max-width:760px;margin-top:6px;padding:14px 16px;border-radius:14px;background:#fff4e5;border:1px solid #f5d9ad;color:#6b4200;font-size:14px;line-height:1.5"><span style="display:inline-block;width:18px;height:18px;flex:none;margin-top:1px;background:#9a5b00;mask:url(assets/icons/info.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/info.svg) center/contain no-repeat"></span><span><strong>Draft outline.</strong> These summaries mirror what the site already promises. Replace them with Somion’s final legal text before launch.</span></div>
+    </div>
+  </section>
+
+  <section data-screen-label="Legal content" style="max-width:1180px;margin:0 auto;padding:48px clamp(16px,4vw,40px) 96px;display:flex;flex-wrap:wrap;gap:32px 56px;align-items:flex-start">
+    <nav aria-label="Legal sections" style="flex:0 1 240px;position:sticky;top:100px;display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:18px;background:#fff;border:1px solid #e5e7f2">
+      <sc-for list="{{ docs }}" as="d" hint-placeholder-count="3">
+        <a href="{{ d.href }}" onClick="{{ d.pick }}" style="{{ d.navStyle }}" style-hover="background:#f0f1fb" style-active="transform:scale(.97)"><span style="{{ d.iconStyle }}"></span>{{ d.title }}</a>
+      </sc-for>
+    </nav>
+    <div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:22px">
+      <sc-for list="{{ docs }}" as="d" hint-placeholder-count="3">
+        <article id="{{ d.id }}" style="scroll-margin-top:100px;padding:clamp(24px,3vw,36px);border-radius:24px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 24px 50px -40px rgba(8,19,62,.3)">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;padding-bottom:18px;border-bottom:1px solid #f0f1fb">
+            <h2 style="margin:0;font:800 clamp(24px,2.6vw,30px)/1.1 'Manrope',sans-serif;letter-spacing:-.015em">{{ d.title }}</h2>
+            <span style="font-size:12.5px;color:#8a91aa">Draft · September 2026</span>
+          </div>
+          <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+            <sc-for list="{{ d.points }}" as="p" hint-placeholder-count="4">
+              <li style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:4px 12px;padding:18px 0;border-bottom:1px solid #f5f6fc">
+                <span style="font:800 13px/1.6 'Manrope',sans-serif;color:#4e4feb">{{ p.num }}</span>
+                <div style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font:700 16.5px/1.35 'Manrope',sans-serif">{{ p.h }}</h3><p style="margin:0;font-size:15px;line-height:1.6;color:#5d6480">{{ p.t }}</p></div>
+              </li>
+            </sc-for>
+          </ol>
+        </article>
+      </sc-for>
+      <p style="margin:0;font-size:14px;color:#5d6480">Questions about these terms? <a href="mailto:info@somion.ch" style="font-weight:700">info@somion.ch</a> · Muristrasse 3, 3123 Belp, Switzerland</p>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,760px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: 'terms' };
+  componentDidMount() { const h = ((window.__somionHash != null ? window.__somionHash : location.hash) || '').slice(1); if (['terms', 'privacy', 'aup'].includes(h)) { this.setState({ active: h }); setTimeout(() => { const el = document.getElementById(h); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 96 }); }, 250); } }
+  renderVals() {
+    const DOCS = [
+      ['terms', 'Terms of Service', 'file-text', [['Billing and renewals', 'Plans renew at the price shown on the plan card. Yearly billing charges 10 months and covers 12.'], ['Cancellation', 'You can cancel a service at any time from your account; it stays active until the end of the paid period.'], ['Upgrades', 'Plans can be upgraded as storage, traffic or site count grows. The difference is charged pro rata.'], ['Domains', 'Registrations and transfers follow the rules of each registry. Renewal prices are shown before purchase.'], ['Money-back guarantee', 'Cancel any hosting plan within 30 days of purchase for a full refund of the hosting fee.'], ['Free migration', 'We move an existing website to Somion at no charge on request.'], ['Support', '24/7 real-person support by phone, email and the contact form.']]],
+      ['privacy', 'Privacy', 'shield-check', [['What we collect', 'Account details (name, email, phone, country), billing records and the technical data needed to run your services.'], ['Why we use it', 'To provide and bill services, answer support requests and keep accounts secure.'], ['Payments', 'Card and wallet payments are handled by the payment provider; Somion does not store full card numbers.'], ['Your choices', 'You can ask to see, correct or delete your personal data by writing to info@somion.ch.']]],
+      ['aup', 'Acceptable Use', 'scale', [['No abuse', 'No spam, malware, phishing, or content that is illegal where it is hosted or viewed.'], ['Fair resources', 'Shared plans share servers. Sustained usage that affects other customers may need a larger plan.'], ['Security', 'Keep credentials safe and software updated. We may suspend a site that is actively compromised.'], ['Reporting', 'Report abuse to info@somion.ch with the affected URL and a short description.']]],
+    ];
+    return { docs: DOCS.map(([id, title, ic, pts]) => { const on = this.state.active === id; return { id, title, href: '#' + id, pick: () => this.setState({ active: id }),
+      navStyle: { display: 'flex', alignItems: 'center', gap: 10, minHeight: 44, padding: '0 12px', borderRadius: 12, textDecoration: 'none', font: "700 14px 'DM Sans', sans-serif", color: on ? '#2f30a8' : '#3f4660', background: on ? '#eeeefe' : 'transparent' },
+      iconStyle: { display: 'inline-block', width: 16, height: 16, flex: 'none', background: on ? '#4e4feb' : '#8a91aa', mask: 'url(assets/icons/' + ic + '.svg) center/contain no-repeat', WebkitMask: 'url(assets/icons/' + ic + '.svg) center/contain no-repeat' },
+      points: pts.map(([h, t], i) => ({ num: String(i + 1).padStart(2, '0'), h, t })) }; }) };
+  }
+}
+</script>
+</body>
+</html>

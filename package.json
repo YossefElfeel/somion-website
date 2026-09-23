@@ -1,9 +1,10 @@
 {
   "name": "somion-website",
   "private": true,
-  "description": "Somion Web Services website: a static build of the standalone design export",
+  "description": "Somion Web Services website",
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "preview": "node scripts/serve.mjs"
+    "check": "node scripts/check.mjs",
+    "preview": "node scripts/serve.mjs",
+    "unpack": "node scripts/unpack.mjs"
   }
 }

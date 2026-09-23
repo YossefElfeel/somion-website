@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>body{margin:0;font-family:'DM Sans',system-ui,sans-serif}</style>
+</helmet>
+<footer style="position:relative;overflow:hidden;background:#050d25;color:#e5e8f3;font-family:'DM Sans',system-ui,sans-serif">
+  <div style="position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,#4e4feb 0%,#7c7dff 35%,#c7c9f9 60%,rgba(199,201,249,0) 100%)"></div>
+  <div style="position:absolute;left:-220px;top:-260px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(78,79,235,.38),rgba(78,79,235,0) 68%);pointer-events:none"></div>
+  <div style="position:absolute;right:-160px;bottom:-320px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(124,125,255,.16),rgba(124,125,255,0) 70%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:72px clamp(16px,4vw,40px) 28px">
+
+    <div style="display:flex;flex-wrap:wrap;gap:36px 48px;align-items:center;justify-content:space-between;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.1)">
+      <div style="flex:1 1 320px;max-width:460px;display:flex;flex-direction:column;gap:18px">
+        <a href="Home.dc.html" style="display:inline-flex;align-self:flex-start;background:#fff;border-radius:12px;padding:9px 14px;box-shadow:0 20px 40px -24px rgba(78,79,235,.8)"><img src="assets/somion-logo.png" alt="Somion Web Services" style="height:40px;display:block"></img></a>
+        <p style="margin:0;font:600 clamp(20px,2vw,24px)/1.3 'Manrope',sans-serif;color:#fff;letter-spacing:-.01em">Hosting that stays clear, capable, and human.</p>
+        <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:9px;padding:8px 12px;border-radius:999px;border:1px solid rgba(97,214,166,.3);background:rgba(97,214,166,.08);color:#c7f7e2;font:600 12.5px 'DM Sans',sans-serif;white-space:nowrap"><span style="width:8px;height:8px;border-radius:50%;background:#61d6a6;box-shadow:0 0 0 4px rgba(97,214,166,.18)"></span>All systems ready</div>
+      </div>
+      <form onSubmit="{{ startName }}" style="flex:1 1 360px;max-width:520px;display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:22px;background:linear-gradient(135deg,rgba(78,79,235,.22),rgba(78,79,235,.06));border:1px solid rgba(124,125,255,.35);box-shadow:0 30px 60px -40px rgba(78,79,235,.8)">
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#a9b1ca">Have a website in mind?</span><span style="font:700 20px 'Manrope',sans-serif;color:#fff">Start with the name. Build from there.</span></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <input type="text" value="{{ q }}" onChange="{{ onQ }}" placeholder="yourname.com" aria-label="Domain name" autoComplete="off" style="flex:1 1 180px;min-width:0;height:48px;padding:0 14px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(5,13,37,.55);color:#fff;font:600 15px 'DM Sans',sans-serif;outline:none" style-focus="border-color:#c7c9f9;box-shadow:0 0 0 3px rgba(199,201,249,.2)"></input>
+          <button type="submit" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 18px;border-radius:12px;border:0;background:linear-gradient(135deg,#7c7dff,#4e4feb 60%,#3b3cd4);color:#fff;font:700 14px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.95);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Check availability <span style="display:inline-block;width:16px;height:16px;background:#fff;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></button>
+        </div>
+      </form>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:36px 32px;padding:52px 0 44px;border-bottom:1px solid rgba(255,255,255,.1)">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <div style="color:#818baa;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px">Explore</div>
+        <a href="Hosting.dc.html" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">Shared hosting</a>
+        <a href="Hosting.dc.html?cat=wordpress" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">WordPress hosting</a>
+        <a href="Hosting.dc.html?cat=vps" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">VPS hosting</a>
+        <a href="Domains.dc.html" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">Domains</a>
+        <a href="Compare.dc.html" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">Compare plans</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <div style="color:#818baa;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px">Company</div>
+        <a href="About.dc.html" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">About Somion</a>
+        <a href="Contact.dc.html" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">Contact us</a>
+        <a href="Login.dc.html" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px;gap:6px" style-hover="color:#fff">Client area <span style="display:inline-block;width:13px;height:13px;background:#cbd1e2;mask:url(assets/icons/arrow-up-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-up-right.svg) center/contain no-repeat"></span></a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <div style="color:#818baa;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px">Support</div>
+        <a href="Contact.dc.html" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">Hosting &amp; migration</a>
+        <a href="Contact.dc.html" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">Account support</a>
+        <a href="tel:+41318127484" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">+41 31 812 74 84</a>
+        <a href="mailto:info@somion.ch" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">info@somion.ch</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="color:#818baa;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase">Follow Somion</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ socials }}" as="s" hint-placeholder-count="7">
+            <a href="{{ s.href }}" aria-label="{{ s.label }}" title="{{ s.label }}" style="width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:linear-gradient(135deg,#7c7dff,#4e4feb);border-color:transparent;transform:translateY(-2px)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span style="{{ s.iconStyle }}"></span></a>
+          </sc-for>
+        </div>
+        <div style="color:#818baa;font-size:12.5px;line-height:1.5">Muristrasse 3, 3123 Belp<br>Switzerland</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;padding:28px 0">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="color:#7f89a7;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase">Payment methods</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px">
+          <sc-for list="{{ payments }}" as="p" hint-placeholder-count="9">
+            <span title="{{ p.name }}" style="width:52px;height:34px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;padding:5px;box-sizing:border-box;border:1px solid rgba(255,255,255,.2)"><img src="{{ p.src }}" alt="{{ p.name }}" style="max-width:100%;max-height:100%"></img></span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid rgba(255,255,255,.14);border-radius:12px;font-size:12.5px;font-weight:700;color:#cbd1e2;white-space:nowrap"><span style="display:inline-block;width:14px;height:14px;background:#cbd1e2;mask:url(assets/icons/globe.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/globe.svg) center/contain no-repeat"></span>{{ langName }}</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid rgba(255,255,255,.14);border-radius:12px;font-size:12.5px;font-weight:700;color:#cbd1e2;white-space:nowrap"><span style="display:inline-block;width:14px;height:14px;background:#cbd1e2;mask:url(assets/icons/coins.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/coins.svg) center/contain no-repeat"></span>{{ currency }}</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid rgba(97,214,166,.25);border-radius:12px;font-size:12.5px;font-weight:700;color:#c7f7e2;white-space:nowrap"><span style="display:inline-block;width:14px;height:14px;background:#61d6a6;mask:url(assets/icons/lock.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/lock.svg) center/contain no-repeat"></span>Secure checkout</span>
+      </div>
+    </div>
+
+    <div style="padding-top:22px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;color:#78829f;font-size:12.5px;white-space:nowrap">
+      <span>© 2026 Somion. All rights reserved.</span>
+      <div style="display:flex;flex-wrap:wrap;gap:6px 18px"><a href="Legal.dc.html#terms" style="color:#9aa3bf;text-decoration:none" style-hover="color:#fff">Terms of Service</a><a href="Legal.dc.html#privacy" style="color:#9aa3bf;text-decoration:none" style-hover="color:#fff">Privacy</a><a href="Legal.dc.html#aup" style="color:#9aa3bf;text-decoration:none" style-hover="color:#fff">Acceptable Use</a><span>Made by <a href="Home.dc.html" style="color:#fff;font-weight:700;text-decoration:none">Somion</a></span></div>
+      <button type="button" onClick="{{ toTop }}" aria-label="Back to top" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 6px 0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#cbd1e2;font:700 12.5px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease;white-space:nowrap" style-hover="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);transform:translateY(-1px);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Back to top <span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7c7dff,#4e4feb);display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:14px;height:14px;background:#fff;mask:url(assets/icons/arrow-up.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-up.svg) center/contain no-repeat"></span></span></button>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:760}}">
+class Component extends DCLogic {
+  state = { q: '', currency: 'USD', langName: 'English' };
+  componentDidMount() { import((window.__resources && window.__resources['./somion-data.js']) || './somion-data.js').then(mod => { this.mod = mod; const l = mod.LANGS.find(x => x.code === mod.getLang()); this.setState({ currency: mod.getCurrency(), langName: l ? l.name : 'English' }); }); this.onLang = e => { const l = this.mod && this.mod.LANGS.find(x => x.code === e.detail); if (l) this.setState({ langName: l.name }); }; window.addEventListener('somion:lang', this.onLang); this.onCur = e => this.setState({ currency: e.detail }); window.addEventListener('somion:currency', this.onCur); }
+  componentWillUnmount() { window.removeEventListener('somion:currency', this.onCur); window.removeEventListener('somion:lang', this.onLang); }
+  renderVals() {
+    const socials = [['X', 'brand-x', '#x'], ['Pinterest', 'brand-pinterest', '#pinterest'], ['LinkedIn', 'brand-linkedin', '#linkedin'], ['YouTube', 'brand-youtube', '#youtube'], ['TikTok', 'brand-tiktok', '#tiktok'], ['Instagram', 'brand-instagram', '#instagram'], ['Facebook', 'brand-facebook', '#facebook']].map(([label, icon, href]) => ({ label, href, iconStyle: { display: 'inline-block', width: 16, height: 16, background: '#fff', mask: 'url(assets/icons/' + icon + '.svg) center/contain no-repeat', WebkitMask: 'url(assets/icons/' + icon + '.svg) center/contain no-repeat' } }));
+    const payments = [['Vodafone Cash', 'assets/pay-vodafone.jpg'], ['Etisalat Cash', 'assets/pay-etisalat.png'], ['Orange Cash', 'assets/pay-orange.jpg'], ['WE Pay', 'assets/pay-wepay.png'], ['Visa', 'assets/pay-visa.png'], ['Mastercard', 'assets/pay-mastercard.png'], ['Meeza', 'assets/pay-meeza.png'], ['PayPal', 'assets/pay-paypal.png'], ['Cryptocurrency', 'assets/pay-crypto.png']].map(([name, src]) => ({ name, src }));
+    return { socials, payments, langName: this.state.langName, currency: this.state.currency, q: this.state.q, onQ: e => this.setState({ q: e.target.value }),
+      startName: e => { e.preventDefault(); (window.__somionNav || (u => { location.href = u; }))('Domains.dc.html' + (this.state.q.trim() ? '?q=' + encodeURIComponent(this.state.q.trim()) : '')); },
+      toTop: () => { try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (err) { window.scrollTo(0, 0); } } };
+  }
+}
+</script>
+</body>
+</html>

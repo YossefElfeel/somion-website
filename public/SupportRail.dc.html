@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>body{margin:0;background:#fbfbfe;font-family:'DM Sans',system-ui,sans-serif}a{color:#3435cc}a:hover{color:#4e4feb}
+@keyframes somionRail{from{transform:translateX(0)}to{transform:translateX(-50%)}}</style>
+</helmet>
+<section data-screen-label="Support rail" style="padding:104px 0 0;overflow:hidden;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
+  <div data-reveal="1" style="max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:20px 48px;align-items:flex-end;justify-content:space-between">
+    <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:12px;max-width:640px">
+      <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;height:30px;padding:0 12px 0 8px;border-radius:999px;background:#e9f8ef;color:#146132;font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase"><span style="width:7px;height:7px;border-radius:50%;background:#2fb26b;box-shadow:0 0 0 4px rgba(47,178,107,.18)"></span>24/7 expert support</span>
+      <h2 data-words="1" style="margin:0;font:800 clamp(32px,4.2vw,52px)/1.03 'Manrope',sans-serif;letter-spacing:-.03em;text-wrap:balance">Real people, for the jobs that matter.</h2>
+    </div>
+    <div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+      <p style="margin:0;font-size:16.5px;line-height:1.6;color:#5d6480">Somion offers real-person support for setup, hosting questions, and account assistance, around the clock.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:9px;height:46px;padding:0 18px;border-radius:13px;background:linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4);color:#fff;font:700 14px 'DM Sans',sans-serif;text-decoration:none;box-shadow:0 14px 30px -16px rgba(78,79,235,.95);transition:transform .22s cubic-bezier(.2,.7,.2,1),filter .2s" style-hover="transform:translateY(-2px);filter:brightness(1.08);color:#fff" style-active="transform:scale(.97)"><span style="display:inline-block;width:16px;height:16px;background:#fff;mask:url(assets/icons/message-circle.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/message-circle.svg) center/contain no-repeat"></span>Talk to Somion</a>
+        <a href="tel:+41318127484" style="display:inline-flex;align-items:center;gap:9px;height:46px;padding:0 16px;border-radius:13px;border:1px solid #e5e7f2;background:#fff;color:#08133e;font:700 14px 'DM Sans',sans-serif;text-decoration:none;white-space:nowrap;transition:border-color .2s,background-color .2s,transform .2s" style-hover="border-color:#4e4feb;background:#f7f7ff;transform:translateY(-1px);color:#08133e"><span style="display:inline-block;width:15px;height:15px;background:#08133e;mask:url(assets/icons/phone.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/phone.svg) center/contain no-repeat"></span>+41 31 812 74 84</a>
+      </div>
+    </div>
+  </div>
+  <div data-reveal="1" style="position:relative;margin-top:44px">
+    <div aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:min(12vw,140px);z-index:2;pointer-events:none;background:linear-gradient(90deg,#fbfbfe,rgba(251,251,254,0))"></div>
+    <div aria-hidden="true" style="position:absolute;right:0;top:0;bottom:0;width:min(12vw,140px);z-index:2;pointer-events:none;background:linear-gradient(270deg,#fbfbfe,rgba(251,251,254,0))"></div>
+    <div style="display:flex;width:max-content;padding:6px 0 18px;animation:somionRail 56s linear infinite" style-hover="animation-play-state:paused">
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="6">
+        <article aria-hidden="{{ c.dup }}" style="flex:none;width:300px;margin-right:16px;display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:24px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 1px 2px rgba(8,19,62,.03),0 20px 44px -36px rgba(8,19,62,.35);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .25s" style-hover="transform:translateY(-6px);border-color:#c7c9f9;box-shadow:0 1px 2px rgba(8,19,62,.03),0 34px 60px -34px rgba(78,79,235,.5)">
+          <span style="width:46px;height:46px;border-radius:15px;background:#eeeefe;border:1px solid #e3e4fb;display:inline-flex;align-items:center;justify-content:center"><span style="{{ c.iconStyle }}"></span></span>
+          <div style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font:800 19px/1.2 'Manrope',sans-serif">{{ c.title }}</h3><p style="margin:0;font-size:14.5px;line-height:1.55;color:#5d6480">{{ c.text }}</p></div>
+          <a href="Contact.dc.html" tabIndex="{{ c.tab }}" style="margin-top:auto;display:inline-flex;align-self:flex-start;align-items:center;gap:7px;min-height:36px;font:700 13.5px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none" style-hover="color:#4e4feb">Ask support<span style="display:inline-block;width:14px;height:14px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:560}}">
+class Component extends DCLogic {
+  componentDidMount() { import((window.__resources && window.__resources['./somion-data.js']) || './somion-data.js').then(mod => mod.revealOnScroll(document)); }
+  renderVals() {
+    const icon = n => ({ display: 'inline-block', width: 21, height: 21, background: '#4e4feb', mask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat', WebkitMask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat' });
+    const C = [['gauge', 'Speed it up', 'Slow pages? We find what is holding them back and fix it with you.'], ['rocket', 'Migrate', 'Moving from another host? We bring your site, files and databases across for free.'], ['life-buoy', 'Fix', 'Share the error you are seeing and get clear steps to sort it out.'], ['mail', 'Set up email', 'Create business mailboxes and get them working on every device.'], ['globe', 'Domains & DNS', 'Point a domain, change nameservers, or renew without the guesswork.'], ['refresh-cw', 'Restore a backup', 'Roll your site back to yesterday when something goes wrong.']];
+    const one = C.map(([ic, title, text]) => ({ iconStyle: icon(ic), title, text }));
+    return { cards: one.map(c => Object.assign({ dup: false, tab: 0 }, c)).concat(one.map(c => Object.assign({ dup: true, tab: -1 }, c))) };
+  }
+}
+</script>
+</body>
+</html>

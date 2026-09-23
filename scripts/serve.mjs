@@ -1,12 +1,12 @@
-// Preview the built site locally: node scripts/serve.mjs [port]
-// Serves dist/ as plain static files (with Range support so the hero video can loop).
+// Preview the site locally: node scripts/serve.mjs [port]
+// Serves public/ as plain static files (with Range support so the hero video can loop).
 
 import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
+const SITE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
 const PORT = Number(process.argv[2] ?? process.env.PORT ?? 4173);
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -22,8 +22,8 @@ const TYPES = {
 http
   .createServer((req, res) => {
     const { pathname } = new URL(req.url, 'http://localhost');
-    let file = path.join(DIST, decodeURIComponent(pathname));
-    if (file !== DIST && !file.startsWith(DIST + path.sep)) return res.writeHead(403).end();
+    let file = path.join(SITE, decodeURIComponent(pathname));
+    if (file !== SITE && !file.startsWith(SITE + path.sep)) return res.writeHead(403).end();
     if (pathname.endsWith('/')) file = path.join(file, 'index.html');
 
     fs.stat(file, (err, stat) => {
@@ -41,4 +41,4 @@ http
       fs.createReadStream(file).pipe(res);
     });
   })
-  .listen(PORT, () => console.log(`Serving dist/ at http://localhost:${PORT}`));
+  .listen(PORT, () => console.log(`Serving public/ at http://localhost:${PORT}`));

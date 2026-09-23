@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>
+:focus-visible{outline:2px solid #6b6cf5;outline-offset:3px}::selection{background:#c7c9f9;color:#08133e}
+html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#3435cc}a:hover{color:#4e4feb}
+@keyframes somionFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes somionScrollCue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(14px);opacity:0}100%{transform:translateY(14px);opacity:0}}
+@keyframes somionMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+<div id="top" style="background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
+  <dc-import name="Header" active="about" hint-size="100%,73px"></dc-import>
+
+  <section data-screen-label="About hero" style="position:relative;min-height:clamp(600px,88vh,860px);display:flex;align-items:flex-end;overflow:hidden;color:#fff;isolation:isolate;background:#070b2e">
+    <div data-parallax=".3" data-parallax-scale="1.1" style="position:absolute;inset:0;z-index:0"><dc-import name="HeroVideo" src="{{ heroVideo }}" tint="indigo" label="HERO VIDEO SLOT · about" hint-size="100%,100%" style="width:100%;height:100%"></dc-import></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,9,38,.8) 0%,rgba(5,9,38,.42) 50%,rgba(5,9,38,.08) 100%),linear-gradient(180deg,rgba(5,9,38,.55) 0%,rgba(5,9,38,0) 26%,rgba(5,9,38,0) 66%,rgba(5,9,38,.72) 100%)"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.08;mix-blend-mode:overlay;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22180%22%20height%3D%22180%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.85%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%20.55%200%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E');background-size:180px 180px"></div>
+    <div style="position:relative;z-index:1;width:100%;max-width:1180px;margin:0 auto;padding:160px clamp(16px,4vw,40px) 56px;display:flex;flex-direction:column;gap:36px">
+      <div style="display:flex;flex-wrap:wrap;gap:28px 64px;align-items:flex-end;justify-content:space-between">
+        <div style="flex:1 1 560px;display:flex;flex-direction:column;gap:20px">
+          <span data-enter="0" style="display:inline-flex;align-self:flex-start;align-items:center;gap:10px;padding:8px 14px 8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);backdrop-filter:blur(8px);font:800 11.5px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap"><span style="width:8px;height:8px;border-radius:50%;background:#61d6a6"></span>About Somion · Belp, Switzerland</span>
+          <h1 data-words="1" style="margin:0;max-width:980px;font:800 clamp(44px,6.2vw,88px)/.96 'Manrope',sans-serif;letter-spacing:-.04em;text-wrap:balance">Principles that carry from first conversation to <span style="display:inline-block;padding-bottom:.12em;margin-bottom:-.12em;background:linear-gradient(95deg,#c7c9f9 0%,#ffffff 46%,#a5a7ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent">long-term support.</span></h1>
+        </div>
+        <p data-enter="160" style="flex:0 1 340px;margin:0;padding-left:20px;border-left:2px solid rgba(255,255,255,.35);font-size:17px;line-height:1.55;color:rgba(255,255,255,.84)">Hosting that stays clear, capable, and human. From Belp, for websites everywhere.</p>
+      </div>
+      <div data-enter="240" style="display:flex;flex-wrap:wrap;gap:12px 10px;align-items:center;justify-content:space-between;padding-top:26px;border-top:1px solid rgba(255,255,255,.18)">
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ heroChips }}" as="c" hint-placeholder-count="3">
+            <a href="{{ c.href }}" style="display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 16px 0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.26);background:rgba(8,19,62,.32);backdrop-filter:blur(10px);color:#fff;font:700 13px 'DM Sans',sans-serif;text-decoration:none;white-space:nowrap;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);transform:translateY(-1px);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span style="font:800 11px 'DM Sans',sans-serif;color:#c7c9f9">{{ c.num }}</span>{{ c.label }}</a>
+          </sc-for>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:10px;font:700 12px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)">Scroll <span style="width:22px;height:34px;border-radius:999px;border:1.5px solid rgba(255,255,255,.4);display:inline-flex;justify-content:center;padding-top:6px;box-sizing:border-box"><span style="width:4px;height:8px;border-radius:2px;background:#fff;animation:somionScrollCue 1.8s ease-in-out infinite"></span></span></span>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Principles" style="max-width:1180px;margin:0 auto;padding:96px clamp(16px,4vw,40px) 0;display:flex;flex-wrap:wrap;gap:40px 64px;align-items:flex-start">
+    <div data-reveal="1" style="flex:0 1 300px;position:sticky;top:104px;display:flex;flex-direction:column;gap:14px">
+      <span style="font:800 12px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#4e4feb">What we stand for</span>
+      <h2 style="margin:0;font:800 clamp(30px,3.4vw,42px)/1.05 'Manrope',sans-serif;letter-spacing:-.02em;text-wrap:balance">Three principles, applied every day.</h2>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:#5d6480">Read them as promises. They shape how we quote, how we build, and how we answer the phone after launch.</p>
+    </div>
+    <ol style="flex:1 1 560px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid #e5e7f2">
+      <sc-for list="{{ principles }}" as="p" hint-placeholder-count="3">
+        <li id="{{ p.id }}" data-reveal="1" style="position:relative;display:grid;grid-template-columns:minmax(72px,120px) minmax(0,1fr);gap:16px 28px;padding:40px 24px 40px 0;border-bottom:1px solid #e5e7f2;transition:background .25s,padding-left .25s;scroll-margin-top:110px" style-hover="background:linear-gradient(90deg,#f7f7ff,rgba(247,247,255,0));padding-left:16px">
+          <span style="font:800 clamp(56px,7vw,96px)/.9 'Manrope',sans-serif;letter-spacing:-.05em;background:linear-gradient(180deg,#c7c9f9,#eeeefe);-webkit-background-clip:text;background-clip:text;color:transparent">{{ p.num }}</span>
+          <div style="display:flex;flex-direction:column;gap:12px;padding-top:6px">
+            <div style="display:flex;align-items:center;gap:14px"><span style="width:44px;height:44px;border-radius:14px;background:#eeeefe;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="{{ p.iconStyle }}"></span></span><h3 style="margin:0;font:800 clamp(26px,3vw,36px)/1.05 'Manrope',sans-serif;letter-spacing:-.02em">{{ p.title }}</h3></div>
+            <p style="margin:0;max-width:560px;font-size:18px;line-height:1.55;color:#5d6480">{{ p.text }}</p>
+            <span style="font:700 13px 'DM Sans',sans-serif;color:#3435cc">{{ p.proof }}</span>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+
+  <section data-screen-label="Responsibility" style="max-width:1180px;margin:0 auto;padding:96px clamp(16px,4vw,40px) 0">
+    <div data-reveal="1" style="position:relative;overflow:hidden;border-radius:32px;background:#07122f;color:#fff;padding:clamp(28px,4.5vw,64px);display:flex;flex-wrap:wrap;gap:40px 48px;align-items:center;justify-content:space-between;box-shadow:0 50px 100px -50px rgba(5,13,37,.8)">
+      <div style="position:absolute;left:-200px;top:-260px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(78,79,235,.55),rgba(78,79,235,0) 68%);pointer-events:none"></div>
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 70% 50%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 70% 50%,#000 20%,transparent 75%);pointer-events:none"></div>
+      <div style="position:relative;flex:1 1 380px;max-width:560px;display:flex;flex-direction:column;gap:18px">
+        <span style="font:800 12px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#c7c9f9">Responsibility</span>
+        <h2 style="margin:0;font:800 clamp(34px,4.4vw,58px)/1.02 'Manrope',sans-serif;letter-spacing:-.025em;text-wrap:balance">Local perspective. Work that travels.</h2>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#a9b1ca">From Belp, Somion works across web services, hosting, and digital experiences with a practical, long-view approach.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;margin-top:10px">
+          <sc-for list="{{ facts }}" as="f" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)"><span style="font:800 28px/1 'Manrope',sans-serif;letter-spacing:-.02em">{{ f.value }}</span><span style="font-size:12.5px;color:#a9b1ca">{{ f.label }}</span></div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
+          <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-radius:12px;background:#fff;color:#2f30a8;font:700 14px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 20px 40px -18px rgba(5,13,37,.6);background:#f4f4ff;color:#2f30a8" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span style="display:inline-block;width:16px;height:16px;background:#2f30a8;mask:url(assets/icons/map-pin.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/map-pin.svg) center/contain no-repeat"></span>Muristrasse 3, 3123 Belp</a>
+          <span style="display:inline-flex;align-items:center;gap:9px;height:48px;padding:0 16px;border-radius:12px;border:1px solid rgba(97,214,166,.3);background:rgba(97,214,166,.08);color:#c7f7e2;font:600 13px 'DM Sans',sans-serif;white-space:nowrap"><span style="width:8px;height:8px;border-radius:50%;background:#61d6a6;box-shadow:0 0 0 4px rgba(97,214,166,.18)"></span>All systems ready</span>
+        </div>
+      </div>
+      <div style="position:relative;flex:1 1 320px;max-width:480px">
+        <div style="position:absolute;inset:14% 6% 0;border-radius:50%;background:radial-gradient(closest-side,rgba(124,125,255,.45),rgba(124,125,255,0));filter:blur(28px)"></div>
+        <img src="assets/hosting-expert.png" alt="Somion hosting expert with secure server infrastructure" style="position:relative;width:100%;height:auto;display:block;filter:drop-shadow(0 40px 50px rgba(5,13,37,.6));animation:somionFloat 9s ease-in-out infinite"></img>
+        <div style="position:absolute;left:0;bottom:8%;display:flex;flex-direction:column;gap:2px;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.94);color:#08133e;box-shadow:0 20px 40px -20px rgba(5,13,37,.6)"><span style="font:800 10.5px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#5d6480">Real people</span><span style="font:700 14px 'Manrope',sans-serif">24/7 expert support</span></div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SupportRail" hint-size="100%,560px"></dc-import>
+
+  <section data-screen-label="Testimonials" style="max-width:1180px;margin:0 auto;padding:96px clamp(16px,4vw,40px) 0">
+    <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px"><h2 style="margin:0;font:800 clamp(34px,4.2vw,54px)/1.04 'Manrope',sans-serif;letter-spacing:-.02em">Client Success Stories</h2><span style="padding:6px 10px;border-radius:8px;border:1px dashed #babcf6;color:#5d6480;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.04em;white-space:nowrap">PLACEHOLDER QUOTES</span></div>
+      <div style="display:flex;gap:8px">
+        <button type="button" onClick="{{ prev }}" aria-label="Previous" style="width:46px;height:46px;border-radius:50%;border:1px solid #e5e7f2;background:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span style="display:inline-block;width:18px;height:18px;background:#08133e;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;transform:rotate(180deg)"></span></button>
+        <button type="button" onClick="{{ next }}" aria-label="Next" style="width:46px;height:46px;border-radius:50%;border:0;background:linear-gradient(135deg,#5c5df1,#4041d8);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 12px 26px -12px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span style="display:inline-block;width:18px;height:18px;background:#fff;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></button>
+      </div>
+    </div>
+    <div ref="{{ trackRef }}" style="margin-top:36px;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 4px 12px;margin-left:-4px;margin-right:-4px">
+      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="4">
+        <article style="flex:0 0 min(100%,380px);scroll-snap-align:start;display:flex;flex-direction:column;gap:18px;padding:30px;border-radius:24px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 18px 40px -30px rgba(8,19,62,.25)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+            <span style="color:#f7871b;font-size:18px;letter-spacing:2px">★★★★★</span>
+            <span aria-hidden="true" style="font:800 48px/1 'Manrope',sans-serif;color:#4e4feb;opacity:.35">”</span>
+          </div>
+          <p style="margin:0;font:600 18px/1.5 'Manrope',sans-serif;color:#08133e;letter-spacing:-.01em">{{ t.text }}</p>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:18px;border-top:1px solid #f0f1fb"><img src="assets/avatar-1.jpg" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:top"></img><div style="display:flex;flex-direction:column;gap:2px"><span style="font:700 15px 'Manrope',sans-serif">{{ t.name }}</span><span style="font-size:13.5px;color:#6b7280">{{ t.role }}</span></div><span style="margin-left:auto;font:800 14px 'Manrope',sans-serif">4.9</span></div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="CTA" style="max-width:1180px;margin:0 auto;padding:96px clamp(16px,4vw,40px) 96px">
+    <div data-reveal="1" style="position:relative;overflow:hidden;border-radius:30px;background:linear-gradient(120deg,#5c5df1,#4041d8 55%,#2d2fb7);box-shadow:0 40px 80px -40px rgba(45,47,183,.7);padding:clamp(32px,4.5vw,64px);display:flex;flex-wrap:wrap;gap:32px 56px;align-items:center;justify-content:space-between;color:#fff">
+      <div style="position:absolute;right:-120px;top:-180px;width:460px;height:460px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)"></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px;max-width:560px">
+        <h2 style="margin:0;font:800 clamp(34px,4.2vw,54px)/1.04 'Manrope',sans-serif;letter-spacing:-.02em;text-wrap:balance">Let’s build the next useful thing.</h2>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#e2e3ff">Bring the idea, the current setup, or simply the problem. We’ll help make the next step clearer.</p>
+      </div>
+      <div style="position:relative;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:12px;background:#fff;color:#3435cc;font:700 16px 'DM Sans',sans-serif;text-decoration:none;box-shadow:0 18px 40px -18px rgba(5,13,37,.6);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 20px 40px -18px rgba(5,13,37,.6);background:#f4f4ff;color:#3435cc" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Contact Somion <span style="display:inline-block;width:18px;height:18px;background:#3435cc;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+        <a href="Hosting.dc.html" style="display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 24px;border-radius:12px;border:1px solid rgba(255,255,255,.4);color:#fff;font:700 16px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);transform:translateY(-1px);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Explore hosting</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,760px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { mod: null };
+  trackRef = React.createRef();
+  componentDidMount() { import((window.__resources && window.__resources['./somion-data.js']) || './somion-data.js').then(mod => { this.setState({ mod }); this.scan = mod.revealOnScroll(document); mod.enterAnimations(document); }); }
+  componentDidUpdate() { if (this.scan) this.scan(); }
+  scroll(dir) { const t = this.trackRef.current; if (!t) return; const card = t.firstElementChild; const w = card ? card.getBoundingClientRect().width + 20 : 400; t.scrollBy({ left: dir * w, behavior: 'smooth' }); }
+  renderVals() {
+    const m = this.state.mod;
+    const icon = name => ({ display: 'inline-block', width: 20, height: 20, background: '#4e4feb', mask: 'url(assets/icons/' + name + '.svg) center/contain no-repeat', WebkitMask: 'url(assets/icons/' + name + '.svg) center/contain no-repeat' });
+    const P = [['clarity', '01', 'Clarity', 'Make technical choices understandable before asking anyone to commit.', 'Every plan shows its renewal price on the card.', 'eye'], ['quality', '02', 'Quality', 'Care for the invisible infrastructure and the visible experience.', 'cPanel, SSL and daily backups on every hosting plan.', 'badge-check'], ['partnership', '03', 'Partnership', 'Stay useful after launch, when real growth begins.', 'Upgrade any plan as storage, traffic or sites grow.', 'heart-handshake']];
+    return { heroVideo: this.props.heroVideo || 'assets/hero-loop.webm',
+      heroChips: P.map(([id, num, label]) => ({ num, label, href: '#' + id })),
+      principles: P.map(([id, num, title, text, proof, ic]) => ({ id, num, title, text, proof, iconStyle: icon(ic) })),
+      facts: [{ value: m ? String(m.CATEGORIES.length) : '8', label: 'hosting categories' }, { value: m ? String(m.PLANS.length) : '26', label: 'plans, priced the way they renew' }, { value: m ? m.CURRENCIES.join(' · ') : 'USD · CHF · EGP', label: 'currencies at checkout' }],
+      testimonials: [1, 2, 3, 4].map(() => ({ name: 'Maxin Will', role: 'Product Manager', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.' })),
+      trackRef: this.trackRef, prev: () => this.scroll(-1), next: () => this.scroll(1) };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>
+:focus-visible{outline:2px solid #6b6cf5;outline-offset:3px}::selection{background:#c7c9f9;color:#08133e}
+html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#3435cc}a:hover{color:#4e4feb}
+@keyframes somionSpin{to{transform:rotate(360deg)}}
+@keyframes somionShimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+@keyframes somionPop{0%{transform:scale(.96)}100%{transform:none}}
+@keyframes somionSlideUp{from{transform:translate(-50%,120%)}to{transform:translate(-50%,0)}}
+</style>
+</helmet>
+<div id="top" style="background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
+  <dc-import name="Header" active="domains" hint-size="100%,73px"></dc-import>
+
+  <section data-screen-label="Domains hero" style="position:relative;overflow:hidden;color:#fff;isolation:isolate;background:#070b2e">
+    <div data-parallax=".3" data-parallax-scale="1.1" style="position:absolute;inset:0;z-index:0"><dc-import name="HeroVideo" src="{{ heroVideo }}" tint="indigo" label="HERO VIDEO SLOT · domains" hint-size="100%,100%" style="width:100%;height:100%"></dc-import></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 520px at 50% 42%,rgba(5,9,38,.35),rgba(5,9,38,.82) 78%),linear-gradient(180deg,rgba(5,9,38,.5) 0%,rgba(5,9,38,0) 30%)"></div>
+    <div style="position:relative;z-index:1;max-width:860px;margin:0 auto;padding:148px clamp(16px,4vw,40px) 152px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px">
+      <span data-enter="0" style="display:inline-flex;align-items:center;gap:12px;padding:5px 16px 5px 5px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font:600 13.5px 'DM Sans',sans-serif;color:rgba(255,255,255,.92);white-space:nowrap"><span style="display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 11px;border-radius:999px;background:#fff;color:#2f30a8;font:800 10.5px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase"><span style="width:6px;height:6px;border-radius:50%;background:#2fb26b"></span>10 extensions</span>Domain names</span>
+      <h1 data-words="1" style="margin:0;font:800 clamp(44px,6.4vw,82px)/.96 'Manrope',sans-serif;letter-spacing:-.04em;text-wrap:balance">A name worth <span style="display:inline-block;padding-bottom:.12em;margin-bottom:-.12em;background:linear-gradient(95deg,#c7c9f9 0%,#ffffff 46%,#a5a7ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent">building on.</span></h1>
+      <p data-enter="200" style="margin:-4px 0 0;max-width:560px;font-size:clamp(16.5px,1.4vw,18.5px);line-height:1.6;color:rgba(255,255,255,.82)">Check a name, see what it costs this year and every year after, and keep it on the same bill as your hosting.</p>
+
+      <div data-enter="280" role="tablist" aria-label="What do you want to do?" style="margin-top:6px;display:inline-flex;padding:4px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)">
+        <button type="button" role="tab" aria-selected="{{ isRegister }}" onClick="{{ pickRegister }}" style="{{ regTabStyle }}">Register a new domain</button>
+        <button type="button" role="tab" aria-selected="{{ isTransfer }}" onClick="{{ pickTransfer }}" style="{{ trTabStyle }}">Transfer a domain</button>
+      </div>
+
+      <form data-enter="340" onSubmit="{{ submit }}" role="search" style="width:100%;max-width:760px">
+        <div style="position:relative;display:flex;align-items:center;gap:8px;padding:8px;border-radius:22px;background:#fff;box-shadow:0 40px 80px -30px rgba(3,6,30,.85),0 0 0 6px rgba(255,255,255,.08)">
+          <span style="position:absolute;left:24px;top:50%;transform:translateY(-50%);display:inline-flex;pointer-events:none"><span style="display:inline-block;width:22px;height:22px;background:#8a91aa;mask:url(assets/icons/search.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/search.svg) center/contain no-repeat"></span></span>
+          <label for="domain-q" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">{{ inputLabel }}</label>
+          <input ref="{{ inputRef }}" id="domain-q" type="text" value="{{ q }}" onChange="{{ onQ }}" placeholder="{{ placeholder }}" autoComplete="off" autoCapitalize="none" spellCheck="{{ false }}" style="{{ inputStyle }}"></input>
+          <sc-if value="{{ hasQ }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ clearQ }}" aria-label="Clear search" style="flex:none;width:40px;height:40px;border-radius:12px;border:0;background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center" style-hover="background:#f0f1fb"><span style="display:inline-block;width:18px;height:18px;background:#8a91aa;mask:url(assets/icons/x.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/x.svg) center/contain no-repeat"></span></button></sc-if>
+          <button type="submit" style="flex:none;display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 24px;border-radius:15px;border:0;background:linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4);color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 28px -14px rgba(78,79,235,.95);transition:transform .22s cubic-bezier(.2,.7,.2,1),filter .2s" style-hover="transform:translateY(-1px);filter:brightness(1.08)" style-active="transform:scale(.97)"><sc-if value="{{ wideBtn }}" hint-placeholder-val="{{ true }}"><span>{{ submitLabel }}</span></sc-if><span style="display:inline-block;width:18px;height:18px;background:#fff;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></button>
+        </div>
+      </form>
+
+      <sc-if value="{{ isRegister }}" hint-placeholder-val="{{ true }}">
+        <div data-enter="400" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px">
+          <span style="font:600 13px 'DM Sans',sans-serif;color:rgba(255,255,255,.7);margin-right:2px">Popular</span>
+          <sc-for list="{{ quickTlds }}" as="t" hint-placeholder-count="5">
+            <button type="button" onClick="{{ t.pick }}" style="{{ t.style }}" style-hover="background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5)" style-active="transform:scale(.96)">{{ t.tld }}<span style="font:600 12px 'DM Sans',sans-serif;color:rgba(255,255,255,.75)">{{ t.price }}</span></button>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isTransfer }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font:600 13.5px 'DM Sans',sans-serif;color:rgba(255,255,255,.78)">Enter the full domain you own, like yourname.com. Transfers include a one-year extension.</p>
+      </sc-if>
+    </div>
+  </section>
+
+  <section ref="{{ resultsRef }}" id="results" data-screen-label="Search results" style="position:relative;z-index:3;max-width:980px;margin:-104px auto 0;padding:0 clamp(16px,4vw,40px);scroll-margin-top:96px">
+    <div style="border-radius:28px;background:#fff;border:1px solid #e3e5f3;box-shadow:0 50px 100px -56px rgba(8,19,62,.55),0 2px 6px rgba(8,19,62,.04);overflow:hidden">
+
+      <sc-if value="{{ showIdle }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))">
+          <sc-for list="{{ howSteps }}" as="h" hint-placeholder-count="3">
+            <div style="display:flex;gap:14px;align-items:flex-start;padding:26px 28px;border-right:1px solid #f0f1fb">
+              <span style="width:40px;height:40px;border-radius:13px;background:#eeeefe;display:inline-flex;align-items:center;justify-content:center;flex:none;font:800 14px 'Manrope',sans-serif;color:#4e4feb">{{ h.n }}</span>
+              <span style="display:flex;flex-direction:column;gap:4px"><span style="font:800 16px 'Manrope',sans-serif">{{ h.t }}</span><span style="font-size:14px;line-height:1.5;color:#5d6480">{{ h.d }}</span></span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="display:flex;align-items:center;gap:12px;padding:18px 26px;background:#fff8ec;border-bottom:1px solid #f5dfbf;color:#7a4700;font-size:14.5px"><span style="display:inline-block;width:18px;height:18px;flex:none;background:#9a5b00;mask:url(assets/icons/info.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/info.svg) center/contain no-repeat"></span>{{ err }}</div>
+      </sc-if>
+
+      <sc-if value="{{ checking }}" hint-placeholder-val="{{ false }}">
+        <div aria-live="polite" style="display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:12px;padding:22px 26px;border-bottom:1px solid #f0f1fb;font:700 15px 'DM Sans',sans-serif;color:#5d6480"><span style="width:18px;height:18px;border-radius:50%;border:2.5px solid #e3e4fb;border-top-color:#4e4feb;animation:somionSpin .7s linear infinite"></span>Checking {{ checkingLabel }}…</div>
+          <sc-for list="{{ skeleton }}" as="k" hint-placeholder-count="4"><div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 26px;border-bottom:1px solid #f5f6fc"><span style="width:38%;height:16px;border-radius:8px;background:linear-gradient(90deg,#f0f1fb 0%,#e6e7f7 50%,#f0f1fb 100%);background-size:800px 100%;animation:somionShimmer 1.2s linear infinite"></span><span style="width:18%;height:16px;border-radius:8px;background:linear-gradient(90deg,#f0f1fb 0%,#e6e7f7 50%,#f0f1fb 100%);background-size:800px 100%;animation:somionShimmer 1.2s linear infinite"></span></div></sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showRegister }}" hint-placeholder-val="{{ false }}">
+        <div aria-live="polite" style="{{ exactStyle }}">
+          <div style="display:flex;flex-direction:column;gap:8px;flex:1 1 280px;min-width:0">
+            <span style="{{ exactBadgeStyle }}"><span style="{{ exactBadgeIcon }}"></span>{{ exactBadge }}</span>
+            <span style="font:800 clamp(28px,3.6vw,40px)/1.05 'Manrope',sans-serif;letter-spacing:-.03em;overflow-wrap:anywhere">{{ exactName }}<span style="color:#4e4feb">{{ exactTld }}</span></span>
+            <span style="font-size:14.5px;color:#5d6480">{{ exactNote }}</span>
+          </div>
+          <sc-if value="{{ exactAvailable }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span data-count="1" style="font:800 34px/1 'Manrope',sans-serif;letter-spacing:-.03em">{{ exactPrice }}</span><span style="font-size:12.5px;color:#5d6480">first year · renews {{ exactRenew }}/yr</span></div>
+              <button type="button" onClick="{{ exactToggle }}" style="{{ exactBtnStyle }}" style-active="transform:scale(.97)"><span style="{{ exactBtnIcon }}"></span>{{ exactBtnLabel }}</button>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:18px 26px;border-bottom:1px solid #f0f1fb;background:#fbfbfe">
+          <span style="font:800 15px 'Manrope',sans-serif">More extensions for “{{ resName }}”</span>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+            <div role="group" aria-label="Filter results" style="display:inline-flex;padding:3px;border-radius:999px;background:#fff;border:1px solid #e5e7f2">
+              <button type="button" onClick="{{ showAllAvail }}" style="{{ fAllStyle }}">All {{ totalCount }}</button>
+              <button type="button" onClick="{{ showOnlyAvail }}" style="{{ fAvailStyle }}">Available {{ availCount }}</button>
+            </div>
+            <label style="display:inline-flex;align-items:center;gap:8px;font:600 13px 'DM Sans',sans-serif;color:#5d6480">Sort<select value="{{ sort }}" onChange="{{ onSort }}" style="height:38px;padding:0 10px;border-radius:10px;border:1px solid #e5e7f2;background:#fff;color:#08133e;font:700 13px 'DM Sans',sans-serif"><option value="rec">Recommended</option><option value="price">Lowest first-year price</option><option value="renew">Lowest renewal</option></select></label>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="0">
+            <div style="{{ r.rowStyle }}">
+              <div style="display:flex;align-items:center;gap:12px;flex:1 1 220px;min-width:0">
+                <span style="{{ r.dotStyle }}"></span>
+                <span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font:800 17px 'Manrope',sans-serif;overflow-wrap:anywhere">{{ r.name }}<span style="{{ r.tldStyle }}">{{ r.tld }}</span></span><span style="{{ r.statusStyle }}">{{ r.status }}</span></span>
+              </div>
+              <sc-if value="{{ r.available }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:flex-end">
+                  <span style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;min-width:96px"><span style="font:800 16px 'Manrope',sans-serif">{{ r.price }}</span><span style="font-size:12px;color:#8a91aa">renews {{ r.renew }}/yr</span></span>
+                  <button type="button" onClick="{{ r.toggle }}" aria-pressed="{{ r.added }}" style="{{ r.btnStyle }}" style-active="transform:scale(.96)"><span style="{{ r.btnIcon }}"></span>{{ r.btnLabel }}</button>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+          <sc-if value="{{ noAvailRows }}" hint-placeholder-val="{{ false }}"><div style="padding:22px 26px;font-size:14.5px;color:#5d6480">No other extensions are free for this name. Try a variation, like adding a word or your city.</div></sc-if>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:16px 26px">
+          <sc-if value="{{ canExpand }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ toggleExpand }}" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;white-space:nowrap;border-radius:12px;border:1px solid #e5e7f2;background:#fff;color:#08133e;font:700 13.5px 'DM Sans',sans-serif;cursor:pointer" style-hover="border-color:#4e4feb;color:#2f30a8">{{ expandLabel }}</button></sc-if>
+          <span style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px 18px;font:600 13.5px 'DM Sans',sans-serif;margin-left:auto;flex:1 1 320px"><button type="button" onClick="{{ switchToTransfer }}" style="border:0;background:none;padding:0;min-height:36px;color:#3435cc;font:700 13.5px 'DM Sans',sans-serif;cursor:pointer" style-hover="color:#4e4feb">Already own {{ exactFull }}? Transfer it</button><a href="Hosting.dc.html" style="display:inline-flex;align-items:center;min-height:36px;font-weight:700;color:#3435cc;text-decoration:none;white-space:nowrap">Add hosting →</a></span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showTransfer }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-wrap:wrap;gap:24px 40px;align-items:flex-start;justify-content:space-between;padding:26px 28px;animation:somionPop .3s ease both">
+          <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:10px">
+            <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:999px;background:#eeeefe;color:#2f30a8;font:800 11px 'DM Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase"><span style="display:inline-block;width:13px;height:13px;background:#4e4feb;mask:url(assets/icons/refresh-cw.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/refresh-cw.svg) center/contain no-repeat"></span>Ready to transfer</span>
+            <span style="font:800 clamp(28px,3.6vw,40px)/1.05 'Manrope',sans-serif;letter-spacing:-.03em;overflow-wrap:anywhere">{{ trName }}</span>
+            <ol style="list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ trSteps }}" as="t" hint-placeholder-count="3"><li style="display:flex;gap:12px;align-items:flex-start;font-size:14.5px;line-height:1.5;color:#3f4660"><span style="width:24px;height:24px;border-radius:50%;background:#08133e;color:#fff;font:800 11.5px 'DM Sans',sans-serif;display:inline-flex;align-items:center;justify-content:center;flex:none">{{ t.n }}</span><span><strong style="color:#08133e">{{ t.t }}</strong> — {{ t.d }}</span></li></sc-for>
+            </ol>
+          </div>
+          <div style="flex:0 1 280px;display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:20px;background:#f7f7ff;border:1px solid #e3e4fb">
+            <span style="font-size:13px;color:#5d6480">Transfer price, includes 1 year</span>
+            <span data-count="1" style="font:800 34px/1 'Manrope',sans-serif;letter-spacing:-.03em">{{ trPrice }}</span>
+            <button type="button" onClick="{{ trToggle }}" style="{{ trBtnStyle }}" style-active="transform:scale(.97)">{{ trBtnLabel }}</button>
+            <span style="font-size:12.5px;line-height:1.5;color:#5d6480">Prefer to keep it where it is? <a href="Hosting.dc.html" style="font-weight:700;color:#3435cc">Point it to Somion hosting</a> instead.</span>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section data-screen-label="Popular extensions" style="max-width:1180px;margin:0 auto;padding:104px clamp(16px,4vw,40px) 0">
+    <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:560px">
+        <span style="font:800 12px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#4e4feb">Pricing</span>
+        <h2 data-words="1" style="margin:0;font:800 clamp(34px,4.2vw,54px)/1.04 'Manrope',sans-serif;letter-spacing:-.025em;text-wrap:balance">Four names people start with.</h2>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#5d6480">Some extensions are cheap to start and dearer to keep. Switch the view to see which is which before you commit.</p>
+      </div>
+      <div role="group" aria-label="Price view" style="display:inline-flex;padding:4px;border-radius:999px;background:#fff;border:1px solid #e5e7f2">
+        <button type="button" onClick="{{ viewFirst }}" style="{{ firstStyle }}">First year</button>
+        <button type="button" onClick="{{ viewRenew }}" style="{{ renewStyle }}">Renewal</button>
+      </div>
+    </div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px">
+      <sc-for list="{{ popular }}" as="t" hint-placeholder-count="4">
+        <article data-reveal="1" data-tilt="1" style="{{ t.cardStyle }}">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:28px"><span style="{{ t.tagStyle }}"><span style="{{ t.tagDot }}"></span>{{ t.tag }}</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px"><span style="{{ t.tldStyle }}">{{ t.tld }}</span><span style="{{ t.noteStyle }}">{{ t.note }}</span></div>
+          <div style="{{ t.priceBox }}"><div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap"><span data-count="1" style="{{ t.priceStyle }}">{{ t.big }}</span><span style="{{ t.perStyle }}">{{ t.perLabel }}</span></div><span style="{{ t.smallStyle }}">{{ t.small }}</span></div>
+          <button type="button" onClick="{{ t.choose }}" style="{{ t.btnStyle }}" style-hover="transform:translateY(-1px);border-color:#4e4feb;box-shadow:0 14px 28px -16px rgba(78,79,235,.75)" style-active="transform:scale(.97)"><span style="white-space:nowrap">Search {{ t.tld }}</span><span style="{{ t.chipStyle }}"><span style="display:inline-block;width:16px;height:16px;background:currentColor;mask:url(assets/icons/search.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/search.svg) center/contain no-repeat"></span></span></button>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="All extensions" style="max-width:1180px;margin:0 auto;padding:96px clamp(16px,4vw,40px) 0">
+    <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:560px">
+        <h2 data-words="1" style="margin:0;font:800 clamp(32px,4vw,48px)/1.04 'Manrope',sans-serif;letter-spacing:-.025em;text-wrap:balance">Every extension, priced plainly.</h2>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#5d6480">The first-year price and the renewal price, side by side. No fees appear later in the cart.</p>
+      </div>
+      <div role="tablist" style="display:flex;flex-wrap:wrap;gap:6px">
+        <sc-for list="{{ filters }}" as="fl" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{ fl.on }}" onClick="{{ fl.pick }}" style="{{ fl.style }}">{{ fl.label }}</button></sc-for>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:32px;overflow-x:auto;border:1px solid #e5e7f2;border-radius:22px;background:#fff;box-shadow:0 18px 40px -30px rgba(8,19,62,.25)">
+      <table style="width:100%;min-width:560px;border-collapse:separate;border-spacing:0;font-size:15px">
+        <thead><tr>
+          <th scope="col" style="text-align:left;padding:18px 24px;font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5d6480;border-bottom:1px solid #e5e7f2">Extension</th>
+          <th scope="col" style="text-align:right;padding:18px 24px;font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5d6480;border-bottom:1px solid #e5e7f2">First year</th>
+          <th scope="col" style="text-align:right;padding:18px 24px;font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5d6480;border-bottom:1px solid #e5e7f2">Renewal</th>
+          <th scope="col" style="text-align:right;padding:18px 24px;border-bottom:1px solid #e5e7f2"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Action</span></th>
+        </tr></thead>
+        <tbody>
+          <sc-for list="{{ tableRows }}" as="r" hint-placeholder-count="6">
+            <tr style-hover="background:#fbfbff">
+              <td style="padding:14px 24px;border-bottom:1px solid #f0f1fb"><span style="display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font:800 18px 'Manrope',sans-serif">{{ r.tld }}</span><sc-if value="{{ r.popular }}" hint-placeholder-val="{{ false }}"><span style="padding:3px 8px;border-radius:999px;background:#eeeefe;color:#2f30a8;font:700 11px 'DM Sans',sans-serif">{{ r.badge }}</span></sc-if><span style="font-size:13px;color:#8a91aa">{{ r.note }}</span></span></td>
+              <td style="padding:14px 24px;border-bottom:1px solid #f0f1fb;text-align:right;font-weight:700;white-space:nowrap">{{ r.first }}</td>
+              <td style="padding:14px 24px;border-bottom:1px solid #f0f1fb;text-align:right;color:#5d6480;white-space:nowrap">{{ r.renew }}</td>
+              <td style="padding:14px 24px;border-bottom:1px solid #f0f1fb;text-align:right"><button type="button" onClick="{{ r.search }}" style="display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;border-radius:11px;border:1px solid #e5e7f2;background:#fff;color:#3435cc;font:700 13px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:all .18s" style-hover="border-color:#4e4feb;background:#f7f7ff" style-active="transform:scale(.96)"><span style="display:inline-block;width:14px;height:14px;background:currentColor;mask:url(assets/icons/search.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/search.svg) center/contain no-repeat"></span>Search {{ r.tld }}</button></td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <dc-import name="Tiles" set="essentials" hint-size="100%,560px"></dc-import>
+
+  <section data-screen-label="CTA" style="max-width:1180px;margin:0 auto;padding:104px clamp(16px,4vw,40px) 104px">
+    <div data-reveal="1" style="position:relative;overflow:hidden;border-radius:30px;background:#07122f;color:#fff;padding:clamp(32px,4.5vw,64px);display:flex;flex-wrap:wrap;gap:32px 56px;align-items:center;justify-content:space-between">
+      <div style="position:absolute;right:-80px;bottom:-160px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(78,79,235,.6),rgba(78,79,235,0) 70%)"></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px;max-width:560px">
+        <h2 style="margin:0;font:800 clamp(32px,4vw,50px)/1.04 'Manrope',sans-serif;letter-spacing:-.02em;text-wrap:balance">Start with the name. Build from there.</h2>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#a9b1ca">Check availability now. If the name is taken, we will show you what is close and what it renews at.</p>
+      </div>
+      <button type="button" onClick="{{ toSearch }}" style="position:relative;display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 24px;border-radius:14px;border:0;background:#fff;color:#2f30a8;font:700 16px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s" style-hover="transform:translateY(-2px);box-shadow:0 20px 40px -18px rgba(5,13,37,.6)" style-active="transform:scale(.97)"><span style="display:inline-block;width:18px;height:18px;background:#2f30a8;mask:url(assets/icons/search.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/search.svg) center/contain no-repeat"></span>Search a name</button>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,760px"></dc-import>
+
+  <sc-if value="{{ hasSelection }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Selection bar" style="position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:58;width:min(calc(100vw - 24px),760px);display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:12px 12px 12px 18px;border-radius:20px;background:#07122f;color:#fff;box-shadow:0 30px 60px -20px rgba(5,13,37,.6),0 0 0 1px rgba(255,255,255,.06);animation:somionSlideUp .35s cubic-bezier(.2,.7,.2,1) both">
+      <span style="width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.1);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="display:inline-block;width:18px;height:18px;background:#fff;mask:url(assets/icons/shopping-cart.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/shopping-cart.svg) center/contain no-repeat"></span></span>
+      <span style="display:flex;flex-direction:column;gap:2px;flex:1 1 180px;min-width:0"><span style="font:700 14.5px 'DM Sans',sans-serif">{{ selCount }}</span><span style="font-size:12.5px;color:rgba(255,255,255,.65);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ selNames }}</span></span>
+      <span style="font:800 18px 'Manrope',sans-serif;white-space:nowrap">{{ selTotal }}</span>
+      <a href="Checkout.dc.html" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:13px;background:linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4);color:#fff;font:700 14px 'DM Sans',sans-serif;text-decoration:none;white-space:nowrap;box-shadow:0 14px 28px -14px rgba(78,79,235,.95)" style-hover="filter:brightness(1.08);color:#fff">Continue<span style="display:inline-block;width:16px;height:16px;background:#fff;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+    </div>
+  </sc-if>
+  <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="position:fixed;left:50%;top:92px;transform:translateX(-50%);z-index:70;display:flex;align-items:center;gap:10px;padding:11px 16px;border-radius:14px;background:#08133e;color:#fff;font:600 13.5px 'DM Sans',sans-serif;box-shadow:0 20px 40px -20px rgba(5,13,37,.7);animation:somionPop .25s ease both;white-space:nowrap"><span style="display:inline-block;width:16px;height:16px;background:#61d6a6;mask:url(assets/icons/circle-check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/circle-check.svg) center/contain no-repeat"></span>{{ toast }}</div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { mod: null, currency: 'USD', mode: 'register', q: '', res: null, checking: false, err: '', onlyAvail: false, sort: 'rec', expanded: false, prefTld: '', cart: [], view: 'first', filter: 'all', toast: '', narrow: false };
+  inputRef = React.createRef(); resultsRef = React.createRef();
+  componentDidMount() {
+    this.mq = window.matchMedia('(max-width: 560px)'); this.onMq = () => this.setState({ narrow: this.mq.matches }); this.mq.addEventListener ? this.mq.addEventListener('change', this.onMq) : this.mq.addListener(this.onMq); this.onMq();
+    import((window.__resources && window.__resources['./somion-data.js']) || './somion-data.js').then(mod => {
+      const p = new URLSearchParams(window.__somionQuery != null ? window.__somionQuery : location.search); const q = p.get('q') || ''; const mode = p.get('mode') === 'transfer' ? 'transfer' : 'register';
+      this.setState({ mod, currency: mod.getCurrency(), cart: mod.getCart(), q, mode }, () => { if (q) this.run(q, true); });
+      this.scan = mod.revealOnScroll(document); mod.enterAnimations(document);
+    });
+    this.onCur = e => this.setState({ currency: e.detail }); window.addEventListener('somion:currency', this.onCur);
+    this.onCart = e => this.setState({ cart: e.detail || [] }); window.addEventListener('somion:cart', this.onCart);
+  }
+  componentDidUpdate(pp, psIn) {
+    if (this.scan) this.scan();
+    const ps = psIn || this.prevSnap; this.prevSnap = { view: this.state.view, res: this.state.res }; const m = this.state.mod;
+    if (m && ps && ps.view !== this.state.view) setTimeout(() => document.querySelectorAll('[data-screen-label="Popular extensions"] [data-count]').forEach(el => m.countUp(el, { dur: 650 })), 0);
+    if (m && ps && ps.res !== this.state.res && this.state.res) setTimeout(() => document.querySelectorAll('#results [data-count]').forEach(el => m.countUp(el, { from: 0, dur: 650 })), 0);
+  }
+  componentWillUnmount() { window.removeEventListener('somion:currency', this.onCur); window.removeEventListener('somion:cart', this.onCart); clearTimeout(this.t); clearTimeout(this.tt); }
+  toast(msg) { clearTimeout(this.tt); this.setState({ toast: msg }); this.tt = setTimeout(() => this.setState({ toast: '' }), 2200); }
+  scrollToResults() { const el = this.resultsRef.current; if (!el) return; const r = el.getBoundingClientRect(); if (r.top > window.innerHeight * .6 || r.top < 70) window.scrollTo({ top: r.top + window.scrollY - 104, behavior: 'smooth' }); }
+  run(raw, scroll) {
+    const m = this.state.mod; if (!m) return; clearTimeout(this.t);
+    const txt = (raw || '').trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '');
+    if (!txt) { this.setState({ res: null, checking: false, err: '' }); return; }
+    const n = m.normalizeDomain(txt); const typed = m.TLDS.some(t => txt.endsWith(t.tld)); const unknownTld = /\.[a-z]{2,}$/.test(txt) && !typed;
+    const tld = typed ? n.tld : (this.state.prefTld || '.com');
+    if (this.state.mode === 'transfer' && !typed) { this.setState({ res: null, checking: false, err: 'Enter the full domain you own, for example ' + (n.name || 'yourname') + '.com.' }); return; }
+    if (n.name.length < 2) { this.setState({ res: null, checking: false, err: 'Type at least 2 characters to search.' }); return; }
+    if (n.name.length > 63) { this.setState({ res: null, checking: false, err: 'Domain names can be up to 63 characters.' }); return; }
+    const cleaned = /[^a-z0-9.\-]/.test(txt);
+    const err = unknownTld ? 'We don\u2019t offer that extension yet, so we searched “' + n.name + '” across the ones we do.' : cleaned ? 'Spaces and symbols can\u2019t be used, so we searched “' + n.name + '”.' : '';
+    this.setState({ checking: true, err, expanded: false });
+    this.t = setTimeout(() => {
+      const mode = this.state.mode;
+      const res = mode === 'transfer' ? { transfer: true, name: n.name, tld, renew: (m.TLDS.find(x => x.tld === tld) || m.TLDS[0]).renew }
+        : { name: n.name, tld, exact: m.checkDomain(n.name, tld), others: m.TLDS.filter(t => t.tld !== tld).map(t => m.checkDomain(n.name, t.tld)) };
+      this.setState({ checking: false, res }); if (scroll) this.scrollToResults();
+    }, 380);
+  }
+  inCart(dom) { return this.state.cart.some(i => i.type === 'domain' && i.domainName === dom); }
+  toggle(name, tld, transfer) { const m = this.state.mod; const dom = name + tld;
+    if (this.inCart(dom)) { m.setCart(m.getCart().filter(i => !(i.type === 'domain' && i.domainName === dom))); this.toast(dom + ' removed'); }
+    else { if (transfer) m.addTransferToCart(name, tld); else m.addDomainToCart(name, tld); this.toast(dom + (transfer ? ' transfer added' : ' added to your cart')); } }
+  focusSearch(tld) { this.setState({ prefTld: tld || this.state.prefTld, mode: 'register' }, () => { const q = this.state.q; if (q && tld) { const n = this.state.mod.normalizeDomain(q); this.setState({ q: n.name + tld }, () => this.run(n.name + tld, false)); } }); window.scrollTo({ top: 0, behavior: 'smooth' }); setTimeout(() => { const i = this.inputRef.current; if (i) i.focus({ preventScroll: true }); }, 450); }
+  renderVals() {
+    const m = this.state.mod, cur = this.state.currency, st = this.state, res = st.res; const f = v => m ? m.fmt(v, cur) : '$' + v.toFixed(2);
+    const icon = (n, c, s) => ({ display: 'inline-block', width: s, height: s, flex: 'none', background: c, mask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat', WebkitMask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat' });
+    const seg = (on, dark) => ({ height: 40, padding: '0 16px', borderRadius: 999, border: 0, cursor: 'pointer', font: "700 13.5px 'DM Sans', sans-serif", whiteSpace: 'nowrap', transition: 'all .18s', color: on ? (dark ? '#1d1f8f' : '#fff') : (dark ? 'rgba(255,255,255,.8)' : '#5d6480'), background: on ? (dark ? '#fff' : '#4e4feb') : 'transparent', boxShadow: on ? '0 8px 18px -10px rgba(0,0,0,.5)' : 'none' });
+    const reg = st.mode === 'register';
+    const addBtn = (added, big) => ({ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, height: big ? 52 : 42, minWidth: big ? 150 : 104, padding: big ? '0 20px' : '0 14px', borderRadius: big ? 14 : 12, cursor: 'pointer', font: (big ? '700 15px' : '700 13.5px') + " 'DM Sans', sans-serif", border: added ? '1.5px solid #2fb26b' : big ? 0 : '1.5px solid #4e4feb', background: added ? '#e9f8ef' : big ? 'linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4)' : '#fff', color: added ? '#146132' : big ? '#fff' : '#2f30a8', boxShadow: !added && big ? '0 14px 28px -14px rgba(78,79,235,.95)' : 'none', transition: 'all .18s', whiteSpace: 'nowrap' });
+    // results
+    let rows = [], totalCount = 0, availCount = 0, ex = null;
+    if (res && !res.transfer && m) {
+      ex = res.exact; const order = m.TLDS.map(t => t.tld);
+      let list = res.others.slice(); totalCount = list.length; availCount = list.filter(r => !r.taken).length;
+      if (st.onlyAvail) list = list.filter(r => !r.taken);
+      list.sort((a, b) => (a.taken - b.taken) || (st.sort === 'price' ? a.first - b.first : st.sort === 'renew' ? a.renew - b.renew : order.indexOf(a.tld) - order.indexOf(b.tld)));
+      const shown = st.expanded ? list : list.slice(0, 5);
+      rows = shown.map((r, i) => { const dom = r.name + r.tld, added = this.inCart(dom);
+        return { name: r.name, tld: r.tld, available: !r.taken, status: r.taken ? 'Taken' : r.premium ? 'Available · short name' : 'Available', price: f(r.first), renew: f(r.renew), added, btnLabel: added ? 'Added' : 'Add', toggle: () => this.toggle(r.name, r.tld),
+          btnStyle: addBtn(added, false), btnIcon: icon(added ? 'check' : 'plus', added ? '#146132' : '#2f30a8', 15),
+          rowStyle: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px 16px', padding: '16px 26px', borderBottom: '1px solid #f5f6fc', background: added ? '#f6fcf8' : '#fff', opacity: r.taken ? .62 : 1, transition: 'background .2s', animation: 'somionPop .3s ease both', animationDelay: (i * 35) + 'ms' },
+          dotStyle: { width: 10, height: 10, borderRadius: '50%', flex: 'none', background: r.taken ? '#d0d3e2' : '#2fb26b', boxShadow: r.taken ? 'none' : '0 0 0 4px rgba(47,178,107,.14)' },
+          tldStyle: { color: r.taken ? '#8a91aa' : '#4e4feb' }, statusStyle: { fontSize: 12.5, fontWeight: 600, color: r.taken ? '#8a91aa' : '#146132' } }; });
+      rows.canExpand = list.length > 5;
+    }
+    const exAdded = ex ? this.inCart(ex.name + ex.tld) : false;
+    const trDom = res && res.transfer ? res.name + res.tld : ''; const trAdded = trDom ? this.inCart(trDom) : false;
+    const cartDomains = st.cart.filter(i => i.type === 'domain');
+    const selTotal = m ? cartDomains.reduce((s, i) => { const t = m.TLDS.find(x => x.tld === i.tld) || m.TLDS[0]; const y = Number(i.years) || 1; return s + (i.transfer ? t.renew * y : t.first + t.renew * (y - 1)); }, 0) : 0;
+    const quickTlds = m ? ['.com', '.shop', '.ch', '.blog', '.org'].map(tld => { const t = m.TLDS.find(x => x.tld === tld); const on = st.prefTld === tld; return { tld, price: f(t.first), pick: () => { this.setState({ prefTld: tld }, () => { const n = m.normalizeDomain(st.q); if (n.name.length >= 2) { this.setState({ q: n.name + tld }); this.run(n.name + tld, true); } else { const i = this.inputRef.current; if (i) i.focus(); } }); },
+      style: { display: 'inline-flex', alignItems: 'center', gap: 8, height: 36, padding: '0 13px', borderRadius: 999, border: '1px solid ' + (on ? '#fff' : 'rgba(255,255,255,.26)'), background: on ? 'rgba(255,255,255,.22)' : 'rgba(255,255,255,.08)', color: '#fff', font: "800 13px 'Manrope', sans-serif", cursor: 'pointer', transition: 'all .18s' } }; }) : [];
+    // pricing cards
+    const popular = m ? m.TLDS.slice(0, 4).map(t => { const hero = t.tld === '.com'; const intro = t.first < t.renew * .5; const tag = hero ? 'Most popular' : t.first === t.renew ? 'Same price yearly' : intro ? 'Intro price' : 'Popular'; const tone = hero ? ['rgba(255,255,255,.14)', '#fff', '#61d6a6', 'rgba(255,255,255,.22)'] : intro ? ['#fff6ea', '#8a4f00', '#f0a35e', '#f5dfbf'] : ['#eef9f2', '#146132', '#2fb26b', '#cdebd8']; const soft = hero ? 'rgba(255,255,255,.72)' : '#5d6480';
+      return { tld: t.tld, note: t.note, tag, big: f(st.view === 'first' ? t.first : t.renew), perLabel: st.view === 'first' ? '/ first year' : '/ year on renewal', small: st.view === 'first' ? 'Renews at ' + f(t.renew) + '/yr' : 'First year ' + f(t.first),
+        cardStyle: { position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', gap: 20, padding: '24px 24px 22px', borderRadius: 26, background: hero ? 'linear-gradient(160deg,#101a52 0%,#07122f 70%)' : '#fff', border: '1px solid ' + (hero ? 'rgba(124,125,255,.35)' : '#e5e7f2'), boxShadow: hero ? '0 34px 70px -36px rgba(46,48,170,.75)' : '0 1px 2px rgba(8,19,62,.03), 0 20px 44px -34px rgba(8,19,62,.28)', color: hero ? '#fff' : '#08133e' },
+        tagStyle: { display: 'inline-flex', alignItems: 'center', gap: 7, height: 28, padding: '0 11px', borderRadius: 999, background: tone[0], color: tone[1], border: '1px solid ' + tone[3], font: "700 11.5px 'DM Sans', sans-serif", whiteSpace: 'nowrap' }, tagDot: { width: 6, height: 6, borderRadius: '50%', background: tone[2] },
+        tldStyle: { font: "800 clamp(42px,4.2vw,54px)/1.08 'Manrope', sans-serif", letterSpacing: '-.04em' }, noteStyle: { fontSize: 15, lineHeight: 1.5, color: soft },
+        priceBox: { marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: 6, padding: '16px 18px', borderRadius: 18, background: hero ? 'rgba(255,255,255,.07)' : '#f7f7ff', border: '1px solid ' + (hero ? 'rgba(255,255,255,.12)' : '#eceefa') },
+        priceStyle: { font: "800 30px/1 'Manrope', sans-serif", letterSpacing: '-.025em' }, perStyle: { fontSize: 13, color: soft }, smallStyle: { fontSize: 12.5, fontWeight: 600, color: soft },
+        btnStyle: { display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, height: 50, padding: '0 8px 0 18px', borderRadius: 14, border: hero ? 0 : '1px solid #dcdefa', background: '#fff', color: '#2f30a8', font: "700 14.5px 'DM Sans', sans-serif", cursor: 'pointer', transition: 'transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s, border-color .2s' },
+        chipStyle: { width: 34, height: 34, borderRadius: 10, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: hero ? 'linear-gradient(135deg,#6667f3,#4e4feb)' : '#eeeefe', color: hero ? '#fff' : '#4e4feb' },
+        choose: () => this.focusSearch(t.tld) }; }) : [];
+    const filters = [['all', 'All'], ['popular', 'Popular'], ['business', 'Business'], ['local', 'Local']].map(([id, label]) => { const on = st.filter === id; return { label, on, pick: () => this.setState({ filter: id }), style: { height: 40, padding: '0 16px', borderRadius: 999, border: '1px solid ' + (on ? '#4e4feb' : '#e5e7f2'), background: on ? '#4e4feb' : '#fff', color: on ? '#fff' : '#08133e', font: "700 13.5px 'DM Sans', sans-serif", cursor: 'pointer', transition: 'all .15s' } }; });
+    const tableRows = m ? m.TLDS.filter(t => st.filter === 'all' || t.tags.includes(st.filter)).map(t => ({ tld: t.tld, note: t.note, popular: t.tags.includes('popular'), badge: t.tld === '.com' ? 'Most popular' : 'Popular', first: f(t.first), renew: f(t.renew), search: () => this.focusSearch(t.tld) })) : [];
+    const n = m && st.q ? m.normalizeDomain(st.q) : { name: '' };
+    return {
+      heroVideo: this.props.heroVideo || 'assets/hero-loop.webm', inputRef: this.inputRef, resultsRef: this.resultsRef,
+      isRegister: reg, isTransfer: !reg, regTabStyle: seg(reg, true), trTabStyle: seg(!reg, true),
+      pickRegister: () => this.setState({ mode: 'register', res: null, err: '' }, () => st.q && this.run(st.q, false)), pickTransfer: () => this.setState({ mode: 'transfer', res: null, err: '' }, () => st.q && this.run(st.q, false)),
+      q: st.q, hasQ: !!st.q, onQ: e => { const q = e.target.value; this.setState({ q }); this.run(q, false); }, clearQ: () => { this.setState({ q: '', res: null, err: '' }); const i = this.inputRef.current; if (i) i.focus(); },
+      placeholder: reg ? 'Search a name, e.g. ' + (st.prefTld ? 'yourname' + st.prefTld : 'yourname.com') : 'yourdomain.com', inputLabel: reg ? 'Search for a domain name' : 'Domain you want to transfer', submitLabel: reg ? 'Search' : 'Check',
+      inputStyle: { flex: 1, minWidth: 0, height: 56, padding: st.narrow ? '0 6px 0 46px' : '0 10px 0 52px', border: 0, outline: 'none', background: 'transparent', color: '#08133e', font: (st.narrow ? '600 17px' : '600 20px') + " 'Manrope', sans-serif", textOverflow: 'ellipsis' }, wideBtn: !st.narrow,
+      submit: e => { e.preventDefault(); this.run(st.q, true); }, quickTlds,
+      showIdle: !res && !st.checking && !st.err, howSteps: [{ n: '1', t: 'Search a name', d: 'Type the name you want. We check every extension at once.' }, { n: '2', t: 'Pick your extension', d: 'See this year\u2019s price and the renewal price side by side.' }, { n: '3', t: 'Add it and go', d: 'Keep it with your hosting on one bill, or check out on its own.' }],
+      hasError: !!st.err && !st.checking, err: st.err, checking: st.checking, checkingLabel: n.name ? (reg ? n.name + ' across 10 extensions' : n.name) : 'availability', skeleton: [1, 2, 3, 4],
+      showRegister: !!(res && !res.transfer && !st.checking), resName: res ? res.name : '', exactName: ex ? ex.name : '', exactTld: ex ? ex.tld : '', exactFull: ex ? ex.name + ex.tld : 'this domain', exactAvailable: !!(ex && !ex.taken),
+      exactBadge: ex ? (ex.taken ? 'Taken' : ex.premium ? 'Available · short name' : 'Available') : '',
+      exactBadgeStyle: { display: 'inline-flex', alignSelf: 'flex-start', alignItems: 'center', gap: 7, height: 28, padding: '0 11px', borderRadius: 999, font: "800 11px 'DM Sans', sans-serif", letterSpacing: '.1em', textTransform: 'uppercase', background: ex && ex.taken ? '#fdecec' : '#e9f8ef', color: ex && ex.taken ? '#b3181b' : '#146132' },
+      exactBadgeIcon: icon(ex && ex.taken ? 'x' : 'circle-check', ex && ex.taken ? '#b3181b' : '#2fb26b', 13),
+      exactNote: ex ? (ex.taken ? 'Someone already owns this one. Here are the closest free options.' : 'Great choice. Registered instantly, and the renewal price stays the same every year.') : '',
+      exactPrice: ex ? f(ex.first) : '', exactRenew: ex ? f(ex.renew) : '', exactToggle: () => ex && this.toggle(ex.name, ex.tld), exactBtnLabel: exAdded ? 'Added to cart' : 'Add to cart', exactBtnStyle: addBtn(exAdded, true), exactBtnIcon: icon(exAdded ? 'check' : 'shopping-cart', exAdded ? '#146132' : '#fff', 17),
+      exactStyle: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '20px 28px', padding: '26px 26px', borderBottom: '1px solid #f0f1fb', background: ex && ex.taken ? 'linear-gradient(180deg,#fff,#fffafa)' : 'linear-gradient(180deg,#fff,#f7fcf9)', animation: 'somionPop .3s ease both' },
+      rows, canExpand: !!rows.canExpand, expandLabel: st.expanded ? 'Show fewer' : 'Show all ' + (st.onlyAvail ? availCount : totalCount) + ' extensions', toggleExpand: () => this.setState({ expanded: !st.expanded }), noAvailRows: !!(res && !res.transfer && st.onlyAvail && rows.length === 0),
+      totalCount, availCount, fAllStyle: seg(!st.onlyAvail), fAvailStyle: seg(st.onlyAvail), showAllAvail: () => this.setState({ onlyAvail: false }), showOnlyAvail: () => this.setState({ onlyAvail: true }), sort: st.sort, onSort: e => this.setState({ sort: e.target.value }),
+      switchToTransfer: () => { if (!ex) return; this.setState({ mode: 'transfer', q: ex.name + ex.tld }, () => this.run(ex.name + ex.tld, false)); },
+      showTransfer: !!(res && res.transfer && !st.checking), trName: trDom, trPrice: res && res.transfer ? f(res.renew) : '', trToggle: () => res && this.toggle(res.name, res.tld, true), trBtnLabel: trAdded ? '✓ Transfer added' : 'Add transfer to cart', trBtnStyle: Object.assign(addBtn(trAdded, true), { width: '100%' }),
+      trSteps: [{ n: '1', t: 'Unlock it', d: 'turn off the transfer lock at your current registrar.' }, { n: '2', t: 'Get the auth code', d: 'ask them for the EPP / authorization code.' }, { n: '3', t: 'Check out', d: 'enter the code after checkout. Most transfers finish within a few days.' }],
+      popular, viewFirst: () => this.setState({ view: 'first' }), viewRenew: () => this.setState({ view: 'renew' }), firstStyle: seg(st.view === 'first'), renewStyle: seg(st.view === 'renew'),
+      filters, tableRows, toSearch: () => this.focusSearch(''),
+      hasSelection: cartDomains.length > 0, selCount: cartDomains.length + (cartDomains.length === 1 ? ' domain in your cart' : ' domains in your cart'), selNames: cartDomains.map(i => i.domainName).join(' · '), selTotal: f(selTotal),
+      hasToast: !!st.toast, toast: st.toast };
+  }
+}
+</script>
+</body>
+</html>

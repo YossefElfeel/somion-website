@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+@keyframes somionDriftA{0%{transform:translate(-8%,-6%) scale(1)}100%{transform:translate(10%,8%) scale(1.18)}}
+@keyframes somionDriftB{0%{transform:translate(6%,10%) scale(1.1)}100%{transform:translate(-10%,-8%) scale(.92)}}
+@keyframes somionSweep{0%{transform:translateX(-120%) skewX(-14deg)}100%{transform:translateX(220%) skewX(-14deg)}}
+@keyframes somionPulse{0%,100%{opacity:.55}50%{opacity:1}}
+</style>
+</helmet>
+<div onDragOver="{{ onDragOver }}" onDrop="{{ onDrop }}" style="position:relative;width:100%;height:100%;min-height:100%;overflow:hidden;background:linear-gradient(135deg,#0a1148 0%,#1c2582 48%,#4e4feb 100%)">
+  <sc-if value="{{ hasVideo }}" hint-placeholder-val="{{ false }}">
+    <video ref="{{ videoRef }}" src="{{ videoSrc }}" poster="assets/hero-poster.png" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" onEnded="{{ onEnded }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#0a1148"></video>
+  </sc-if>
+  <sc-if value="{{ noVideo }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;overflow:hidden">
+      <div style="position:absolute;left:-10%;top:-30%;width:70%;height:120%;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(124,125,255,.85) 0%,rgba(124,125,255,0) 62%);filter:blur(30px);animation:somionDriftA 16s ease-in-out infinite alternate"></div>
+      <div style="position:absolute;right:-15%;bottom:-40%;width:75%;height:130%;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(199,201,249,.55) 0%,rgba(199,201,249,0) 60%);filter:blur(36px);animation:somionDriftB 21s ease-in-out infinite alternate"></div>
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 60% 50%,#000 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 60% 50%,#000 30%,transparent 80%)"></div>
+      <div style="position:absolute;top:-20%;bottom:-20%;left:0;width:22%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.10),rgba(255,255,255,0));animation:somionSweep 9s cubic-bezier(.4,0,.2,1) infinite"></div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ tintIndigo }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,19,62,.84) 0%,rgba(24,28,130,.66) 52%,rgba(78,79,235,.42) 100%)"></div>
+  </sc-if>
+  <sc-if value="{{ tintDark }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,13,37,.55),rgba(5,13,37,.86))"></div>
+  </sc-if>
+  <sc-if value="{{ tintLight }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(251,251,254,.55),rgba(251,251,254,.88))"></div>
+  </sc-if>
+  <sc-if value="{{ noVideo }}" hint-placeholder-val="{{ true }}">
+    <button type="button" onClick="{{ pickFile }}" title="Drop an MP4/WebM here, or click to choose a file" style="position:absolute;right:18px;bottom:16px;display:flex;align-items:center;gap:9px;padding:8px 12px 8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(8,19,62,.42);backdrop-filter:blur(10px);color:#fff;font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;cursor:pointer;z-index:2;white-space:nowrap">
+      <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#61d6a6;box-shadow:0 0 0 4px rgba(97,214,166,.25);animation:somionPulse 2.2s ease-in-out infinite"></span>
+      <span>{{ label }}</span>
+    </button>
+    <input ref="{{ fileRef }}" type="file" accept="video/mp4,video/webm,video/*" onChange="{{ onFile }}" style="display:none"></input>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:520},&quot;src&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Video&quot;},&quot;tint&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;indigo&quot;,&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;indigo&quot;,&quot;tsType&quot;:&quot;'indigo'|'dark'|'light'&quot;,&quot;section&quot;:&quot;Video&quot;},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;HERO VIDEO SLOT · drop .mp4 / .webm or paste a URL in Tweaks&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Video&quot;}}">
+class Component extends DCLogic {
+  state = { localSrc: null };
+  videoRef = React.createRef();
+  fileRef = React.createRef();
+  componentDidMount() { this.kick(); }
+  componentDidUpdate() { this.kick(); }
+  kick() { const v = this.videoRef.current; if (v) { v.muted = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); } }
+  useFile(file) { if (!file || !/^video\//.test(file.type)) return; if (this.state.localSrc) URL.revokeObjectURL(this.state.localSrc); this.setState({ localSrc: URL.createObjectURL(file) }); }
+  renderVals() {
+    const src = this.state.localSrc || this.props.src || '';
+    const tint = this.props.tint || 'indigo';
+    return {
+      hasVideo: !!src, noVideo: !src, videoSrc: src,
+      tintIndigo: tint === 'indigo', tintDark: tint === 'dark', tintLight: tint === 'light',
+      label: this.props.label || 'HERO VIDEO SLOT \u00b7 drop .mp4 / .webm or paste a URL in Tweaks',
+      videoRef: this.videoRef, fileRef: this.fileRef,
+      onDragOver: e => { e.preventDefault(); },
+      onDrop: e => { e.preventDefault(); const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]; this.useFile(f); },
+      pickFile: () => { const i = this.fileRef.current; if (i) i.click(); },
+      onEnded: e => { try { e.target.currentTime = 0; e.target.play(); } catch (err) {} },
+      onFile: e => { this.useFile(e.target.files && e.target.files[0]); },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>
+:focus-visible{outline:2px solid #6b6cf5;outline-offset:3px}::selection{background:#c7c9f9;color:#08133e}
+html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#3435cc}a:hover{color:#4e4feb}
+@keyframes somionFadeUp{from{transform:translateY(10px)}to{transform:none}}
+@keyframes somionMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes somionScrollCue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(12px);opacity:0}100%{transform:translateY(12px);opacity:0}}
+@keyframes somionSpin{to{transform:rotate(360deg)}}
+@keyframes somionFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+</style>
+</helmet>
+<div id="top" style="background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
+  <dc-import name="Header" active="home" hint-size="100%,73px"></dc-import>
+
+  <sc-if value="{{ heroA }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Hero A" style="position:relative;min-height:clamp(660px,96vh,940px);display:flex;flex-direction:column;overflow:hidden;color:#fff;isolation:isolate;background:#070b2e">
+      <div data-parallax=".3" data-parallax-scale="1.1" style="position:absolute;inset:0;z-index:0"><dc-import name="HeroVideo" src="{{ heroVideo }}" tint="indigo" hint-size="100%,100%" style="width:100%;height:100%"></dc-import></div>
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,9,38,.8) 0%,rgba(5,9,38,.42) 48%,rgba(5,9,38,.04) 100%),linear-gradient(180deg,rgba(5,9,38,.55) 0%,rgba(5,9,38,0) 24%,rgba(5,9,38,0) 68%,rgba(5,9,38,.72) 100%)"></div>
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.08;mix-blend-mode:overlay;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22180%22%20height%3D%22180%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.85%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%20.55%200%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E');background-size:180px 180px"></div>
+      <div aria-hidden="true" style="position:absolute;right:-14%;top:4%;width:64vw;max-width:920px;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(124,125,255,.3),rgba(124,125,255,0));z-index:0;pointer-events:none"></div>
+      <div style="position:relative;z-index:1;flex:1;width:100%;max-width:1180px;box-sizing:border-box;margin:0 auto;padding:150px clamp(16px,4vw,40px) 150px;display:flex;flex-wrap:wrap;gap:48px 56px;align-items:center;justify-content:space-between">
+        <div style="flex:1 1 540px;min-width:0;max-width:690px;display:flex;flex-direction:column;align-items:flex-start;gap:28px">
+          <span data-enter="0" style="display:inline-flex;align-items:center;gap:12px;padding:5px 16px 5px 5px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font:600 13.5px 'DM Sans',sans-serif;color:rgba(255,255,255,.92);white-space:nowrap"><span style="display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 11px;border-radius:999px;background:#fff;color:#2f30a8;font:800 10.5px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase"><span style="width:6px;height:6px;border-radius:50%;background:#2fb26b"></span>cPanel</span>Hosting made straightforward</span>
+          <h1 data-words="1" style="margin:0;font:800 clamp(50px,7.2vw,98px)/.95 'Manrope',sans-serif;letter-spacing:-.04em">
+            <span style="display:block">Fast hosting.</span>
+            <span style="display:block">Clear plans.</span>
+            <span style="display:inline-block;padding-bottom:.12em;margin-bottom:-.12em;background:linear-gradient(95deg,#c7c9f9 0%,#ffffff 46%,#a5a7ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent">Real support.</span>
+          </h1>
+          <p data-enter="420" style="margin:-6px 0 0;max-width:520px;font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:rgba(255,255,255,.8)">Launch your site on secure cPanel hosting with backups, SSL, and help when you need it.</p>
+          <div data-enter="500" style="display:flex;flex-wrap:wrap;gap:12px">
+            <a href="Hosting.dc.html" style="display:inline-flex;align-items:center;gap:16px;height:58px;padding:0 8px 0 26px;border-radius:16px;background:#fff;color:#1d1f8f;font:700 16px 'DM Sans',sans-serif;text-decoration:none;white-space:nowrap;box-shadow:0 24px 48px -20px rgba(3,6,30,.85);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 30px 56px -20px rgba(78,79,235,.75);color:#1d1f8f" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Compare plans<span style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#6667f3,#4e4feb);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 8px 16px -8px rgba(78,79,235,.9)"><span style="display:inline-block;width:18px;height:18px;flex:none;background:#fff;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></span></a>
+          </div>
+          <p data-enter="580" style="margin:-10px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font:600 13.5px 'DM Sans',sans-serif;color:rgba(255,255,255,.78)"><span style="display:inline-flex;align-items:center;gap:8px"><span style="display:inline-block;width:15px;height:15px;flex:none;background:#c7c9f9;mask:url(assets/icons/gift.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/gift.svg) center/contain no-repeat"></span>Free domain for the first year on Pro &amp; Unlimited</span><span aria-hidden="true" style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.35)"></span><span style="display:inline-flex;align-items:center;gap:8px"><span style="display:inline-block;width:14px;height:14px;flex:none;background:#c7c9f9;mask:url(assets/icons/shield-check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/shield-check.svg) center/contain no-repeat"></span>30-day money-back guarantee</span></p>
+        </div>
+        <div data-enter="340" style="flex:0 1 400px;min-width:min(100%,320px);position:relative;isolation:isolate">
+          <div aria-hidden="true" style="position:absolute;inset:-40px;border-radius:48px;background:radial-gradient(closest-side,rgba(124,125,255,.42),rgba(124,125,255,0));z-index:-1;pointer-events:none"></div>
+          <div style="padding:1px;border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.6),rgba(255,255,255,.08) 36%,rgba(255,255,255,.04) 64%,rgba(165,167,255,.65));box-shadow:0 44px 90px -34px rgba(3,6,30,.9)">
+            <div onMouseEnter="{{ heroPause }}" style="display:flex;flex-direction:column;gap:20px;padding:22px;border-radius:27px;background:linear-gradient(160deg,rgba(20,26,84,.8),rgba(8,12,48,.74));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+                <span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)">Plans from</span>
+                <span style="display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 10px;border-radius:999px;background:rgba(97,214,166,.12);border:1px solid rgba(97,214,166,.28);color:#c7f7e2;font:600 11.5px 'DM Sans',sans-serif;white-space:nowrap"><span style="width:6px;height:6px;border-radius:50%;background:#61d6a6;box-shadow:0 0 0 3px rgba(97,214,166,.2)"></span>All systems ready</span>
+              </div>
+              <div role="tablist" aria-label="Hosting type" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)">
+                <sc-for list="{{ heroTabs }}" as="t" hint-placeholder-count="4">
+                  <sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}"><button type="button" role="tab" aria-selected="true" onClick="{{ t.pick }}" style="position:relative;overflow:hidden;height:36px;padding:0 4px;border-radius:10px;border:0;background:#fff;color:#1d1f8f;font:700 13px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;box-shadow:0 8px 18px -10px rgba(0,0,0,.6)">{{ t.label }}<sc-if value="{{ heroAutoOn }}" hint-placeholder-val="{{ true }}"><span data-tab-progress="1" style="position:absolute;left:10px;right:10px;bottom:4px;height:2px;border-radius:2px;background:#4e4feb;transform:scaleX(0);transform-origin:left"></span></sc-if></button></sc-if>
+                  <sc-if value="{{ t.off }}" hint-placeholder-val="{{ true }}"><button type="button" role="tab" aria-selected="false" onClick="{{ t.pick }}" style="height:36px;padding:0 4px;border-radius:10px;border:0;background:transparent;color:rgba(255,255,255,.72);font:700 13px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:background-color .2s,color .2s" style-hover="background:rgba(255,255,255,.12);color:#fff">{{ t.label }}</button></sc-if>
+                </sc-for>
+              </div>
+              <div data-hero-swap="1" style="display:flex;flex-direction:column;gap:8px">
+                <span style="font:700 14px 'DM Sans',sans-serif;color:rgba(255,255,255,.72)">{{ heroPlan.catName }}</span>
+                <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span data-count="1" style="font:800 58px/1 'Manrope',sans-serif;letter-spacing:-.045em">{{ heroPlan.price }}</span><span style="font-size:15px;color:rgba(255,255,255,.7)">/ month</span></div>
+                <span style="display:inline-flex;align-items:center;gap:8px;font:600 13px 'DM Sans',sans-serif;color:#c7f7e2"><span style="display:inline-block;width:13px;height:13px;flex:none;background:#61d6a6;mask:url(assets/icons/refresh-cw.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/refresh-cw.svg) center/contain no-repeat"></span>Renews at the same price</span>
+              </div>
+              <ul data-hero-swap="1" style="list-style:none;margin:0;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:12px">
+                <sc-for list="{{ heroPlan.specs }}" as="sp" hint-placeholder-count="4"><li style="display:flex;align-items:center;gap:12px;font-size:14.5px;color:rgba(255,255,255,.9)"><span style="width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="{{ sp.iconStyle }}"></span></span>{{ sp.text }}</li></sc-for>
+              </ul>
+              <a href="{{ heroPlan.href }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:-4px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.86);font:700 14px 'DM Sans',sans-serif;text-decoration:none;transition:color .2s" style-hover="color:#fff"><span>View all {{ heroPlan.short }} plans</span><span style="display:inline-block;width:16px;height:16px;flex:none;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ heroB }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Hero B" style="position:relative;overflow:hidden;padding:130px 0 56px;background:radial-gradient(900px 520px at 88% 30%,#e6e7ff 0%,rgba(230,231,255,0) 70%),#fbfbfe">
+      <div style="position:relative;max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:48px;align-items:center;justify-content:space-between">
+        <div style="flex:1 1 440px;max-width:600px;display:flex;flex-direction:column;align-items:flex-start;gap:24px">
+          <span data-enter="0" style="font:800 12px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#4e4feb">Hosting made straightforward</span>
+          <h1 data-enter="80" style="margin:0;font:800 clamp(44px,5.8vw,78px)/1 'Manrope',sans-serif;letter-spacing:-.025em;color:#08133e;text-wrap:balance">Fast hosting.<br><span style="color:#4e4feb">Clear plans.</span><br>Real support.</h1>
+          <p data-enter="160" style="margin:0;max-width:480px;font-size:18px;line-height:1.55;color:#5d6480">Launch your site on secure cPanel hosting with backups, SSL, and help when you need it.</p>
+          <div data-enter="240" style="display:flex;flex-wrap:wrap;gap:12px">
+            <a href="Hosting.dc.html" style="display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 26px;border-radius:12px;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;text-decoration:none;box-shadow:0 16px 34px -16px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Compare plans <span style="display:inline-block;width:18px;height:18px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+            <a href="Domains.dc.html" style="display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 24px;border-radius:12px;border:1px solid #babcf6;background:#fff;color:#3435cc;font:700 16px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Find a domain <span style="display:inline-block;width:18px;height:18px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+          </div>
+          <ul data-enter="320" style="list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;font:600 13.5px 'DM Sans',sans-serif;color:#565f7c">
+            <li style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:18px;border-radius:50%;background:#eeeefe;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:12px;height:12px;background:#4e4feb;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span></span>SSL included</li>
+            <li style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:18px;border-radius:50%;background:#eeeefe;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:12px;height:12px;background:#4e4feb;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span></span>Daily backups</li>
+            <li style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:18px;border-radius:50%;background:#eeeefe;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:12px;height:12px;background:#4e4feb;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span></span>Expert support</li>
+          </ul>
+        </div>
+        <div data-enter="200" style="flex:1 1 380px;max-width:560px;position:relative">
+          <div style="position:absolute;inset:-6% -8% -10% -8%;border-radius:50%;background:radial-gradient(closest-side,rgba(78,79,235,.35),rgba(78,79,235,0));filter:blur(30px);z-index:0"></div>
+          <div style="position:relative;z-index:1;aspect-ratio:5/4.6;border-radius:28px;overflow:hidden;box-shadow:0 40px 80px -36px rgba(8,19,62,.55),0 0 0 1px rgba(8,19,62,.06)">
+            <div style="position:absolute;inset:0"><dc-import name="HeroVideo" src="{{ heroVideo }}" tint="indigo" hint-size="100%,100%" style="width:100%;height:100%"></dc-import></div>
+            <div style="position:absolute;left:20px;top:20px;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.92);color:#08133e;font:700 12px 'DM Sans',sans-serif;box-shadow:0 10px 24px -14px rgba(5,13,37,.5)"><span style="width:7px;height:7px;border-radius:50%;background:#61d6a6"></span>All systems ready</div>
+            <div style="position:absolute;left:20px;bottom:20px;right:20px;display:flex;flex-wrap:wrap;gap:8px;animation:somionFloat 6s ease-in-out infinite">
+              <span style="padding:9px 14px;border-radius:12px;background:rgba(8,19,62,.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22);color:#fff;font:700 13px 'DM Sans',sans-serif">cPanel</span>
+              <span style="padding:9px 14px;border-radius:12px;background:rgba(8,19,62,.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22);color:#fff;font:700 13px 'DM Sans',sans-serif">Free SSL</span>
+              <span style="padding:9px 14px;border-radius:12px;background:rgba(8,19,62,.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22);color:#fff;font:700 13px 'DM Sans',sans-serif">Daily backups</span>
+              <span style="margin-left:auto;padding:9px 14px;border-radius:12px;background:#fff;color:#2f30a8;font:800 13px 'DM Sans',sans-serif">from {{ fromPrice }}/mo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <section id="domain" data-screen-label="Domain search" style="position:relative;z-index:3;max-width:1180px;margin:-72px auto 0;padding:0 clamp(16px,4vw,40px)">
+    <div data-enter="520" style="position:relative;overflow:hidden;isolation:isolate;border-radius:30px;background:#fff;border:1px solid #e3e5f3;box-shadow:0 50px 100px -56px rgba(8,19,62,.55),0 2px 6px rgba(8,19,62,.04);padding:clamp(24px,3.4vw,44px);display:flex;flex-wrap:wrap;gap:28px 56px;align-items:center;justify-content:space-between">
+      <div aria-hidden="true" style="position:absolute;right:-160px;top:-220px;width:560px;height:560px;border-radius:50%;background:radial-gradient(closest-side,rgba(199,201,249,.55),rgba(199,201,249,0));z-index:-1;pointer-events:none"></div>
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(78,79,235,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(78,79,235,.05) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at 85% 0%,#000 10%,transparent 60%);-webkit-mask-image:radial-gradient(ellipse at 85% 0%,#000 10%,transparent 60%)"></div>
+      <div style="flex:1 1 300px;max-width:400px;display:flex;flex-direction:column;gap:14px">
+        <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;height:30px;padding:0 12px 0 8px;border-radius:999px;background:#eeeefe;color:#2f30a8;font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase"><span style="display:inline-block;width:15px;height:15px;flex:none;background:#4e4feb;mask:url(assets/icons/globe.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/globe.svg) center/contain no-repeat"></span>Domain search</span>
+        <h2 style="margin:0;font:800 clamp(32px,3.6vw,46px)/1.02 'Manrope',sans-serif;letter-spacing:-.03em;text-wrap:balance">A name worth building on.</h2>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#5d6480">Your domain is the first piece of your presence online. Make it clear, memorable, and yours.</p>
+      </div>
+      <form onSubmit="{{ domainSubmit }}" style="flex:1.5 1 460px;min-width:0;display:flex;flex-direction:column;gap:14px">
+        <label for="home-domain" style="font:700 14px 'DM Sans',sans-serif;color:#08133e">What will you call it?</label>
+        <div style="position:relative">
+          <span style="position:absolute;left:18px;top:50%;transform:translateY(-50%);display:inline-flex;pointer-events:none"><span style="display:inline-block;width:20px;height:20px;flex:none;background:#8a91aa;mask:url(assets/icons/search.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/search.svg) center/contain no-repeat"></span></span>
+          <input id="home-domain" type="text" value="{{ q }}" onChange="{{ onQ }}" placeholder="youridea.com" autoComplete="off" spellCheck="{{ false }}" style="{{ domainInputStyle }}" style-hover="border-color:#babcf6" style-focus="border-color:#4e4feb;background:#fff;box-shadow:0 0 0 5px rgba(78,79,235,.12)"></input>
+          <button type="submit" aria-label="Check availability" style="position:absolute;right:8px;top:8px;height:52px;padding:{{ domainBtnPad }};border-radius:14px;border:0;background:linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4);color:#fff;font:700 15px 'DM Sans',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 28px -14px rgba(78,79,235,.95);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,filter .2s ease" style-hover="transform:translateY(-1px);filter:brightness(1.08);box-shadow:0 18px 34px -14px rgba(78,79,235,.95)" style-active="transform:scale(.97)"><sc-if value="{{ domainWide }}" hint-placeholder-val="{{ true }}"><span>Check</span></sc-if><span style="display:inline-block;width:16px;height:16px;flex:none;background:#fff;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></button>
+        </div>
+        <div aria-live="polite" style="min-height:22px;font-size:14px;color:#5d6480">
+          <sc-if value="{{ statusChecking }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:9px"><span style="width:14px;height:14px;border-radius:50%;border:2px solid #e3e4fb;border-top-color:#4e4feb;animation:somionSpin .7s linear infinite"></span>Checking {{ statusDomain }}…</span></sc-if>
+          <sc-if value="{{ statusAvailable }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:8px;color:#146132;font-weight:600"><span style="display:inline-block;width:16px;height:16px;flex:none;background:#2fb26b;mask:url(assets/icons/circle-check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/circle-check.svg) center/contain no-repeat"></span>{{ statusDomain }} is available — {{ statusPrice }} first year</span></sc-if>
+          <sc-if value="{{ statusTaken }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:8px;color:#b3181b;font-weight:600"><span style="display:inline-block;width:16px;height:16px;flex:none;background:#b3181b;mask:url(assets/icons/info.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/info.svg) center/contain no-repeat"></span>{{ statusDomain }} is taken — try {{ statusAlt }}</span></sc-if>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+          <span style="font:600 13px 'DM Sans',sans-serif;color:#8a91aa;margin-right:2px">Popular</span>
+          <sc-for list="{{ tlds }}" as="t" hint-placeholder-count="4"><button type="button" onClick="{{ t.pick }}" style="display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:999px;border:1px solid #e5e7f2;background:#fff;color:#08133e;font:800 13px 'Manrope',sans-serif;cursor:pointer;transition:all .18s" style-hover="border-color:#4e4feb;background:#f7f7ff;transform:translateY(-1px)" style-active="transform:scale(.96)">{{ t.tld }}<span style="font:600 12px 'DM Sans',sans-serif;color:#5d6480">{{ t.price }}</span></button></sc-for>
+          <a href="Domains.dc.html" style="margin-left:auto;display:inline-flex;align-items:center;gap:6px;min-height:38px;font:700 13px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none" style-hover="color:#4e4feb">Transfer a domain<span style="display:inline-block;width:14px;height:14px;flex:none;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section aria-label="Hosting technologies" style="margin-top:72px;background:#fff;border-top:1px solid #e5e7f2;border-bottom:1px solid #e5e7f2;overflow:hidden;padding:18px 0;position:relative">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:120px;background:linear-gradient(90deg,#fff,rgba(255,255,255,0));z-index:1;pointer-events:none"></div>
+    <div style="position:absolute;right:0;top:0;bottom:0;width:120px;background:linear-gradient(270deg,#fff,rgba(255,255,255,0));z-index:1;pointer-events:none"></div>
+    <div style="display:flex;width:max-content;animation:somionMarquee 32s linear infinite" style-hover="animation-play-state:paused">
+      <div style="display:flex;gap:56px;padding-right:56px;align-items:center;font:700 15px 'DM Sans',sans-serif;color:#3f4660;white-space:nowrap"><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/brand-wordpress.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/brand-wordpress.svg) center/contain no-repeat"></span></span>WordPress</span><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/brand-woocommerce.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/brand-woocommerce.svg) center/contain no-repeat"></span></span>WooCommerce</span><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/brand-cpanel.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/brand-cpanel.svg) center/contain no-repeat"></span></span>cPanel</span><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/brand-letsencrypt.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/brand-letsencrypt.svg) center/contain no-repeat"></span></span>Let's Encrypt</span><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/brand-drupal.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/brand-drupal.svg) center/contain no-repeat"></span></span>Drupal</span><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/globe.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/globe.svg) center/contain no-repeat"></span></span>Global CDN</span></div>
+      <div aria-hidden="true" style="display:flex;gap:56px;padding-right:56px;align-items:center;font:700 15px 'DM Sans',sans-serif;color:#3f4660;white-space:nowrap"><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/brand-wordpress.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/brand-wordpress.svg) center/contain no-repeat"></span></span>WordPress</span><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/brand-woocommerce.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/brand-woocommerce.svg) center/contain no-repeat"></span></span>WooCommerce</span><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/brand-cpanel.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/brand-cpanel.svg) center/contain no-repeat"></span></span>cPanel</span><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/brand-letsencrypt.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/brand-letsencrypt.svg) center/contain no-repeat"></span></span>Let's Encrypt</span><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/brand-drupal.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/brand-drupal.svg) center/contain no-repeat"></span></span>Drupal</span><span style="display:flex;align-items:center;gap:12px"><span style="width:38px;height:38px;border-radius:12px;background:#f0f1fb;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:20px;height:20px;background:#3f4660;mask:url(assets/icons/globe.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/globe.svg) center/contain no-repeat"></span></span>Global CDN</span></div>
+    </div>
+  </section>
+
+  <dc-import name="Tiles" set="essentials" hint-size="100%,560px"></dc-import>
+
+  <sc-if value="{{ showPlans }}" hint-placeholder-val="{{ true }}">
+    <section id="plans" data-screen-label="Popular plans" style="scroll-margin-top:80px;max-width:1180px;margin:0 auto;padding:104px clamp(16px,4vw,40px) 0">
+      <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px">
+        <span style="font:800 12px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#4e4feb">Simple, transparent pricing</span>
+        <h2 style="margin:0;max-width:720px;font:800 clamp(34px,4.4vw,56px)/1.02 'Manrope',sans-serif;letter-spacing:-.03em;text-wrap:balance">Start with a plan people actually pick.</h2>
+        <div role="group" aria-label="Billing period" style="margin-top:12px;display:inline-flex;padding:4px;border-radius:999px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 10px 30px -22px rgba(8,19,62,.4)">
+          <button type="button" onClick="{{ homeMonthly }}" style="{{ homeMonthlyStyle }}">Monthly</button>
+          <button type="button" onClick="{{ homeYearly }}" style="{{ homeYearlyStyle }}">Yearly <span style="{{ homeYearlyBadge }}">2 months free</span></button>
+        </div>
+        <ul style="list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;font:600 14px 'DM Sans',sans-serif;color:#3f4660"><li style="display:inline-flex;align-items:center;gap:9px"><span style="display:inline-block;width:16px;height:16px;flex:none;background:#4e4feb;mask:url(assets/icons/shield-check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/shield-check.svg) center/contain no-repeat"></span>30-day money-back guarantee</li><li style="display:inline-flex;align-items:center;gap:9px"><span style="display:inline-block;width:16px;height:16px;flex:none;background:#4e4feb;mask:url(assets/icons/refresh-cw.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/refresh-cw.svg) center/contain no-repeat"></span>Renews at the same price</li><li style="display:inline-flex;align-items:center;gap:9px"><span style="display:inline-block;width:16px;height:16px;flex:none;background:#4e4feb;mask:url(assets/icons/rocket.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/rocket.svg) center/contain no-repeat"></span>Free website migration</li><li style="display:inline-flex;align-items:center;gap:9px"><span style="display:inline-block;width:16px;height:16px;flex:none;background:#4e4feb;mask:url(assets/icons/headphones.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/headphones.svg) center/contain no-repeat"></span>24/7 expert support</li></ul>
+      </div>
+      <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;align-items:stretch">
+        <sc-for list="{{ featured }}" as="p" hint-placeholder-count="3">
+          <article data-reveal="1" data-tilt="1" style="{{ p.cardStyle }}">
+            <div data-glow="1" aria-hidden="true" style="position:absolute;inset:0;z-index:2;opacity:0;transition:opacity .35s;pointer-events:none;mix-blend-mode:multiply"></div>
+            <sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;justify-content:center;gap:8px;height:40px;background:linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4);color:#fff;font:800 11.5px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase"><span style="display:inline-block;width:14px;height:14px;flex:none;background:#fff;mask:url(assets/icons/sparkles.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/sparkles.svg) center/contain no-repeat"></span>Most popular</div>
+            </sc-if>
+            <div style="flex:1;display:flex;flex-direction:column;gap:18px;padding:26px 26px 28px">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+                <div style="display:flex;flex-direction:column;gap:4px;min-width:0"><h3 style="margin:0;font:800 24px/1.1 'Manrope',sans-serif;letter-spacing:-.015em">{{ p.name }}</h3><span style="font-size:13.5px;color:#5d6480">{{ p.catName }}</span></div>
+                <sc-if value="{{ p.hasWas }}" hint-placeholder-val="{{ false }}"><span style="flex:none;padding:5px 10px;border-radius:999px;background:#e9f8ef;border:1px solid #c7e9d3;color:#146132;font:800 11.5px 'DM Sans',sans-serif;white-space:nowrap">{{ p.saveLabel }}</span></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;min-height:72px;justify-content:flex-end">
+                <sc-if value="{{ p.hasWas }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#8a91aa;text-decoration:line-through">{{ p.wasLabel }}</span></sc-if>
+                <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap"><span data-price="1" data-count="1" style="display:inline-block;font:800 48px/1 'Manrope',sans-serif;letter-spacing:-.04em;color:#08133e">{{ p.priceLabel }}</span><span style="font-size:15px;font-weight:600;color:#5d6480">/mo</span></div>
+              </div>
+              <button type="button" onClick="{{ p.order }}" style="{{ p.btnStyle }}" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.05)" style-active="transform:scale(.97)">Choose plan</button>
+              <p data-price="1" style="margin:-6px 0 0;font-size:13px;line-height:1.5;color:#5d6480">{{ p.billNote }}</p>
+              <sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:12px;padding:14px 16px;border-radius:16px;background:#f5f5ff;border:1px solid #e3e4fb"><span style="display:inline-block;width:16px;height:16px;flex:none;background:#4e4feb;mask:url(assets/icons/sparkles.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/sparkles.svg) center/contain no-repeat;margin-top:2px"></span><div style="display:flex;flex-direction:column;gap:3px"><span style="font:800 13.5px 'DM Sans',sans-serif;color:#2f30a8">Why this plan?</span><span style="font-size:13.5px;line-height:1.5;color:#3f4660">{{ p.why }}</span></div></div>
+              </sc-if>
+              <div style="height:1px;background:#eef0f7"></div>
+              <sc-for list="{{ p.groups }}" as="g" hint-placeholder-count="2">
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8a91aa">{{ g.title }}</span>
+                  <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+                    <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="3"><li style="display:flex;align-items:flex-start;gap:10px;font-size:14.5px;line-height:1.4;color:#08133e"><span style="display:inline-block;width:16px;height:16px;flex:none;background:#4e4feb;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat;margin-top:1px"></span><span>{{ it }}</span></li></sc-for>
+                  </ul>
+                </div>
+              </sc-for>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;font-size:13px;line-height:1.5;color:#5d6480">
+        <span>{{ plansFootnote }}</span>
+        <div style="display:flex;gap:6px 22px;flex-wrap:wrap"><a href="Compare.dc.html" style="display:inline-flex;align-items:center;gap:6px;min-height:36px;font-weight:700;text-decoration:none">Compare side by side<span style="display:inline-block;width:14px;height:14px;flex:none;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a><a href="Hosting.dc.html" style="display:inline-flex;align-items:center;gap:6px;min-height:36px;font-weight:700;text-decoration:none">All hosting plans<span style="display:inline-block;width:14px;height:14px;flex:none;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <dc-import name="Showcase" mode="scroll" hint-size="100%,1500px"></dc-import>
+
+  <dc-import name="FeatureRows" hint-size="100%,1300px"></dc-import>
+
+  <dc-import name="Tiles" set="power" hint-size="100%,560px"></dc-import>
+
+  <dc-import name="SupportRail" hint-size="100%,560px"></dc-import>
+
+  
+
+  <section data-screen-label="FAQ" style="max-width:1180px;margin:0 auto;padding:96px clamp(16px,4vw,40px) 0;display:flex;flex-wrap:wrap;gap:48px 80px;align-items:flex-start">
+    <div style="{{ faqAsideStyle }}">
+      <div data-reveal="1" style="display:flex;flex-direction:column;gap:20px">
+      <h2 style="margin:0;font:800 clamp(34px,4.2vw,54px)/1.04 'Manrope',sans-serif;letter-spacing:-.02em;text-wrap:balance">Questions, answered clearly.</h2>
+      <p style="margin:0;font-size:17px;line-height:1.55;color:#5d6480">The essentials, without technical detours.</p>
+      <a href="Contact.dc.html" style="margin-top:14px;display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:16px;border:1px solid #e5e7f2;background:#fff;text-decoration:none;color:#08133e;transition:border-color .15s" style-hover="border-color:#babcf6;color:#08133e">
+        <span style="width:40px;height:40px;border-radius:12px;background:#eeeefe;display:inline-flex;align-items:center;justify-content:center;color:#4e4feb;font:800 18px 'Manrope',sans-serif">?</span>
+        <span style="display:flex;flex-direction:column;gap:2px;flex:1"><span style="font:700 14px 'DM Sans',sans-serif">Still deciding?</span><span style="font-size:13px;color:#5d6480">Talk to Somion</span></span>
+        <span aria-hidden="true" style="color:#08133e">→</span>
+      </a>
+    </div>
+    </div>
+    <div data-reveal="1" style="flex:1.5 1 420px;border-top:1px solid #e5e7f2">
+      <sc-for list="{{ faq }}" as="f" hint-placeholder-count="4">
+        <div style="border-bottom:1px solid #e5e7f2">
+          <button type="button" onClick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;border:0;background:none;cursor:pointer;text-align:left;color:#08133e;font:700 18px 'Manrope',sans-serif">
+            <span>{{ f.q }}</span>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}"><span style="flex:none;width:34px;height:34px;border-radius:50%;background:#4e4feb;color:#fff;display:inline-flex;align-items:center;justify-content:center;font:400 22px/1 'DM Sans',sans-serif">−</span></sc-if>
+            <sc-if value="{{ f.closed }}" hint-placeholder-val="{{ true }}"><span style="flex:none;width:34px;height:34px;border-radius:50%;border:1px solid #d8daf0;color:#4e4feb;display:inline-flex;align-items:center;justify-content:center;font:400 22px/1 'DM Sans',sans-serif">+</span></sc-if>
+          </button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}"><p data-enter="0" style="margin:0;padding:0 60px 26px 0;font-size:15px;line-height:1.65;color:#5d6480">{{ f.a }}</p></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Testimonials" style="max-width:1180px;margin:0 auto;padding:96px clamp(16px,4vw,40px) 0">
+    <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+      <h2 style="margin:0;font:800 clamp(34px,4.2vw,54px)/1.04 'Manrope',sans-serif;letter-spacing:-.02em">Client Success Stories</h2>
+      <span style="padding:6px 10px;border-radius:8px;border:1px dashed #babcf6;color:#5d6480;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.04em">PLACEHOLDER QUOTES</span>
+    </div>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px">
+      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+        <article data-reveal="1" style="display:flex;flex-direction:column;gap:18px;padding:30px;border-radius:20px;background:#f0f1fb;border:1px solid #e5e7f2">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+            <div style="display:flex;align-items:center;gap:14px">
+              <img src="assets/avatar-1.jpg" alt="" style="width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:top"></img>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font:700 16px 'Manrope',sans-serif">{{ t.name }}</span><span style="font-size:14px;color:#6b7280">{{ t.role }}</span></div>
+            </div>
+            <span aria-hidden="true" style="font:800 44px/1 'Manrope',sans-serif;color:#4e4feb;opacity:.5">”</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="color:#f7871b;font-size:20px;letter-spacing:2px">★★★★★</span><span style="font:800 16px 'Manrope',sans-serif">4.9 <span style="font:400 14px 'DM Sans',sans-serif;color:#5d6480">Rating</span></span></div>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#4b5563">{{ t.text }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="CTA" style="max-width:1180px;margin:0 auto;padding:96px clamp(16px,4vw,40px) 96px">
+    <div data-reveal="1" style="position:relative;overflow:hidden;border-radius:30px;background:linear-gradient(120deg,#5c5df1,#4041d8 55%,#2d2fb7);box-shadow:0 40px 80px -40px rgba(45,47,183,.7);padding:clamp(32px,4.5vw,64px);display:flex;flex-wrap:wrap;gap:36px 56px;align-items:center;justify-content:space-between;color:#fff">
+      <div style="position:absolute;right:-120px;top:-180px;width:460px;height:460px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)"></div>
+      <h2 style="position:relative;margin:0;flex:1 1 380px;max-width:580px;font:800 clamp(34px,4.2vw,54px)/1.04 'Manrope',sans-serif;letter-spacing:-.02em;text-wrap:balance">Make the next move with confidence.</h2>
+      <div style="position:relative;flex:1 1 320px;max-width:420px;display:flex;flex-direction:column;gap:22px;padding-left:clamp(0px,3vw,40px);border-left:1px solid rgba(255,255,255,.3)">
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#e2e3ff">Choose a plan that fits today. Somion keeps the hosting part simple as you grow.</p>
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+          <a href="Hosting.dc.html" style="display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:12px;background:#fff;color:#3435cc;font:700 16px 'DM Sans',sans-serif;text-decoration:none;box-shadow:0 18px 40px -18px rgba(5,13,37,.6);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 20px 40px -18px rgba(5,13,37,.6);background:#f4f4ff;color:#3435cc" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Compare plans <span style="display:inline-block;width:18px;height:18px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+          <a href="Domains.dc.html" style="display:inline-flex;align-items:center;gap:10px;color:#fff;font:700 16px 'DM Sans',sans-serif;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Find your domain <span style="display:inline-block;width:18px;height:18px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+          <span style="display:inline-flex;align-items:center;gap:8px;font:600 13px 'DM Sans',sans-serif;color:#d9daff"><span style="display:inline-block;width:14px;height:14px;flex:none;background:#d9daff;mask:url(assets/icons/circle-check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/circle-check.svg) center/contain no-repeat"></span>30-day money-back guarantee. We migrate your site for free.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroDirection&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;A — Cinematic band&quot;,&quot;B — Split stage&quot;],&quot;default&quot;:&quot;A — Cinematic band&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showPlansStrip&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  state = { mod: null, narrow: false, currency: 'USD', fit: 'business', faqOpen: 0, q: '', status: null, heroTab: 0, heroAuto: true, homeTerm: 'monthly' };
+  componentDidMount() {
+    import((window.__resources && window.__resources['./somion-data.js']) || './somion-data.js').then(mod => { this.setState({ mod, currency: mod.getCurrency() }); this.scan = mod.revealOnScroll(document); mod.enterAnimations(document); setTimeout(() => this.runTabProgress(), 60); });
+    this.onCur = e => this.setState({ currency: e.detail }); window.addEventListener('somion:currency', this.onCur);
+    this.mqN = window.matchMedia('(max-width: 540px)'); this.mqW = window.matchMedia('(min-width: 900px)'); this.onMqN = () => this.setState({ narrow: this.mqN.matches, wideFaq: this.mqW.matches }); this.mqW.addEventListener ? this.mqW.addEventListener('change', this.onMqN) : this.mqW.addListener(this.onMqN); this.mqN.addEventListener ? this.mqN.addEventListener('change', this.onMqN) : this.mqN.addListener(this.onMqN); this.onMqN();
+    this.heroTimer = setInterval(() => { if (this.state.heroAuto && document.visibilityState === 'visible') this.setState(s => ({ heroTab: (s.heroTab + 1) % 4 })); }, 4500);
+  }
+  componentDidUpdate(pp, psIn) {
+    if (this.scan) this.scan();
+    const ps = psIn || this.prevSnap; this.prevSnap = { homeTerm: this.state.homeTerm, heroTab: this.state.heroTab };
+    const m = this.state.mod; if (!m || !ps) return;
+    if (ps.homeTerm !== this.state.homeTerm) document.querySelectorAll('#plans [data-count]').forEach(el => m.countUp(el));
+    if (ps.homeTerm !== this.state.homeTerm) document.querySelectorAll('p[data-price]').forEach((el, i) => m.animateIn(el, { y: 14, dur: 420, delay: (i % 2) * 40 + Math.floor(i / 2) * 60 }));
+    if (ps.heroTab !== this.state.heroTab) { document.querySelectorAll('[data-hero-swap] [data-count]').forEach(el => m.countUp(el, { dur: 700 })); document.querySelectorAll('[data-hero-swap]').forEach((el, i) => m.animateIn(el, { y: 10, dur: 500, delay: i * 70 })); this.runTabProgress(); }
+  }
+  runTabProgress() { if (this.tabAnim) { this.tabAnim.cancel(); this.tabAnim = null; } if (!this.state.heroAuto) return; const bar = document.querySelector('[data-tab-progress]'); if (!bar || !bar.animate) return; this.tabAnim = bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 4500, easing: 'linear', fill: 'forwards' }); }
+  componentWillUnmount() { window.removeEventListener('somion:currency', this.onCur); clearTimeout(this.t); clearInterval(this.heroTimer); }
+  check(q) {
+    clearTimeout(this.t); const m = this.state.mod; if (!m) return;
+    const { name, tld } = m.normalizeDomain(q);
+    if (name.length < 2) { this.setState({ status: null }); return; }
+    this.setState({ status: { checking: true, domain: name + tld } });
+    this.t = setTimeout(() => { const r = m.checkDomain(name, tld); const alt = m.suggestDomains(name, tld).filter(s => !s.taken)[0]; this.setState({ status: { checking: false, domain: name + tld, taken: r.taken, first: r.first, alt: alt ? name + alt.tld : 'another extension' } }); }, 450);
+  }
+  renderVals() {
+    const m = this.state.mod, cur = this.state.currency; const f = (v, o) => m ? m.fmt(v, cur, o) : '$' + v.toFixed(2);
+    const dir = this.props.heroDirection || 'A';
+    const FIT = { personal: { label: 'Personal site', plan: 'shared-single' }, business: { label: 'Business site', plan: 'shared-ultra' }, store: { label: 'Online store', plan: 'wp-grow' } };
+    const fitChips = Object.keys(FIT).map(id => { const on = id === this.state.fit; return { id, label: FIT[id].label, pick: () => this.setState({ fit: id }),
+      style: { height: 40, padding: '0 16px', borderRadius: 999, border: '1px solid ' + (on ? '#4e4feb' : '#d6d8ed'), background: on ? '#4e4feb' : '#fff', color: on ? '#fff' : '#4f5672', font: "700 13px 'DM Sans', sans-serif", cursor: 'pointer', transition: 'all .15s', whiteSpace: 'nowrap' } }; });
+    const fitP = m ? m.planById(FIT[this.state.fit].plan) : null;
+    const hy = this.state.homeTerm === 'yearly';
+    const hseg = on => ({ display: 'inline-flex', alignItems: 'center', gap: 8, height: 42, padding: '0 18px', borderRadius: 999, border: 0, cursor: 'pointer', font: "700 14px 'DM Sans', sans-serif", color: on ? '#fff' : '#5d6480', background: on ? '#4e4feb' : 'transparent', boxShadow: on ? '0 10px 22px -12px rgba(78,79,235,.9)' : 'none', transition: 'all .18s', whiteSpace: 'nowrap' });
+    const WHY = { 'shared-ultra': 'Room for 100 websites with unlimited bandwidth, subdomains and email, without moving to a server.' };
+    const featured = m ? ['shared-pro', 'shared-ultra', 'cloud-1'].map(id => { const p = m.planById(id); const cat = m.categoryById(p.cat); const S = p.specs; const txt = k => m.specText(p.cat, k, S[k]);
+      const mo = hy ? p.price * m.YEARLY_MONTHS / 12 : p.price; const was = p.was ? (hy ? p.was * m.YEARLY_MONTHS / 12 : p.was) : 0; const star = id === 'shared-ultra';
+      const hosting = (p.cat === 'cloud' ? ['cpu', 'ram', 'storage', 'bandwidth'] : ['sites', 'storage', 'bandwidth', 'email']).filter(k => typeof S[k] === 'string').map(txt);
+      const incl = (S.domain === true ? ['Free domain for the first year'] : []).concat(['Free SSL certificate', 'Daily backups', 'cPanel control panel', 'Expert support']);
+      return { id, name: p.name, catName: cat.name, featured: star, hasWas: !!p.was, wasLabel: was ? f(was) : '', saveLabel: 'Save ' + m.savingsPct(p) + '%', priceLabel: f(mo), why: WHY[id] || '',
+        billNote: hy ? 'Billed ' + f(p.price * m.YEARLY_MONTHS) + ' for 12 months. Renews at the same price.' : 'Billed monthly. Renews at ' + f(p.price) + '/mo.',
+        groups: [{ title: 'Hosting', items: hosting }, { title: 'Included', items: incl }],
+        cardStyle: { position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', marginTop: star ? 0 : 40, borderRadius: 26, background: '#fff', border: star ? '1.5px solid #6b6cf5' : '1px solid #e5e7f2', boxShadow: star ? '0 40px 80px -44px rgba(78,79,235,.6)' : '0 1px 2px rgba(8,19,62,.03), 0 24px 50px -40px rgba(8,19,62,.3)', transition: 'transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s' },
+        btnStyle: { height: 52, borderRadius: 14, border: star ? 0 : '1.5px solid #4e4feb', background: star ? 'linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4)' : '#fff', color: star ? '#fff' : '#2f30a8', font: "700 15px 'DM Sans', sans-serif", cursor: 'pointer', boxShadow: star ? '0 16px 32px -16px rgba(78,79,235,.95)' : 'none', transition: 'transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s, filter .2s' },
+        order: () => { m.addPlanToCart(id, this.state.homeTerm || 'monthly'); (window.__somionNav || (u => { location.href = u; }))('Checkout.dc.html'); } }; }) : [];
+    const faq = (m ? m.FAQ : [{ q: 'What is shared hosting?', a: '' }, { q: 'Is a domain name included?', a: '' }, { q: 'Can I upgrade my plan later?', a: '' }, { q: 'What kind of support do you provide?', a: '' }]).map((x, i) => ({ q: x.q, a: x.a, open: this.state.faqOpen === i, closed: this.state.faqOpen !== i, toggle: () => this.setState(s => ({ faqOpen: s.faqOpen === i ? -1 : i })) }));
+    const st = this.state.status || {};
+    const tlds = ['.com', '.ch', '.org', '.shop'].map(tld => ({ tld, price: m ? f(m.TLDS.find(x => x.tld === tld).first) : '', pick: () => { const base = (m ? m.normalizeDomain(this.state.q).name : this.state.q) || 'youridea'; const q = base + tld; this.setState({ q }); this.check(q); } }));
+    const single = m ? m.planById('shared-single') : null;
+    const HERO_CATS = ['shared', 'wordpress', 'cloud', 'vps']; const SPEC_ICON = { sites: 'globe', storage: 'hard-drive', bandwidth: 'gauge', cpu: 'cpu', ram: 'database' };
+    const hIcon = n => ({ display: 'inline-block', width: 15, height: 15, background: '#c7c9f9', mask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat', WebkitMask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat' });
+    const heroTabs = HERO_CATS.map((id, i) => ({ label: m ? m.categoryById(id).short : ['Shared', 'WordPress', 'Cloud', 'VPS'][i], on: this.state.heroTab === i, off: this.state.heroTab !== i, pick: () => this.setState({ heroTab: i, heroAuto: false }) }));
+    const hc = m ? m.categoryById(HERO_CATS[this.state.heroTab]) : null; const hp = hc ? hc.plans.reduce((a, b) => (b.price < a.price ? b : a)) : null;
+    const heroPlan = hc ? { catName: hc.name, short: hc.short, price: f(hp.price), href: 'Hosting.dc.html?cat=' + hc.id,
+      specs: hc.specKeys.slice(0, 3).map(([k]) => ({ text: m.specText(hc.id, k, hp.specs[k]), iconStyle: hIcon(SPEC_ICON[k] || 'check') })).concat([{ text: hc.id === 'vps' ? 'Root access · daily backups' : 'Free SSL · daily backups', iconStyle: hIcon('shield-check') }]) }
+      : { catName: 'Shared Hosting (cPanel)', short: 'Shared', price: '$5.00', href: 'Hosting.dc.html', specs: [] };
+    return {
+      heroTabs, heroPlan, faqAsideStyle: Object.assign({ flex: '1 1 320px', maxWidth: 430, display: 'flex', flexDirection: 'column' }, this.state.wideFaq ? { position: 'sticky', top: 104, alignSelf: 'flex-start' } : {}), domainWide: !this.state.narrow, domainBtnPad: this.state.narrow ? '0 16px' : '0 22px',
+      domainInputStyle: { width: '100%', boxSizing: 'border-box', height: 68, padding: this.state.narrow ? '0 76px 0 48px' : '0 150px 0 54px', borderRadius: 20, border: '1.5px solid #d6d8ed', background: '#fbfbfe', font: (this.state.narrow ? '600 17px' : '600 20px') + " 'Manrope', sans-serif", color: '#08133e', outline: 'none', transition: 'border-color .2s, box-shadow .2s, background-color .2s', textOverflow: 'ellipsis' }, homeMonthly: () => this.setState({ homeTerm: 'monthly' }), homeYearly: () => this.setState({ homeTerm: 'yearly' }), homeMonthlyStyle: hseg(!hy), homeYearlyStyle: hseg(hy),
+      homeYearlyBadge: { padding: '2px 8px', borderRadius: 999, fontSize: 10.5, fontWeight: 800, background: hy ? 'rgba(255,255,255,.2)' : '#e6f6ec', color: hy ? '#fff' : '#146132' },
+      plansFootnote: 'Prices in ' + cur + '. The price on the card is the renewal price. Yearly billing pays for 10 months and covers 12.', heroPause: () => { if (this.state.heroAuto) { this.setState({ heroAuto: false }); if (this.tabAnim) this.tabAnim.cancel(); } }, heroAutoOn: this.state.heroAuto,
+      heroA: dir.startsWith('A'), heroB: dir.startsWith('B'), heroVideo: this.props.heroVideo || 'assets/hero-loop.webm', showPlans: this.props.showPlansStrip !== false,
+      fromPrice: single ? f(single.price) : '$5.00', fromSpecA: single ? single.specs.storage + ' storage · ' + single.specs.bandwidth + ' bandwidth' : '10 GB SSD storage · 100 GB bandwidth', fromSpecB: 'Free SSL · Daily backups · cPanel',
+      featured, fitChips, fitPlan: fitP ? fitP.name : 'Ultra', fitHref: fitP ? 'Hosting.dc.html?cat=' + fitP.cat + '&plan=' + fitP.id : 'Hosting.dc.html', fitDetail: fitP ? fitP.catName + ' · ' + f(fitP.price) + ' per month' : '',
+      faq, tlds, q: this.state.q, onQ: e => { const q = e.target.value; this.setState({ q }); this.check(q); },
+      domainSubmit: e => { e.preventDefault(); (window.__somionNav || (u => { location.href = u; }))('Domains.dc.html?q=' + encodeURIComponent(this.state.q)); },
+      statusChecking: !!st.checking, statusAvailable: st.checking === false && !st.taken, statusTaken: st.checking === false && !!st.taken, statusDomain: st.domain || '', statusPrice: st.first != null ? f(st.first) : '', statusAlt: st.alt || '',
+      testimonials: [1, 2, 3].map(() => ({ name: 'Maxin Will', role: 'Product Manager', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.' })),
+    };
+  }
+}
+</script>
+</body>
+</html>

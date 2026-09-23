@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>
+:focus-visible{outline:2px solid #6b6cf5;outline-offset:3px}::selection{background:#c7c9f9;color:#08133e}
+html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#3435cc}a:hover{color:#4e4feb}
+@keyframes somionFadeUp{from{transform:translateY(10px)}to{transform:none}}
+@keyframes somionPop{0%{transform:scale(.9)}100%{transform:none}}
+</style>
+</helmet>
+<div id="top" style="background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column">
+  <div style="height:73px"><dc-import name="Header" active="" on-dark="{{ false }}" hint-size="100%,73px"></dc-import></div>
+
+  <section data-screen-label="Checkout" style="max-width:1180px;width:100%;box-sizing:border-box;margin:0 auto;padding:40px clamp(16px,4vw,40px) 96px;flex:1">
+    <div style="display:flex;flex-wrap:wrap;gap:18px 32px;align-items:flex-end;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:8px;flex:1 1 260px">
+        <a href="Hosting.dc.html" style="font:700 13px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none">← Continue shopping</a>
+        <h1 style="margin:0;font:800 clamp(30px,4vw,44px)/1.05 'Manrope',sans-serif;letter-spacing:-.02em">{{ title }}</h1>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <li style="display:flex;align-items:center;gap:6px">
+            <button type="button" onClick="{{ s.go }}" style="{{ s.style }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)"><span style="{{ s.numStyle }}">{{ s.num }}</span>{{ s.label }}</button>
+            <sc-if value="{{ s.notLast }}" hint-placeholder-val="{{ true }}"><span style="width:18px;height:1px;background:#d6d8ed"></span></sc-if>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+
+    <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+      <div data-enter="0" style="margin-top:36px;display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;justify-content:space-between;padding:clamp(28px,4vw,56px);border-radius:28px;background:linear-gradient(120deg,#5c5df1,#4041d8 55%,#2d2fb7);color:#fff;box-shadow:0 40px 80px -40px rgba(45,47,183,.7)">
+        <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:14px">
+          <span style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.18);display:inline-flex;align-items:center;justify-content:center;animation:somionPop .4s .1s ease both"><span style="display:inline-block;width:28px;height:28px;background:#fff;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span></span>
+          <h2 style="margin:0;font:800 clamp(30px,4vw,44px)/1.05 'Manrope',sans-serif;letter-spacing:-.02em">Order placed. Welcome to Somion.</h2>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:#e2e3ff">Order <strong style="color:#fff">{{ orderId }}</strong> · confirmation sent to <strong style="color:#fff">{{ accountEmail }}</strong>. Your services are being provisioned now.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px">
+            <a href="Login.dc.html" style="display:inline-flex;align-items:center;height:50px;padding:0 22px;border-radius:12px;background:#fff;color:#3435cc;font:700 15px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 20px 40px -18px rgba(5,13,37,.6);background:#f4f4ff;color:#3435cc" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">View your account →</a>
+            <a href="Home.dc.html" style="display:inline-flex;align-items:center;height:50px;padding:0 22px;border-radius:12px;border:1px solid rgba(255,255,255,.4);color:#fff;font:700 15px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);transform:translateY(-1px);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Back to home</a>
+          </div>
+        </div>
+        <ol style="flex:1 1 300px;max-width:420px;list-style:none;margin:0;padding:22px 24px;border-radius:18px;background:rgba(8,19,62,.28);border:1px solid rgba(255,255,255,.18);display:flex;flex-direction:column;gap:14px;font-size:14px;line-height:1.5">
+          <li style="display:flex;gap:12px"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#fff;color:#2f30a8;font-weight:800;font-size:12px;display:inline-flex;align-items:center;justify-content:center">1</span><span><strong>Account email</strong> — login details and your invoice arrive within minutes.</span></li>
+          <li style="display:flex;gap:12px"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#fff;color:#2f30a8;font-weight:800;font-size:12px;display:inline-flex;align-items:center;justify-content:center">2</span><span><strong>cPanel ready</strong> — hosting is provisioned automatically; SSL is issued on first visit.</span></li>
+          <li style="display:flex;gap:12px"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#fff;color:#2f30a8;font-weight:800;font-size:12px;display:inline-flex;align-items:center;justify-content:center">3</span><span><strong>Domain setup</strong> — new names go live in minutes; transfers and nameserver changes take up to 48h.</span></li>
+        </ol>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+    <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
+      <div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:18px">
+
+        <sc-if value="{{ step1 }}" hint-placeholder-val="{{ true }}">
+          <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding:clamp(24px,4vw,44px);border-radius:24px;border:1px dashed #babcf6;background:#fff">
+              <div style="display:flex;flex-direction:column;gap:8px;max-width:440px"><h2 style="margin:0;font:800 26px/1.1 'Manrope',sans-serif">Your cart is empty.</h2><p style="margin:0;font-size:15px;line-height:1.55;color:#5d6480">Pick a hosting plan or search for a domain to get started.</p></div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px"><a href="Hosting.dc.html" style="display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:12px;background:#4e4feb;color:#fff;font:700 14px 'DM Sans',sans-serif;text-decoration:none;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Browse plans</a><a href="Domains.dc.html" style="display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:12px;border:1px solid #babcf6;background:#fff;color:#3435cc;font:700 14px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Find a domain</a></div>
+            </div>
+          </sc-if>
+          <sc-for list="{{ planItems }}" as="it" hint-placeholder-count="1">
+            <article data-enter="0" style="display:flex;flex-direction:column;gap:18px;padding:24px;border-radius:22px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 18px 40px -30px rgba(8,19,62,.25)">
+              <div style="display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-start;justify-content:space-between">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#5d6480">{{ it.cat }}</span>
+                  <h2 style="margin:0;font:800 24px/1.1 'Manrope',sans-serif;letter-spacing:-.01em">{{ it.name }}</h2>
+                  <span style="font-size:13.5px;color:#5d6480">{{ it.summary }}</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+                  <div role="group" aria-label="Billing term" style="display:inline-flex;padding:3px;border-radius:999px;background:#f0f1fb">
+                    <button type="button" onClick="{{ it.setMonthly }}" style="{{ it.monthlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Monthly</button>
+                    <button type="button" onClick="{{ it.setYearly }}" style="{{ it.yearlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Yearly · 2 months free</button>
+                  </div>
+                  <span style="font:800 22px 'Manrope',sans-serif">{{ it.priceLabel }} <span style="font:400 13px 'DM Sans',sans-serif;color:#5d6480">{{ it.per }}</span></span>
+                </div>
+              </div>
+              <div style="height:1px;background:#e5e7f2"></div>
+              <sc-if value="{{ it.needsDomain }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <span style="font:700 14px 'DM Sans',sans-serif">Domain for this plan</span>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px">
+                    <sc-for list="{{ it.modes }}" as="md" hint-placeholder-count="4">
+                      <button type="button" onClick="{{ md.pick }}" aria-pressed="{{ md.on }}" style="{{ md.style }}" style-hover="border-color:#4e4feb;box-shadow:0 10px 22px -16px rgba(78,79,235,.7);transform:translateY(-1px)" style-active="transform:scale(.97)"><span style="{{ md.dotStyle }}"></span><span style="display:flex;flex-direction:column;gap:2px;text-align:left"><span style="font-weight:700">{{ md.label }}</span><span style="font-size:12px;color:#5d6480;font-weight:400">{{ md.hint }}</span></span></button>
+                    </sc-for>
+                  </div>
+                  <sc-if value="{{ it.showDomainInput }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+                      <input type="text" value="{{ it.domainName }}" onChange="{{ it.onDomainName }}" placeholder="{{ it.domainPlaceholder }}" autoComplete="off" spellCheck="{{ false }}" style="flex:1 1 220px;min-width:0;height:46px;padding:0 14px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:600 15px 'DM Sans',sans-serif;color:#08133e;outline:none" style-focus="border-color:#4e4feb;box-shadow:0 0 0 3px #eeeefe"></input>
+                      <sc-if value="{{ it.isNew }}" hint-placeholder-val="{{ true }}">
+                        <select value="{{ it.tld }}" onChange="{{ it.onTld }}" aria-label="Extension" style="height:46px;padding:0 12px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:700 14px 'DM Sans',sans-serif;color:#08133e">
+                          <sc-for list="{{ it.tlds }}" as="t" hint-placeholder-count="4"><option value="{{ t.tld }}">{{ t.label }}</option></sc-for>
+                        </select>
+                      </sc-if>
+                    </div>
+                    <div style="min-height:20px;font-size:13px;color:#5d6480">
+                      <sc-if value="{{ it.domainAvailable }}" hint-placeholder-val="{{ false }}"><span style="color:#146132;font-weight:600">✓ {{ it.fullDomain }} is available · {{ it.domainPrice }} first year, renews at {{ it.domainRenew }}</span></sc-if>
+                      <sc-if value="{{ it.domainTaken }}" hint-placeholder-val="{{ false }}"><span style="color:#b3181b;font-weight:600">{{ it.fullDomain }} is taken — try another name or extension</span></sc-if>
+                      <sc-if value="{{ it.domainNote }}" hint-placeholder-val="{{ false }}"><span>{{ it.domainNoteText }}</span></sc-if>
+                    </div>
+                  </sc-if>
+                </div>
+                <div style="height:1px;background:#e5e7f2"></div>
+              </sc-if>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <span style="font:700 14px 'DM Sans',sans-serif">Add-ons <span style="font-weight:400;color:#5d6480">(optional)</span></span>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px">
+                  <sc-for list="{{ it.addons }}" as="ad" hint-placeholder-count="3">
+                    <button type="button" onClick="{{ ad.toggle }}" aria-pressed="{{ ad.on }}" style="{{ ad.style }}" style-hover="border-color:#4e4feb;box-shadow:0 10px 22px -16px rgba(78,79,235,.7);transform:translateY(-1px)" style-active="transform:scale(.97)">
+                      <span style="{{ ad.boxStyle }}"><sc-if value="{{ ad.on }}" hint-placeholder-val="{{ false }}"><span style="display:inline-block;width:12px;height:12px;background:#fff;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span></sc-if></span>
+                      <span style="display:flex;flex-direction:column;gap:2px;text-align:left;flex:1"><span style="font-weight:700">{{ ad.name }}</span><span style="font-size:12px;color:#5d6480;font-weight:400">{{ ad.desc }}</span></span>
+                      <span style="font-weight:700;white-space:nowrap">{{ ad.price }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+                <a href="Compare.dc.html" style="font:600 13px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none">Compare with other plans</a>
+                <button type="button" onClick="{{ it.remove }}" style="height:36px;padding:0 12px;border-radius:10px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font:600 13px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#b3181b;color:#b3181b;background:#fff6f6;transform:translateY(-1px)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Remove</button>
+              </div>
+            </article>
+          </sc-for>
+          <sc-for list="{{ domainItems }}" as="d" hint-placeholder-count="0">
+            <article data-enter="0" style="display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:space-between;padding:20px 24px;border-radius:22px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 18px 40px -30px rgba(8,19,62,.25)">
+              <div style="display:flex;flex-direction:column;gap:4px"><span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#5d6480">{{ d.kind }}</span><h2 style="margin:0;font:800 22px/1.1 'Manrope',sans-serif">{{ d.name }}</h2><span style="font-size:13px;color:#5d6480">{{ d.note }}</span></div>
+              <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                <select value="{{ d.years }}" onChange="{{ d.onYears }}" aria-label="Registration period" style="height:42px;padding:0 12px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:700 14px 'DM Sans',sans-serif;color:#08133e"><option value="1">1 year</option><option value="2">2 years</option><option value="3">3 years</option></select>
+                <span style="font:800 20px 'Manrope',sans-serif">{{ d.price }}</span>
+                <button type="button" onClick="{{ d.remove }}" aria-label="Remove domain" style="width:36px;height:36px;border-radius:10px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font-size:18px;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#b3181b;color:#b3181b;background:#fff6f6;transform:translateY(-1px)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">×</button>
+              </div>
+            </article>
+          </sc-for>
+          <sc-if value="{{ cartHasItems }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center">
+              <div style="display:flex;gap:14px;flex-wrap:wrap;font:600 13px 'DM Sans',sans-serif"><a href="Hosting.dc.html" style="color:#3435cc;text-decoration:none">+ Add another plan</a><a href="Domains.dc.html" style="color:#3435cc;text-decoration:none">+ Add a domain</a></div>
+              <button type="button" onClick="{{ next }}" style="height:52px;padding:0 26px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Continue to account →</button>
+            </div>
+          </sc-if>
+        </sc-if>
+
+        <sc-if value="{{ step2 }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ submitAccount }}" data-enter="0" style="display:flex;flex-direction:column;gap:18px;padding:28px;border-radius:22px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 18px 40px -30px rgba(8,19,62,.25)">
+            <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;background:#f7f7ff;border:1px solid #e5e7f2">
+                <span style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#7c7dff,#4e4feb);color:#fff;font:800 15px 'Manrope',sans-serif;display:inline-flex;align-items:center;justify-content:center;flex:none">{{ accInitials }}</span>
+                <span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0"><span style="font:700 15px 'DM Sans',sans-serif">Signed in as {{ accName }}</span><span style="font-size:13px;color:#5d6480;overflow-wrap:anywhere">{{ accEmailLabel }}</span></span>
+                <button type="button" onClick="{{ notMe }}" style="height:36px;padding:0 12px;border-radius:10px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font:600 13px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Not you?</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ notSignedIn }}" hint-placeholder-val="{{ true }}">
+            <div role="group" aria-label="Account" style="display:inline-flex;align-self:flex-start;padding:3px;border-radius:999px;background:#f0f1fb">
+              <button type="button" onClick="{{ pickCreate }}" style="{{ createStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Create account</button>
+              <button type="button" onClick="{{ pickLogin }}" style="{{ loginStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">I have an account</button>
+            </div>
+            <sc-if value="{{ isCreate }}" hint-placeholder-val="{{ true }}">
+              <label style="display:flex;flex-direction:column;gap:6px;font:700 13px 'DM Sans',sans-serif">Full name<input type="text" value="{{ acc.name }}" onChange="{{ onAccName }}" placeholder="Maxin Will" autoComplete="name" style="height:48px;padding:0 14px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:500 15px 'DM Sans',sans-serif;color:#08133e;outline:none" style-focus="border-color:#4e4feb;box-shadow:0 0 0 3px #eeeefe"></input></label>
+            </sc-if>
+            <label style="display:flex;flex-direction:column;gap:6px;font:700 13px 'DM Sans',sans-serif">Email<input type="email" value="{{ acc.email }}" onChange="{{ onAccEmail }}" placeholder="you@company.com" autoComplete="email" style="height:48px;padding:0 14px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:500 15px 'DM Sans',sans-serif;color:#08133e;outline:none" style-focus="border-color:#4e4feb;box-shadow:0 0 0 3px #eeeefe"></input></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font:700 13px 'DM Sans',sans-serif">Password<input type="password" value="{{ acc.password }}" onChange="{{ onAccPassword }}" placeholder="{{ passwordPlaceholder }}" autoComplete="{{ passwordAutocomplete }}" style="height:48px;padding:0 14px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:500 15px 'DM Sans',sans-serif;color:#08133e;outline:none" style-focus="border-color:#4e4feb;box-shadow:0 0 0 3px #eeeefe"></input></label>
+            <sc-if value="{{ isCreate }}" hint-placeholder-val="{{ true }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px">
+                <label style="display:flex;flex-direction:column;gap:6px;font:700 13px 'DM Sans',sans-serif">Phone <span style="font-weight:400;color:#5d6480">(optional)</span><input type="tel" value="{{ acc.phone }}" onChange="{{ onAccPhone }}" placeholder="+41 31 …" autoComplete="tel" style="height:48px;padding:0 14px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:500 15px 'DM Sans',sans-serif;color:#08133e;outline:none" style-focus="border-color:#4e4feb;box-shadow:0 0 0 3px #eeeefe"></input></label>
+                <label style="display:flex;flex-direction:column;gap:6px;font:700 13px 'DM Sans',sans-serif">Country<select value="{{ acc.country }}" onChange="{{ onAccCountry }}" style="height:48px;padding:0 12px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:600 15px 'DM Sans',sans-serif;color:#08133e"><option value="CH">Switzerland</option><option value="EG">Egypt</option><option value="DE">Germany</option><option value="AE">United Arab Emirates</option><option value="US">United States</option><option value="XX">Other</option></select></label>
+              </div>
+            </sc-if>
+            </sc-if>
+            <sc-if value="{{ accError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;padding:10px 14px;border-radius:10px;background:#fdecec;color:#b3181b;font-size:13px;font-weight:600">{{ accErrorText }}</p></sc-if>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-top:6px">
+              <button type="button" onClick="{{ back }}" style="height:48px;padding:0 16px;border-radius:12px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font:600 14px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">← Back to cart</button>
+              <button type="submit" style="height:52px;padding:0 26px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Continue to payment →</button>
+            </div>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ step3 }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ submitPayment }}" data-enter="0" style="display:flex;flex-direction:column;gap:18px;padding:28px;border-radius:22px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 18px 40px -30px rgba(8,19,62,.25)">
+            <h2 style="margin:0;font:800 22px 'Manrope',sans-serif">How would you like to pay?</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px">
+              <sc-for list="{{ methods }}" as="pm" hint-placeholder-count="4">
+                <button type="button" onClick="{{ pm.pick }}" aria-pressed="{{ pm.on }}" style="{{ pm.style }}" style-hover="border-color:#4e4feb;box-shadow:0 10px 22px -16px rgba(78,79,235,.7);transform:translateY(-1px)" style-active="transform:scale(.97)">
+                  <span style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="font-weight:700">{{ pm.name }}</span><span style="{{ pm.dotStyle }}"></span></span>
+                  <span style="font-size:12px;color:#5d6480;text-align:left">{{ pm.desc }}</span>
+                  <span style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ pm.logos }}" as="lg" hint-placeholder-count="0"><span role="img" aria-label="{{ lg.name }}" style="{{ lg.style }}"></span></sc-for></span>
+                </button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ payCard }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:16px;background:#f7f7ff;border:1px solid #e5e7f2">
+                <label style="display:flex;flex-direction:column;gap:6px;font:700 13px 'DM Sans',sans-serif">Card number<input type="text" inputMode="numeric" value="{{ pay.number }}" onChange="{{ onPayNumber }}" placeholder="1234 5678 9012 3456" autoComplete="cc-number" style="height:48px;padding:0 14px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:500 15px ui-monospace,Menlo,monospace;color:#08133e;outline:none;letter-spacing:.06em" style-focus="border-color:#4e4feb;box-shadow:0 0 0 3px #eeeefe"></input></label>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:14px">
+                  <label style="display:flex;flex-direction:column;gap:6px;font:700 13px 'DM Sans',sans-serif">Expiry<input type="text" inputMode="numeric" value="{{ pay.expiry }}" onChange="{{ onPayExpiry }}" placeholder="MM / YY" autoComplete="cc-exp" style="height:48px;padding:0 14px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:500 15px ui-monospace,Menlo,monospace;color:#08133e;outline:none" style-focus="border-color:#4e4feb;box-shadow:0 0 0 3px #eeeefe"></input></label>
+                  <label style="display:flex;flex-direction:column;gap:6px;font:700 13px 'DM Sans',sans-serif">CVC<input type="text" inputMode="numeric" value="{{ pay.cvc }}" onChange="{{ onPayCvc }}" placeholder="123" autoComplete="cc-csc" style="height:48px;padding:0 14px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:500 15px ui-monospace,Menlo,monospace;color:#08133e;outline:none" style-focus="border-color:#4e4feb;box-shadow:0 0 0 3px #eeeefe"></input></label>
+                  <label style="display:flex;flex-direction:column;gap:6px;font:700 13px 'DM Sans',sans-serif">Name on card<input type="text" value="{{ pay.holder }}" onChange="{{ onPayHolder }}" placeholder="Maxin Will" autoComplete="cc-name" style="height:48px;padding:0 14px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:500 15px 'DM Sans',sans-serif;color:#08133e;outline:none" style-focus="border-color:#4e4feb;box-shadow:0 0 0 3px #eeeefe"></input></label>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ payWallet }}" hint-placeholder-val="{{ false }}">
+              <label style="display:flex;flex-direction:column;gap:6px;font:700 13px 'DM Sans',sans-serif;padding:18px;border-radius:16px;background:#f7f7ff;border:1px solid #e5e7f2">Wallet phone number<input type="tel" value="{{ pay.wallet }}" onChange="{{ onPayWallet }}" placeholder="+20 1xx xxx xxxx" style="height:48px;padding:0 14px;border-radius:12px;border:1px solid #d6d8ed;background:#fff;font:500 15px 'DM Sans',sans-serif;color:#08133e;outline:none" style-focus="border-color:#4e4feb;box-shadow:0 0 0 3px #eeeefe"></input><span style="font-weight:400;color:#5d6480;font-size:12.5px">You will confirm the payment on your phone.</span></label>
+            </sc-if>
+            <sc-if value="{{ payRedirect }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;padding:14px 18px;border-radius:16px;background:#f7f7ff;border:1px solid #e5e7f2;font-size:14px;line-height:1.55;color:#5d6480">You will be redirected to complete the payment securely, then brought back here to your receipt.</p>
+            </sc-if>
+            <sc-if value="{{ payError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;padding:10px 14px;border-radius:10px;background:#fdecec;color:#b3181b;font-size:13px;font-weight:600">{{ payErrorText }}</p></sc-if>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-top:6px">
+              <button type="button" onClick="{{ back }}" style="height:48px;padding:0 16px;border-radius:12px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font:600 14px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">← Back</button>
+              <button type="submit" style="height:52px;padding:0 26px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Review order →</button>
+            </div>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ step4 }}" hint-placeholder-val="{{ false }}">
+          <div data-enter="0" style="display:flex;flex-direction:column;gap:18px;padding:28px;border-radius:22px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 18px 40px -30px rgba(8,19,62,.25)">
+            <h2 style="margin:0;font:800 22px 'Manrope',sans-serif">Review and place your order</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px">
+              <div style="padding:16px 18px;border-radius:16px;background:#f7f7ff;border:1px solid #e5e7f2;display:flex;flex-direction:column;gap:6px"><span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#5d6480">Account</span><span style="font-weight:700">{{ accountName }}</span><span style="font-size:13.5px;color:#5d6480">{{ accountEmail }}</span><button type="button" onClick="{{ goAccount }}" style="align-self:flex-start;border:0;background:none;padding:0;color:#3435cc;font:600 13px 'DM Sans',sans-serif;cursor:pointer">Edit</button></div>
+              <div style="padding:16px 18px;border-radius:16px;background:#f7f7ff;border:1px solid #e5e7f2;display:flex;flex-direction:column;gap:6px"><span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#5d6480">Payment</span><span style="font-weight:700">{{ paymentName }}</span><span style="font-size:13.5px;color:#5d6480">{{ paymentDetail }}</span><sc-if value="{{ payNeeded }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ goPayment }}" style="align-self:flex-start;border:0;background:none;padding:0;color:#3435cc;font:600 13px 'DM Sans',sans-serif;cursor:pointer">Edit</button></sc-if></div>
+            </div>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid #e5e7f2">
+              <sc-for list="{{ lines }}" as="l" hint-placeholder-count="2">
+                <li style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #f0f1fb;font-size:14px"><span style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:600">{{ l.label }}</span><span style="font-size:12.5px;color:#5d6480">{{ l.sub }}</span></span><span style="font-weight:700;white-space:nowrap">{{ l.amount }}</span></li>
+              </sc-for>
+            </ul>
+            <label style="display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.5;color:#3f4660;cursor:pointer">
+              <input type="checkbox" checked="{{ agree }}" onChange="{{ toggleAgree }}" style="width:18px;height:18px;margin:2px 0 0;accent-color:#4e4feb"></input>
+              <span>I agree to the <a href="Legal.dc.html#terms" target="_blank" style="color:#3435cc">Terms of Service</a> and <a href="Legal.dc.html#aup" target="_blank" style="color:#3435cc">Acceptable Use Policy</a>, and understand plans renew at the price shown.</span>
+            </label>
+            <sc-if value="{{ agreeError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;padding:10px 14px;border-radius:10px;background:#fdecec;color:#b3181b;font-size:13px;font-weight:600">Please accept the terms to place the order.</p></sc-if>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-top:6px">
+              <button type="button" onClick="{{ back }}" style="height:48px;padding:0 16px;border-radius:12px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font:600 14px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">← Back</button>
+              <button type="button" onClick="{{ placeOrder }}" style="height:54px;padding:0 28px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Place order · {{ total }}</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <aside data-screen-label="Order summary" style="flex:0 1 360px;min-width:min(100%,300px);position:sticky;top:96px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:22px;background:#07122f;color:#fff;box-shadow:0 30px 60px -30px rgba(5,13,37,.7)">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)">Order summary</span><span style="font-size:12px;color:rgba(255,255,255,.6)">{{ currency }}</span></div>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14px">
+            <sc-for list="{{ lines }}" as="l" hint-placeholder-count="2">
+              <li style="display:flex;justify-content:space-between;gap:12px"><span style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:600">{{ l.label }}</span><span style="font-size:12px;color:rgba(255,255,255,.6)">{{ l.sub }}</span></span><span style="font-weight:700;white-space:nowrap">{{ l.amount }}</span></li>
+            </sc-for>
+            <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}"><li style="color:rgba(255,255,255,.6)">No items yet.</li></sc-if>
+          </ul>
+          <div style="height:1px;background:rgba(255,255,255,.14)"></div>
+          <form onSubmit="{{ applyPromo }}" style="display:flex;gap:8px">
+            <input type="text" value="{{ promo }}" onChange="{{ onPromo }}" placeholder="Promo code" aria-label="Promo code" style="flex:1;min-width:0;height:40px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font:600 13px 'DM Sans',sans-serif;outline:none" style-focus="border-color:#c7c9f9"></input>
+            <button type="submit" style="height:40px;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font:700 13px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);transform:translateY(-1px);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Apply</button>
+          </form>
+          <sc-if value="{{ promoMsg }}" hint-placeholder-val="{{ false }}"><span style="font-size:12.5px;color:#c7f7e2">{{ promoMsgText }}</span></sc-if>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
+            <div style="display:flex;justify-content:space-between;color:rgba(255,255,255,.8)"><span>Subtotal</span><span>{{ subtotal }}</span></div>
+            <sc-if value="{{ hasDiscount }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between;color:#c7f7e2"><span>Promo SOMION10 (10%)</span><span>−{{ discount }}</span></div></sc-if>
+            <sc-if value="{{ hasSaving }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between;color:#c7f7e2;font-size:12.5px"><span>Yearly billing saves you</span><span>{{ saving }} vs monthly</span></div></sc-if>
+            <div style="display:flex;justify-content:space-between;color:rgba(255,255,255,.6);font-size:12.5px"><span>Taxes</span><span>Calculated by country</span></div>
+            <div style="height:1px;background:rgba(255,255,255,.14)"></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:700">Due today</span><span style="font:800 28px 'Manrope',sans-serif;letter-spacing:-.02em">{{ total }}</span></div>
+            <span style="font-size:12px;color:rgba(255,255,255,.6)">{{ renewNote }}</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 16px;padding:0 6px;font-size:12px;color:#5d6480">
+          <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#61d6a6"></span>Secure checkout · SSL</span>
+          <span>30-day money-back guarantee</span>
+          <span>24/7 expert support</span>
+        </div>
+      </aside>
+    </div>
+    </sc-if>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mod: null, currency: 'USD', cart: [], step: 1, acc: { mode: 'create', name: '', email: '', password: '', phone: '', country: 'CH' }, pay: { method: 'card', number: '', expiry: '', cvc: '', holder: '', wallet: '' }, agree: false, agreeError: false, accError: '', payError: '', promo: '', promoOk: false, promoMsg: '', orderId: '' };
+  componentDidMount() {
+    import((window.__resources && window.__resources['./somion-data.js']) || './somion-data.js').then(mod => { const a = mod.getAccount(); this.setState({ mod, currency: mod.getCurrency(), cart: mod.getCart(), account: a, acc: a ? Object.assign({}, this.state.acc, { mode: 'login', name: a.name || '', email: a.email || '' }) : this.state.acc }); mod.enterAnimations(document); });
+    this.onCur = e => this.setState({ currency: e.detail }); window.addEventListener('somion:currency', this.onCur);
+  }
+  componentWillUnmount() { window.removeEventListener('somion:currency', this.onCur); }
+  save(cart) { this.state.mod.setCart(cart); this.setState({ cart }); }
+  patch(key, fields) { this.save(this.state.cart.map(i => i.key === key ? Object.assign({}, i, fields) : i)); }
+  go(step) { this.setState({ step, accError: '', payError: '', agreeError: false }); try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {} }
+  lines() {
+    const m = this.state.mod; if (!m) return { lines: [], subtotal: 0, saving: 0 };
+    const lines = []; let subtotal = 0, saving = 0;
+    for (const it of this.state.cart) {
+      if (it.type === 'plan') { const p = m.planById(it.planId); if (!p) continue; const yearly = it.term === 'yearly'; const amt = m.priceFor(p, it.term);
+        lines.push({ label: p.name + ' · ' + p.catShort, sub: yearly ? 'Billed yearly (2 months free)' : 'Billed monthly', amount: amt }); subtotal += amt; if (yearly) saving += p.price * 2;
+        for (const a of it.addons || []) { const ad = m.ADDONS.find(x => x.id === a); if (ad) { const aa = yearly ? ad.price * m.YEARLY_MONTHS : ad.price; lines.push({ label: ad.name, sub: 'Add-on for ' + p.name, amount: aa }); subtotal += aa; } }
+        if (it.domainMode === 'new' && it.domainName) { const r = m.checkDomain(m.normalizeDomain(it.domainName).name, it.tld || '.com'); if (!r.taken && r.name.length >= 2) { lines.push({ label: r.name + r.tld, sub: 'New domain · renews at ' + m.fmt(r.renew, this.state.currency) + '/yr', amount: r.first }); subtotal += r.first; } }
+        if (it.domainMode === 'transfer' && it.domainName) { const t = m.TLDS.find(x => it.domainName.endsWith(x.tld)) || m.TLDS[0]; lines.push({ label: it.domainName, sub: 'Transfer · includes 1 year extension', amount: t.renew }); subtotal += t.renew; } }
+      if (it.type === 'domain') { const t = m.TLDS.find(x => x.tld === it.tld) || m.TLDS[0]; const y = Number(it.years) || 1; const amt = it.transfer ? t.renew * y : t.first + t.renew * (y - 1); lines.push({ label: it.domainName, sub: it.transfer ? 'Transfer · includes ' + y + (y > 1 ? ' years' : ' year') + ' extension' : y + (y > 1 ? ' years' : ' year') + ' · renews at ' + m.fmt(t.renew, this.state.currency) + '/yr', amount: amt }); subtotal += amt; }
+    }
+    return { lines, subtotal, saving };
+  }
+  renderVals() {
+    const m = this.state.mod, cur = this.state.currency, st = this.state; const f = (v, o) => m ? m.fmt(v, cur, Object.assign({ zero: true }, o || {})) : '$' + v.toFixed(2);
+    const seg = (on, small) => ({ height: small ? 38 : 40, padding: small ? '0 12px' : '0 14px', borderRadius: 999, border: 0, cursor: 'pointer', font: (small ? "700 12px" : "700 13px") + " 'DM Sans', sans-serif", color: on ? '#fff' : '#5d6480', background: on ? '#4e4feb' : 'transparent', transition: 'all .18s', whiteSpace: 'nowrap' });
+    const tlds = m ? m.TLDS.map(t => ({ tld: t.tld, label: t.tld + ' · ' + f(t.first) })) : [];
+    const planItems = m ? st.cart.filter(i => i.type === 'plan').map(it => { const p = m.planById(it.planId); if (!p) return null; const cat = m.categoryById(p.cat); const yearly = it.term === 'yearly';
+      const needsDomain = ['shared', 'wordpress', 'cloud', 'vps', 'builder'].includes(p.cat);
+      const norm = m.normalizeDomain(it.domainName || ''); const chk = it.domainMode === 'new' && norm.name.length >= 2 ? m.checkDomain(norm.name, it.tld || '.com') : null;
+      const modes = [['new', 'Register a new domain', 'Search and add it to this order'], ['transfer', 'Transfer my domain', 'From another registrar'], ['own', 'Use my existing domain', 'I will update the nameservers'], ['later', 'Decide later', 'Add a domain from the client area']].map(([id, label, hint]) => { const on = (it.domainMode || 'later') === id; return { id, label, hint, on, pick: () => this.patch(it.key, { domainMode: id }),
+        style: { display: 'flex', alignItems: 'flex-start', gap: 10, padding: '12px 14px', borderRadius: 14, border: '1px solid ' + (on ? '#4e4feb' : '#e5e7f2'), background: on ? '#f7f7ff' : '#fff', color: '#08133e', font: "500 13.5px 'DM Sans', sans-serif", cursor: 'pointer', textAlign: 'left', boxShadow: on ? '0 0 0 3px #eeeefe' : 'none', transition: 'all .15s' },
+        dotStyle: { flex: 'none', marginTop: 2, width: 16, height: 16, borderRadius: '50%', border: on ? '5px solid #4e4feb' : '2px solid #c9ccdf', boxSizing: 'border-box', background: '#fff' } }; });
+      const addons = m.ADDONS.map(ad => { const on = (it.addons || []).includes(ad.id); return { id: ad.id, name: ad.name, desc: ad.desc, on, price: f(yearly ? ad.price * m.YEARLY_MONTHS : ad.price) + (yearly ? '/yr' : '/mo'), toggle: () => this.patch(it.key, { addons: on ? it.addons.filter(x => x !== ad.id) : (it.addons || []).concat(ad.id) }),
+        style: { display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderRadius: 14, border: '1px solid ' + (on ? '#4e4feb' : '#e5e7f2'), background: on ? '#f7f7ff' : '#fff', color: '#08133e', font: "500 13.5px 'DM Sans', sans-serif", cursor: 'pointer', textAlign: 'left', transition: 'all .15s' },
+        boxStyle: { flex: 'none', width: 20, height: 20, borderRadius: 6, border: on ? 0 : '2px solid #c9ccdf', background: on ? '#4e4feb' : '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', boxSizing: 'border-box' } }; });
+      return { key: it.key, cat: p.catName, name: p.name, summary: cat.specKeys.slice(0, 3).map(([k, l]) => { const v = p.specs[k]; return v === true ? l : m.specText(p.cat, k, v); }).join(' · '),
+        priceLabel: f(m.priceFor(p, it.term)), per: yearly ? '/ year' : '/ month', setMonthly: () => this.patch(it.key, { term: 'monthly' }), setYearly: () => this.patch(it.key, { term: 'yearly' }), monthlyStyle: seg(!yearly, true), yearlyStyle: seg(yearly, true),
+        needsDomain, modes, showDomainInput: it.domainMode === 'new' || it.domainMode === 'transfer' || it.domainMode === 'own', isNew: it.domainMode === 'new', domainName: it.domainName || '', domainPlaceholder: it.domainMode === 'new' ? 'yourname' : 'yourdomain.com', onDomainName: e => this.patch(it.key, { domainName: e.target.value }), tld: it.tld || '.com', onTld: e => this.patch(it.key, { tld: e.target.value }), tlds,
+        fullDomain: chk ? chk.name + chk.tld : '', domainAvailable: !!chk && !chk.taken, domainTaken: !!chk && chk.taken, domainPrice: chk ? f(chk.first) : '', domainRenew: chk ? f(chk.renew) + '/yr' : '',
+        domainNote: !chk && it.domainMode !== 'new', domainNoteText: it.domainMode === 'transfer' ? 'Transfers include a one-year extension at the renewal price. Unlock the domain at your current registrar first.' : it.domainMode === 'own' ? 'No charge. We will show you the nameservers to set after checkout.' : '',
+        addons, remove: () => this.save(st.cart.filter(i => i.key !== it.key)) }; }).filter(Boolean) : [];
+    const domainItems = m ? st.cart.filter(i => i.type === 'domain').map(d => { const t = m.TLDS.find(x => x.tld === d.tld) || m.TLDS[0]; const y = Number(d.years) || 1; return { key: d.key, kind: d.transfer ? 'Domain transfer' : 'Domain registration', name: d.domainName, years: String(y), note: d.transfer ? 'Transfer · extends your registration by ' + y + (y > 1 ? ' years' : ' year') + ' · renews at ' + f(t.renew) + ' a year' : 'First year ' + f(t.first) + ' · renews at ' + f(t.renew) + ' a year', price: f(d.transfer ? t.renew * y : t.first + t.renew * (y - 1)), onYears: e => this.patch(d.key, { years: Number(e.target.value) }), remove: () => this.save(st.cart.filter(i => i.key !== d.key)) }; }) : [];
+    const L = this.lines(); const promoOff = st.promoOk ? L.subtotal * 0.1 : 0; const total = Math.max(0, L.subtotal - promoOff);
+    const lines = L.lines.map(l => ({ label: l.label, sub: l.sub, amount: f(l.amount) }));
+    const stepDefs = [[1, 'Cart'], [2, 'Account'], [3, 'Payment'], [4, 'Review']];
+    const steps = stepDefs.map(([n, label], i) => { const on = st.step === n, past = st.step > n; return { num: past ? '✓' : String(n), label, notLast: i < 3, go: () => { if (past || (n === 1)) this.go(n); },
+      style: { display: 'inline-flex', alignItems: 'center', gap: 8, height: 36, padding: '0 12px 0 6px', borderRadius: 999, border: '1px solid ' + (on ? '#4e4feb' : '#e5e7f2'), background: on ? '#fff' : past ? '#f0f1fb' : '#fff', color: on ? '#08133e' : past ? '#2f30a8' : '#8a91aa', font: "700 13px 'DM Sans', sans-serif", cursor: past || n === 1 ? 'pointer' : 'default' },
+      numStyle: { width: 24, height: 24, borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, background: on ? '#4e4feb' : past ? '#4e4feb' : '#f0f1fb', color: on || past ? '#fff' : '#8a91aa' } }; });
+    const methods = m ? m.PAYMENT_METHODS.map(pm => { const on = st.pay.method === pm.id; return { id: pm.id, name: pm.name, desc: pm.desc, logos: pm.logos.map(src => ({ name: src.replace(/^.*pay-|\.\w+$/g, ''), style: { width: 40, height: 26, borderRadius: 5, background: '#fff url(' + src + ') center/72% auto no-repeat', border: '1px solid #e5e7f2', boxSizing: 'border-box', display: 'inline-block' } })), on, pick: () => this.setState({ pay: Object.assign({}, st.pay, { method: pm.id }), payError: '' }),
+      style: { display: 'flex', flexDirection: 'column', gap: 10, padding: '14px 16px', borderRadius: 16, border: '1px solid ' + (on ? '#4e4feb' : '#e5e7f2'), background: on ? '#f7f7ff' : '#fff', color: '#08133e', font: "500 14px 'DM Sans', sans-serif", cursor: 'pointer', textAlign: 'left', boxShadow: on ? '0 0 0 3px #eeeefe' : 'none', transition: 'all .15s' },
+      dotStyle: { flex: 'none', width: 16, height: 16, borderRadius: '50%', border: on ? '5px solid #4e4feb' : '2px solid #c9ccdf', boxSizing: 'border-box', background: '#fff' } }; }) : [];
+    const pmDef = m ? m.PAYMENT_METHODS.find(x => x.id === st.pay.method) : null;
+    const setAcc = (k) => e => this.setState({ acc: Object.assign({}, this.state.acc, { [k]: e.target.value }), accError: '' });
+    const setPay = (k) => e => this.setState({ pay: Object.assign({}, this.state.pay, { [k]: e.target.value }), payError: '' });
+    const anyYearly = st.cart.some(i => i.type === 'plan' && i.term === 'yearly');
+    return {
+      title: st.step === 5 ? 'Thank you' : ['Your cart', 'Your account', 'Payment', 'Review order'][st.step - 1], steps, done: st.step === 5, notDone: st.step !== 5,
+      step1: st.step === 1, step2: st.step === 2, step3: st.step === 3, step4: st.step === 4, cartEmpty: !!m && st.cart.length === 0, cartHasItems: st.cart.length > 0,
+      planItems, domainItems, currency: cur, lines, subtotal: f(L.subtotal), total: f(total), hasDiscount: promoOff > 0, discount: f(promoOff), hasSaving: L.saving > 0, saving: f(L.saving),
+      renewNote: st.cart.length ? (anyYearly ? 'Yearly plans renew at the same price after 12 months.' : 'Monthly plans renew at the same price every month.') : 'Add a plan or domain to see your total.',
+      next: () => { if (st.cart.length) this.go(2); }, back: () => this.go(st.step === 4 && total === 0 ? 2 : st.step - 1), goAccount: () => this.go(2), goPayment: () => this.go(3),
+      acc: st.acc, isCreate: st.acc.mode === 'create', pickCreate: () => this.setState({ acc: Object.assign({}, st.acc, { mode: 'create' }) }), pickLogin: () => this.setState({ acc: Object.assign({}, st.acc, { mode: 'login' }) }), createStyle: seg(st.acc.mode === 'create'), loginStyle: seg(st.acc.mode === 'login'),
+      onAccName: setAcc('name'), onAccEmail: setAcc('email'), onAccPassword: setAcc('password'), onAccPhone: setAcc('phone'), onAccCountry: setAcc('country'), passwordPlaceholder: st.acc.mode === 'create' ? 'At least 10 characters' : 'Your password', passwordAutocomplete: st.acc.mode === 'create' ? 'new-password' : 'current-password',
+      accError: !!st.accError, accErrorText: st.accError,
+      submitAccount: e => { e.preventDefault(); if (st.account) return this.go(total > 0 ? 3 : 4); const a = st.acc; if (a.mode === 'create' && !a.name.trim()) return this.setState({ accError: 'Please enter your full name.' }); if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(a.email)) return this.setState({ accError: 'Please enter a valid email address.' }); if (a.password.length < (a.mode === 'create' ? 10 : 1)) return this.setState({ accError: a.mode === 'create' ? 'Password needs at least 10 characters.' : 'Please enter your password.' }); this.go(total > 0 ? 3 : 4); },
+      signedIn: !!st.account, notSignedIn: !st.account, accInitials: m && st.account ? m.initials(st.account.name || st.account.email) : '', accName: st.account ? (st.account.name || st.account.email.split('@')[0]) : '', accEmailLabel: st.account ? st.account.email : '', notMe: () => { m.signOut(); this.setState({ account: null, acc: Object.assign({}, st.acc, { mode: 'create', email: '', password: '', name: '' }) }); },
+      payNeeded: total > 0,
+      pay: st.pay, methods, payCard: st.pay.method === 'card', payWallet: st.pay.method === 'wallet', payRedirect: st.pay.method === 'paypal' || st.pay.method === 'crypto', onPayNumber: setPay('number'), onPayExpiry: setPay('expiry'), onPayCvc: setPay('cvc'), onPayHolder: setPay('holder'), onPayWallet: setPay('wallet'), payError: !!st.payError, payErrorText: st.payError,
+      submitPayment: e => { e.preventDefault(); const p = st.pay; if (p.method === 'card' && (p.number.replace(/\s/g, '').length < 12 || !p.expiry || p.cvc.length < 3 || !p.holder.trim())) return this.setState({ payError: 'Please complete the card details.' }); if (p.method === 'wallet' && p.wallet.replace(/\D/g, '').length < 8) return this.setState({ payError: 'Please enter the wallet phone number.' }); this.go(4); },
+      accountName: (st.account && st.account.name) || st.acc.name || 'Existing customer', accountEmail: (st.account && st.account.email) || st.acc.email, paymentName: total === 0 ? 'No payment needed' : pmDef ? pmDef.name : '', paymentDetail: total === 0 ? 'Free plan · no card required' : st.pay.method === 'card' ? '•••• ' + st.pay.number.replace(/\s/g, '').slice(-4) : st.pay.method === 'wallet' ? st.pay.wallet : 'Redirect on confirmation',
+      agree: st.agree, toggleAgree: () => this.setState({ agree: !st.agree, agreeError: false }), agreeError: st.agreeError,
+      placeOrder: () => { if (!st.agree) return this.setState({ agreeError: true }); const id = 'SW-' + new Date().getFullYear() + '-' + String(Math.floor(1000 + Math.random() * 9000)); const now = Date.now(); const cart = st.cart; const services = cart.filter(i => i.type === 'plan' && m.planById(i.planId)).map(i => ({ planId: i.planId, term: i.term, addons: i.addons || [], domain: i.domainMode === 'new' && i.domainName ? m.normalizeDomain(i.domainName).name + (i.tld || '.com') : (i.domainMode === 'transfer' || i.domainMode === 'own') ? (i.domainName || '') : '' }));
+        const domains = cart.filter(i => i.type === 'domain').map(i => ({ name: i.domainName, years: Number(i.years) || 1, kind: 'register' })).concat(cart.filter(i => i.type === 'plan' && i.domainName && (i.domainMode === 'new' || i.domainMode === 'transfer')).map(i => ({ name: i.domainMode === 'new' ? m.normalizeDomain(i.domainName).name + (i.tld || '.com') : i.domainName, years: 1, kind: i.domainMode === 'new' ? 'register' : 'transfer' })));
+        const acct = st.account || { name: st.acc.name.trim(), email: st.acc.email.trim() }; m.setAccount(acct);
+        m.addOrder({ id, date: now, total, currency: cur, payment: total === 0 ? 'No payment needed' : (pmDef ? pmDef.name : ''), services, domains });
+        m.setCart([]); this.setState({ orderId: id, step: 5, cart: [], account: acct }); try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {} },
+      orderId: st.orderId, promo: st.promo, onPromo: e => this.setState({ promo: e.target.value, promoMsg: '' }), promoMsg: !!st.promoMsg, promoMsgText: st.promoMsg,
+      applyPromo: e => { e.preventDefault(); const ok = st.promo.trim().toUpperCase() === 'SOMION10'; this.setState({ promoOk: ok, promoMsg: ok ? '10% applied to today\u2019s total.' : 'That code is not valid. Try SOMION10.' }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

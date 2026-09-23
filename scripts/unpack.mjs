@@ -1,14 +1,14 @@
-// Build: unpack the standalone design export into a plain static site.
+// Import: unpack a standalone Claude Design export into plain static files.
 //
-// "Somion Website.html" is a self-extracting export from Claude Design. Every
-// page component, script, font, image and video is embedded (gzip + base64)
-// in a JSON manifest that the page decodes into blob: URLs on each visit.
-// That keeps the export portable, but visitors download ~14 MB before
-// anything renders and nothing can be cached. This script writes each
-// embedded file back out under the path the pages reference, so the host
-// serves ordinary static files that the design runtime fetches on demand.
+// A standalone export is self-extracting: every page component, script,
+// font, image and video is embedded (gzip + base64) in a JSON manifest that
+// the page decodes into blob: URLs on each visit. This script writes each
+// embedded file back out under the path the pages reference. public/ was
+// created this way from design/Somion Website.html and has been edited by
+// hand since, so a new export goes to a scratch folder to be diffed and
+// merged, not straight over public/.
 //
-//   node scripts/build.mjs [bundle.html] [outDir]
+//   node scripts/unpack.mjs [export.html] [outDir] [--force]
 
 import crypto from 'node:crypto';
 import fs from 'node:fs';
@@ -17,8 +17,12 @@ import { fileURLToPath } from 'node:url';
 import zlib from 'node:zlib';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SOURCE = path.resolve(ROOT, process.argv[2] ?? 'Somion Website.html');
-const OUT = path.resolve(ROOT, process.argv[3] ?? 'dist');
+const args = process.argv.slice(2).filter((a) => a !== '--force');
+const SOURCE = path.resolve(ROOT, args[0] ?? 'design/Somion Website.html');
+const OUT = path.resolve(ROOT, args[1] ?? 'design/unpacked');
+if (OUT === path.join(ROOT, 'public') && fs.existsSync(OUT) && !process.argv.includes('--force')) {
+  throw new Error('public/ holds the hand-edited site. Unpack to a scratch folder and merge, or pass --force to overwrite it.');
+}
 
 const GOOGLE_FONTS_CSS = /^https:\/\/fonts\.googleapis\.com\/css2?\?/;
 const UNPKG = /^https:\/\/unpkg\.com\/((?:@[^/]+\/)?[^/@]+)@([^/]+)\/(.+)$/;

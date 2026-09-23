@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>
+:focus-visible{outline:2px solid #6b6cf5;outline-offset:3px}::selection{background:#c7c9f9;color:#08133e}
+body{margin:0;background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#3435cc}a:hover{color:#4e4feb}
+@keyframes somionSpin{to{transform:rotate(360deg)}}
+@keyframes somionSwap{from{transform:translateY(8px)}to{transform:none}}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <aside data-screen-label="Login brand panel" style="position:relative;flex:1.05 1 0;min-height:100vh;overflow:hidden;color:#fff;isolation:isolate;display:flex">
+      <div style="position:absolute;inset:0;z-index:0"><dc-import name="HeroVideo" src="{{ heroVideo }}" tint="indigo" label="HERO VIDEO SLOT · login" hint-size="100%,100%" style="width:100%;height:100%"></dc-import></div>
+      <div style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:space-between;gap:40px;width:100%;padding:36px clamp(28px,4vw,56px) 32px;box-sizing:border-box">
+        <a href="Home.dc.html" aria-label="Somion home" style="display:inline-flex;align-self:flex-start"><img src="assets/somion-logo.png" alt="Somion Web Services" style="height:36px;width:auto;display:block;filter:brightness(0) invert(1)"></img></a>
+        <div style="display:flex;flex-direction:column;gap:22px;max-width:520px">
+          <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:10px;padding:8px 14px 8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);backdrop-filter:blur(8px);font:800 11.5px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap"><span style="width:8px;height:8px;border-radius:50%;background:#61d6a6"></span>Client area</span>
+          <h1 style="margin:0;font:800 clamp(38px,4.2vw,60px)/1 'Manrope',sans-serif;letter-spacing:-.03em;text-wrap:balance">Your hosting, <span style="color:#c7c9f9">in one clear place.</span></h1>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;font:600 15px 'DM Sans',sans-serif;color:rgba(255,255,255,.9)">
+            <li style="display:flex;align-items:center;gap:12px"><span style="width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.14);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="display:inline-block;width:16px;height:16px;background:#fff;mask:url(assets/icons/server.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/server.svg) center/contain no-repeat"></span></span>Services, renewals and invoices together</li>
+            <li style="display:flex;align-items:center;gap:12px"><span style="width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.14);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="display:inline-block;width:16px;height:16px;background:#fff;mask:url(assets/icons/globe.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/globe.svg) center/contain no-repeat"></span></span>Domains, DNS and auto-renew in a click</li>
+            <li style="display:flex;align-items:center;gap:12px"><span style="width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.14);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="display:inline-block;width:16px;height:16px;background:#fff;mask:url(assets/icons/headphones.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/headphones.svg) center/contain no-repeat"></span></span>24/7 real-person support</li>
+          </ul>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;font-size:12.5px;color:rgba(255,255,255,.7)">
+          <span style="display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border-radius:999px;border:1px solid rgba(97,214,166,.3);background:rgba(8,19,62,.35);color:#c7f7e2;font-weight:600;white-space:nowrap"><span style="width:8px;height:8px;border-radius:50%;background:#61d6a6;box-shadow:0 0 0 4px rgba(97,214,166,.18)"></span>All systems ready</span>
+          <span>© 2026 Somion · Belp, Switzerland</span>
+        </div>
+      </div>
+    </aside>
+  </sc-if>
+
+  <main data-screen-label="Login form" style="flex:1 1 0;min-width:0;min-height:100vh;display:flex;flex-direction:column;padding:28px clamp(20px,4vw,56px);box-sizing:border-box;background:radial-gradient(700px 420px at 100% 0%,#eceeff 0%,rgba(236,238,255,0) 70%),#fbfbfe">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><a href="Home.dc.html" aria-label="Somion home" style="display:inline-flex"><img src="assets/somion-logo.png" alt="Somion Web Services" style="height:34px;width:auto;display:block"></img></a></sc-if>
+      <a href="Home.dc.html" style="margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:12px;border:1px solid #e5e7f2;background:#fff;color:#08133e;font:700 13px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span style="display:inline-block;width:15px;height:15px;background:#08133e;mask:url(assets/icons/arrow-left.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-left.svg) center/contain no-repeat"></span>Back to site</a>
+    </div>
+
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:40px 0">
+      <div style="width:100%;max-width:420px;display:flex;flex-direction:column;gap:24px">
+
+        <sc-if value="{{ isSignedIn }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:22px;animation:somionSwap .3s ease both">
+            <div style="display:flex;align-items:center;gap:16px">
+              <span style="width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,#7c7dff,#4e4feb 60%,#3b3cd4);color:#fff;font:800 20px 'Manrope',sans-serif;display:inline-flex;align-items:center;justify-content:center;flex:none;box-shadow:0 18px 36px -18px rgba(78,79,235,.9)">{{ initials }}</span>
+              <span style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="display:inline-flex;align-items:center;gap:8px;font:800 11.5px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#146132"><span style="display:inline-block;width:14px;height:14px;background:#2fb26b;mask:url(assets/icons/circle-check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/circle-check.svg) center/contain no-repeat"></span>Signed in</span><span style="font:800 26px/1.1 'Manrope',sans-serif;letter-spacing:-.02em">Hi, {{ firstName }}.</span><span style="font-size:14px;color:#5d6480;overflow-wrap:anywhere">{{ accountEmail }}</span></span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <a href="Hosting.dc.html" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;border-radius:14px;background:linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4);color:#fff;font:700 16px 'DM Sans',sans-serif;text-decoration:none;box-shadow:0 16px 34px -16px rgba(78,79,235,.95);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Browse hosting plans<span style="display:inline-block;width:17px;height:17px;background:#fff;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <a href="Checkout.dc.html" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:14px;border:1px solid #e5e7f2;background:#fff;color:#08133e;font:700 14px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span style="display:inline-block;width:16px;height:16px;background:#08133e;mask:url(assets/icons/shopping-cart.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/shopping-cart.svg) center/contain no-repeat"></span>View cart</a>
+                <a href="Domains.dc.html" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:14px;border:1px solid #e5e7f2;background:#fff;color:#08133e;font:700 14px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span style="display:inline-block;width:16px;height:16px;background:#08133e;mask:url(assets/icons/globe.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/globe.svg) center/contain no-repeat"></span>Find a domain</a>
+              </div>
+            </div>
+            <button type="button" onClick="{{ signOut }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0;border:0;background:none;color:#5d6480;font:700 14px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="color:#b3181b" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span style="display:inline-block;width:15px;height:15px;background:currentColor;mask:url(assets/icons/log-out.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/log-out.svg) center/contain no-repeat"></span>Sign out</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isReset }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:22px;animation:somionSwap .3s ease both">
+            <span style="width:52px;height:52px;border-radius:16px;background:#eeeefe;display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:24px;height:24px;background:#4e4feb;mask:url(assets/icons/key-round.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/key-round.svg) center/contain no-repeat"></span></span>
+            <div style="display:flex;flex-direction:column;gap:8px"><h2 style="margin:0;font:800 32px/1.05 'Manrope',sans-serif;letter-spacing:-.02em">Reset your password</h2><p style="margin:0;font-size:15.5px;line-height:1.55;color:#5d6480">Enter the email on your account and we’ll send a secure reset link.</p></div>
+            <sc-if value="{{ resetSent }}" hint-placeholder-val="{{ false }}">
+              <div role="status" style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:16px;background:#e9f8ef;border:1px solid #c7e9d3"><span style="display:inline-block;width:22px;height:22px;flex:none;background:#146132;mask:url(assets/icons/mail-check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/mail-check.svg) center/contain no-repeat"></span><span style="font-size:14.5px;line-height:1.5;color:#0f4a26">Check your inbox. If <strong>{{ email }}</strong> has an account, a reset link is on its way.</span></div>
+            </sc-if>
+            <sc-if value="{{ resetForm }}" hint-placeholder-val="{{ true }}">
+              <form onSubmit="{{ submitReset }}" style="display:flex;flex-direction:column;gap:16px">
+                <label style="display:flex;flex-direction:column;gap:7px;font:700 13px 'DM Sans',sans-serif">Email<input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="you@company.com" autoComplete="email" style="height:52px;padding:0 16px;border-radius:14px;border:1px solid #d6d8ed;background:#fff;font:500 15px 'DM Sans',sans-serif;color:#08133e;outline:none;transition:border-color .15s,box-shadow .15s" style-focus="border-color:#4e4feb;box-shadow:0 0 0 4px #eeeefe"></input></label>
+                <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;padding:10px 14px;border-radius:10px;background:#fdecec;color:#b3181b;font-size:13px;font-weight:600">{{ error }}</p></sc-if>
+                <button type="submit" style="height:54px;border-radius:14px;border:0;background:linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4);color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 16px 34px -16px rgba(78,79,235,.95);display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Send reset link</button>
+              </form>
+            </sc-if>
+            <button type="button" onClick="{{ backToSignIn }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0;border:0;background:none;color:#3435cc;font:700 14px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="color:#4e4feb;text-decoration:underline;text-underline-offset:4px"><span style="display:inline-block;width:15px;height:15px;background:#3435cc;mask:url(assets/icons/arrow-left.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-left.svg) center/contain no-repeat"></span>Back to sign in</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ notReset }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h2 style="margin:0;font:800 clamp(30px,3vw,36px)/1.05 'Manrope',sans-serif;letter-spacing:-.02em">{{ title }}</h2>
+            <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5d6480">{{ subtitle }}</p>
+          </div>
+          <div role="tablist" aria-label="Account" style="display:grid;grid-template-columns:1fr 1fr;padding:4px;border-radius:14px;background:#f0f1fb;border:1px solid #e5e7f2">
+            <button type="button" role="tab" aria-selected="{{ isSignIn }}" onClick="{{ pickSignIn }}" style="{{ signInTab }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Sign in</button>
+            <button type="button" role="tab" aria-selected="{{ isCreate }}" onClick="{{ pickCreate }}" style="{{ createTab }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Create account</button>
+          </div>
+          <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:16px">
+            <sc-if value="{{ isCreate }}" hint-placeholder-val="{{ false }}">
+              <label style="display:flex;flex-direction:column;gap:7px;font:700 13px 'DM Sans',sans-serif">Full name<input type="text" value="{{ name }}" onChange="{{ onName }}" placeholder="Maxin Will" autoComplete="name" style="height:52px;padding:0 16px;border-radius:14px;border:1px solid #d6d8ed;background:#fff;font:500 15px 'DM Sans',sans-serif;color:#08133e;outline:none;transition:border-color .15s,box-shadow .15s" style-focus="border-color:#4e4feb;box-shadow:0 0 0 4px #eeeefe"></input></label>
+            </sc-if>
+            <label style="display:flex;flex-direction:column;gap:7px;font:700 13px 'DM Sans',sans-serif">Email<input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="you@company.com" autoComplete="email" style="height:52px;padding:0 16px;border-radius:14px;border:1px solid #d6d8ed;background:#fff;font:500 15px 'DM Sans',sans-serif;color:#08133e;outline:none;transition:border-color .15s,box-shadow .15s" style-focus="border-color:#4e4feb;box-shadow:0 0 0 4px #eeeefe"></input></label>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><label for="login-password" style="font:700 13px 'DM Sans',sans-serif">Password</label><sc-if value="{{ isSignIn }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ forgot }}" style="border:0;background:none;padding:6px 0;color:#3435cc;font:700 13px 'DM Sans',sans-serif;cursor:pointer" style-hover="color:#4e4feb">Forgot password?</button></sc-if></div>
+              <div style="position:relative">
+                <input id="login-password" type="{{ pwType }}" value="{{ password }}" onChange="{{ onPassword }}" placeholder="{{ pwPlaceholder }}" autoComplete="{{ pwAutocomplete }}" style="width:100%;box-sizing:border-box;height:52px;padding:0 52px 0 16px;border-radius:14px;border:1px solid #d6d8ed;background:#fff;font:500 15px 'DM Sans',sans-serif;color:#08133e;outline:none;transition:border-color .15s,box-shadow .15s" style-focus="border-color:#4e4feb;box-shadow:0 0 0 4px #eeeefe"></input>
+                <button type="button" onClick="{{ togglePw }}" aria-label="{{ pwToggleLabel }}" style="position:absolute;right:6px;top:6px;width:40px;height:40px;border-radius:10px;border:0;background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:#f0f1fb"><span style="{{ pwIconStyle }}"></span></button>
+              </div>
+              <sc-if value="{{ isCreate }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;align-items:center;gap:10px;margin-top:4px"><div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:4px"><sc-for list="{{ strengthBars }}" as="b" hint-placeholder-count="4"><span style="{{ b.style }}"></span></sc-for></div><span style="font:700 12px 'DM Sans',sans-serif;color:#5d6480;min-width:64px;text-align:right">{{ strengthLabel }}</span></div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ isSignIn }}" hint-placeholder-val="{{ true }}">
+              <label style="display:inline-flex;align-items:center;gap:10px;font-size:14px;color:#3f4660;cursor:pointer;min-height:36px"><input type="checkbox" checked="{{ remember }}" onChange="{{ toggleRemember }}" style="width:18px;height:18px;margin:0;accent-color:#4e4feb"></input>Keep me signed in on this device</label>
+            </sc-if>
+            <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;padding:10px 14px;border-radius:10px;background:#fdecec;color:#b3181b;font-size:13px;font-weight:600">{{ error }}</p></sc-if>
+            <button type="submit" disabled="{{ busy }}" style="height:54px;border-radius:14px;border:0;background:linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4);color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 16px 34px -16px rgba(78,79,235,.95);display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">
+              <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}"><span style="width:18px;height:18px;border-radius:50%;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;animation:somionSpin .7s linear infinite"></span></sc-if>
+              <span>{{ submitLabel }}</span>
+            </button>
+          </form>
+          <div style="display:flex;align-items:center;gap:10px;justify-content:center;padding-top:6px;font-size:12.5px;color:#8a91aa;text-align:center;flex-wrap:wrap">
+            <span style="display:inline-flex;align-items:center;gap:6px"><span style="display:inline-block;width:13px;height:13px;background:#8a91aa;mask:url(assets/icons/lock.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/lock.svg) center/contain no-repeat"></span>Encrypted connection</span>
+            <span>·</span><a href="Legal.dc.html#terms" style="color:#5d6480">Terms</a><span>·</span><a href="Legal.dc.html#privacy" style="color:#5d6480">Privacy</a>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;font-size:13px;color:#5d6480">Need help signing in?&nbsp;<a href="Contact.dc.html" style="font-weight:700">Contact support</a></div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { mod: null, account: null, wide: true, mode: 'signin', name: '', email: '', password: '', showPw: false, remember: true, error: '', busy: false, resetSent: false };
+  componentDidMount() {
+    this.mq = window.matchMedia('(min-width: 960px)'); this.onMq = () => this.setState({ wide: this.mq.matches });
+    this.mq.addEventListener ? this.mq.addEventListener('change', this.onMq) : this.mq.addListener(this.onMq); this.onMq();
+    const q = new URLSearchParams(window.__somionQuery != null ? window.__somionQuery : location.search); if (q.get('mode') === 'create') this.setState({ mode: 'create' });
+    import((window.__resources && window.__resources['./somion-data.js']) || './somion-data.js').then(mod => { const a = mod.getAccount(); this.setState({ mod, account: a, email: a ? a.email : '' }); });
+  }
+  componentWillUnmount() { clearTimeout(this.t); }
+  strength(pw) { let s = 0; if (pw.length >= 10) s++; if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) s++; if (/\d/.test(pw)) s++; if (/[^A-Za-z0-9]/.test(pw) || pw.length >= 16) s++; return pw ? Math.max(1, s) : 0; }
+  renderVals() {
+    const st = this.state, create = st.mode === 'create', reset = st.mode === 'reset';
+    const tab = on => ({ height: 42, borderRadius: 11, border: 0, cursor: 'pointer', font: "700 14px 'DM Sans', sans-serif", color: on ? '#08133e' : '#5d6480', background: on ? '#fff' : 'transparent', boxShadow: on ? '0 6px 16px -10px rgba(8,19,62,.4)' : 'none', transition: 'all .18s' });
+    const sv = this.strength(st.password); const colors = ['#e5e7f2', '#e5484d', '#f0a35e', '#4e4feb', '#2fb26b'];
+    const icon = (n, c, s) => ({ display: 'inline-block', width: s, height: s, background: c, mask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat', WebkitMask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat' });
+    const set = k => e => this.setState({ [k]: e.target.value, error: '' });
+    const next = new URLSearchParams(window.__somionQuery != null ? window.__somionQuery : location.search).get('next');
+    return { heroVideo: this.props.heroVideo || 'assets/hero-loop.webm', wide: st.wide, narrow: !st.wide,
+      isSignedIn: !!st.account, isReset: reset && !st.account, notReset: !reset && !st.account,
+      initials: st.mod && st.account ? st.mod.initials(st.account.name || st.account.email) : '', firstName: st.account ? (st.account.name || st.account.email).split(/[\s@]/)[0] : '', accountEmail: st.account ? st.account.email : '',
+      signOut: () => { if (st.mod) st.mod.signOut(); this.setState({ account: null, mode: 'signin', password: '' }); }, isSignIn: st.mode === 'signin', isCreate: create,
+      title: create ? 'Create your account' : 'Welcome back', subtitle: create ? 'One account for hosting, domains and billing.' : 'Sign in to manage your services, domains and invoices.',
+      pickSignIn: () => this.setState({ mode: 'signin', error: '' }), pickCreate: () => this.setState({ mode: 'create', error: '' }), signInTab: tab(!create), createTab: tab(create),
+      name: st.name, email: st.email, password: st.password, onName: set('name'), onEmail: set('email'), onPassword: set('password'),
+      pwType: st.showPw ? 'text' : 'password', togglePw: () => this.setState({ showPw: !st.showPw }), pwToggleLabel: st.showPw ? 'Hide password' : 'Show password', pwIconStyle: icon(st.showPw ? 'eye-off' : 'eye', '#5d6480', 18),
+      pwPlaceholder: create ? 'At least 10 characters' : 'Your password', pwAutocomplete: create ? 'new-password' : 'current-password',
+      strengthBars: [1, 2, 3, 4].map(i => ({ style: { display: 'block', height: 5, borderRadius: 999, background: i <= sv ? colors[sv] : '#e5e7f2', transition: 'background .2s' } })), strengthLabel: ['', 'Weak', 'Fair', 'Good', 'Strong'][sv],
+      remember: st.remember, toggleRemember: () => this.setState({ remember: !st.remember }),
+      hasError: !!st.error, error: st.error, busy: st.busy, submitLabel: st.busy ? (create ? 'Creating account…' : 'Signing in…') : (create ? 'Create account' : 'Sign in'),
+      forgot: () => this.setState({ mode: 'reset', error: '', resetSent: false }), backToSignIn: () => this.setState({ mode: 'signin', error: '', resetSent: false }), resetSent: st.resetSent, resetForm: !st.resetSent,
+      submitReset: e => { e.preventDefault(); if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(st.email)) return this.setState({ error: 'Please enter a valid email address.' }); this.setState({ resetSent: true, error: '' }); },
+      submit: e => { e.preventDefault(); if (st.busy) return;
+        if (create && !st.name.trim()) return this.setState({ error: 'Please enter your full name.' });
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(st.email)) return this.setState({ error: 'Please enter a valid email address.' });
+        if (create && st.password.length < 10) return this.setState({ error: 'Use at least 10 characters for your password.' });
+        if (!create && !st.password) return this.setState({ error: 'Please enter your password.' });
+        this.setState({ busy: true, error: '' });
+        this.t = setTimeout(() => { const m = st.mod; const nm = create ? st.name.trim() : st.email.split('@')[0].replace(/[._-]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase()); const acct = { name: nm, email: st.email.trim() }; if (m) m.setAccount(acct); if (next && /^[A-Za-z]+\.dc\.html$/.test(next)) (window.__somionNav || (u => { location.href = u; }))(next); else this.setState({ account: acct, busy: false, password: '' }); }, 700); } };
+  }
+}
+</script>
+</body>
+</html>

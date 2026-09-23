@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="fonts/6a51d61393.css" rel="stylesheet">
+<style>
+:focus-visible{outline:2px solid #6b6cf5;outline-offset:3px}::selection{background:#c7c9f9;color:#08133e}
+html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#3435cc}a:hover{color:#4e4feb}
+@keyframes somionFadeUp{from{transform:translateY(10px)}to{transform:none}}
+@keyframes somionPop{0%{transform:scale(.96)}100%{transform:none}}
+</style>
+</helmet>
+<div id="top" style="background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column">
+  <div style="height:73px"><dc-import name="Header" active="hosting" on-dark="{{ false }}" hint-size="100%,73px"></dc-import></div>
+
+  <section data-screen-label="Compare intro" style="background:radial-gradient(800px 380px at 80% 0%,#e6e7ff 0%,rgba(230,231,255,0) 70%),#fbfbfe;border-bottom:1px solid #e5e7f2">
+    <div style="max-width:1180px;margin:0 auto;padding:56px clamp(16px,4vw,40px) 40px;display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
+        <a href="Hosting.dc.html" style="font:700 13px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none">← Back to all plans</a>
+        <h1 data-enter="0" style="margin:0;font:800 clamp(34px,4.6vw,58px)/1.02 'Manrope',sans-serif;letter-spacing:-.025em;text-wrap:balance">Compare plans side by side.</h1>
+        <p data-enter="80" style="margin:0;font-size:17px;line-height:1.55;color:#5d6480">Pick up to three plans from any category. Rows where the plans differ are highlighted, so the decision is about what changes — not what stays the same.</p>
+      </div>
+      <div data-enter="160" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <div role="group" aria-label="Billing period" style="display:inline-flex;padding:4px;border-radius:999px;background:#fff;border:1px solid #e5e7f2">
+          <button type="button" onClick="{{ pickMonthly }}" style="{{ monthlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Monthly</button>
+          <button type="button" onClick="{{ pickYearly }}" style="{{ yearlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Yearly</button>
+        </div>
+        <button type="button" onClick="{{ toggleDiff }}" aria-pressed="{{ diffOnly }}" style="{{ diffStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)"><span style="{{ diffKnobStyle }}"><span style="{{ diffDotStyle }}"></span></span>Differences only</button>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Compare table" style="max-width:1180px;width:100%;box-sizing:border-box;margin:0 auto;padding:40px clamp(16px,4vw,40px) 0;flex:1">
+    <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between;padding:clamp(28px,4vw,56px);border-radius:28px;border:1px dashed #babcf6;background:#fff">
+        <div style="display:flex;flex-direction:column;gap:10px;max-width:520px">
+          <h2 style="margin:0;font:800 30px/1.1 'Manrope',sans-serif;letter-spacing:-.02em">Nothing to compare yet.</h2>
+          <p style="margin:0;font-size:16px;line-height:1.55;color:#5d6480">Add plans from the hosting page with “+ Add to compare”, or start from a popular trio.</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <button type="button" onClick="{{ quickTrio }}" style="height:50px;padding:0 20px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 15px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Shared Ultra vs WP Grow vs Cloud 2</button>
+          <a href="Hosting.dc.html" style="display:inline-flex;align-items:center;height:50px;padding:0 20px;border-radius:12px;border:1px solid #babcf6;background:#fff;color:#3435cc;font:700 15px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Browse plans</a>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ hasCols }}" hint-placeholder-val="{{ true }}">
+      <div style="overflow-x:auto;border:1px solid #e5e7f2;border-radius:24px;background:#fff;box-shadow:0 24px 50px -36px rgba(8,19,62,.3)">
+        <table style="width:100%;min-width:760px;border-collapse:separate;border-spacing:0;font-size:14px">
+          <thead>
+            <tr>
+              <th scope="col" style="text-align:left;vertical-align:bottom;padding:24px 24px 18px;font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5d6480;border-bottom:1px solid #e5e7f2;background:#fff;position:sticky;left:0;z-index:2;min-width:180px">{{ colCountLabel }}</th>
+              <sc-for list="{{ cols }}" as="c" hint-placeholder-count="3">
+                <th scope="col" style="{{ c.thStyle }}">
+                  <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start;animation:somionPop .3s ease both">
+                    <div style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:8px">
+                      <span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#5d6480">{{ c.cat }}</span>
+                      <button type="button" onClick="{{ c.remove }}" aria-label="Remove plan" style="width:28px;height:28px;border-radius:8px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font-size:16px;line-height:1;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">×</button>
+                    </div>
+                    <span style="font:800 22px/1.1 'Manrope',sans-serif;letter-spacing:-.01em">{{ c.name }}</span>
+                    <span style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap"><span style="font:800 30px/1 'Manrope',sans-serif;letter-spacing:-.02em">{{ c.price }}</span><sc-if value="{{ c.paid }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;color:#5d6480;font-weight:400">/ mo</span></sc-if><sc-if value="{{ c.hasWas }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#8a91aa;text-decoration:line-through;font-weight:400">{{ c.was }}</span></sc-if></span>
+                    <span style="font-size:12px;color:#5d6480;font-weight:400">{{ c.caption }}</span>
+                    <button type="button" onClick="{{ c.order }}" style="{{ c.orderStyle }}" style-hover="transform:translateY(-2px);box-shadow:0 16px 32px -16px rgba(78,79,235,.7);filter:brightness(1.05)" style-active="transform:scale(.97)">{{ c.orderLabel }}</button>
+                  </div>
+                </th>
+              </sc-for>
+              <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ false }}">
+                <th scope="col" style="text-align:left;vertical-align:top;padding:20px;border-bottom:1px solid #e5e7f2;background:#fbfbfe;min-width:220px">
+                  <div style="display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;border:1px dashed #babcf6;background:#fff">
+                    <span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#4e4feb">Add a plan</span>
+                    <select value="{{ pickerCat }}" onChange="{{ onPickerCat }}" aria-label="Category" style="height:40px;padding:0 10px;border-radius:10px;border:1px solid #e5e7f2;background:#fff;color:#08133e;font:600 13px 'DM Sans',sans-serif">
+                      <sc-for list="{{ pickerCats }}" as="pc" hint-placeholder-count="8"><option value="{{ pc.id }}">{{ pc.name }}</option></sc-for>
+                    </select>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <sc-for list="{{ pickerPlans }}" as="pp" hint-placeholder-count="3">
+                        <button type="button" onClick="{{ pp.add }}" style="{{ pp.style }}" style-hover="border-color:#4e4feb;color:#2f30a8" style-active="transform:scale(.97)"><span style="font-weight:700">{{ pp.name }}</span><span style="color:#5d6480;font-weight:500">{{ pp.price }}</span></button>
+                      </sc-for>
+                    </div>
+                  </div>
+                </th>
+              </sc-if>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+              <tr>
+                <th scope="row" style="{{ r.labelStyle }}"><span style="display:inline-flex;align-items:center;gap:8px">{{ r.label }}<sc-if value="{{ r.differs }}" hint-placeholder-val="{{ false }}"><span style="width:6px;height:6px;border-radius:50%;background:#4e4feb"></span></sc-if></span></th>
+                <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="3">
+                  <td style="{{ c.style }}">
+                    <sc-if value="{{ c.yes }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:#eeeefe;align-items:center;justify-content:center"><span style="display:inline-block;width:12px;height:12px;background:#4e4feb;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span></span></sc-if>
+                    <sc-if value="{{ c.no }}" hint-placeholder-val="{{ false }}"><span style="color:#b7bccf;font-size:16px">—</span></sc-if>
+                    <sc-if value="{{ c.na }}" hint-placeholder-val="{{ false }}"><span style="color:#b7bccf;font-size:12px">n/a</span></sc-if>
+                    <sc-if value="{{ c.text }}" hint-placeholder-val="{{ true }}"><span style="font-weight:600">{{ c.value }}</span></sc-if>
+                  </td>
+                </sc-for>
+                <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ false }}"><td style="border-bottom:1px solid #f0f1fb;background:#fbfbfe"></td></sc-if>
+              </tr>
+            </sc-for>
+            <sc-if value="{{ noDiffRows }}" hint-placeholder-val="{{ false }}"><tr><td colSpan="{{ colSpan }}" style="padding:28px 24px;color:#5d6480;text-align:center">These plans are identical on every listed spec. Only price differs.</td></tr></sc-if>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin:18px 0 0;font-size:13px;color:#8a91aa">● marks a row where the plans differ. Prices in {{ currency }}; yearly billing pays for 10 months and covers 12.</p>
+    </sc-if>
+  </section>
+
+  <section data-screen-label="Compare CTA" style="max-width:1180px;margin:0 auto;padding:72px clamp(16px,4vw,40px) 96px;width:100%;box-sizing:border-box">
+    <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding:28px 32px;border-radius:22px;background:#f0f1fb;border:1px solid #dfe1f1">
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font:800 20px 'Manrope',sans-serif">Still deciding?</span><span style="font-size:15px;color:#5d6480">Real people answer setup and plan questions 24/7. Every plan has a 30-day money-back guarantee.</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px"><a href="Contact.dc.html" style="display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:12px;border:1px solid #babcf6;background:#fff;color:#3435cc;font:700 14px 'DM Sans',sans-serif;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Talk to Somion</a><a href="Hosting.dc.html" style="display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:12px;background:#4e4feb;color:#fff;font:700 14px 'DM Sans',sans-serif;text-decoration:none;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Back to plans</a></div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mod: null, currency: 'USD', ids: [], term: 'monthly', diffOnly: false, pickerCat: 'shared' };
+  componentDidMount() {
+    import((window.__resources && window.__resources['./somion-data.js']) || './somion-data.js').then(mod => {
+      const q = new URLSearchParams(window.__somionQuery != null ? window.__somionQuery : location.search); const fromQ = (q.get('ids') || '').split(',').filter(id => mod.planById(id)).slice(0, 3);
+      const ids = fromQ.length ? fromQ : mod.getCompare().filter(id => mod.planById(id));
+      if (fromQ.length) mod.setCompare(ids);
+      this.setState({ mod, currency: mod.getCurrency(), ids }); mod.enterAnimations(document);
+    });
+    this.onCur = e => this.setState({ currency: e.detail }); window.addEventListener('somion:currency', this.onCur);
+  }
+  componentWillUnmount() { window.removeEventListener('somion:currency', this.onCur); }
+  setIds(ids) { this.state.mod.setCompare(ids); this.setState({ ids }); }
+  renderVals() {
+    const m = this.state.mod, cur = this.state.currency, yearly = this.state.term === 'yearly';
+    const f = (v, o) => m ? m.fmt(v, cur, o) : '$' + v.toFixed(2);
+    const seg = on => ({ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 16px', borderRadius: 999, border: 0, cursor: 'pointer', font: "700 14px 'DM Sans', sans-serif", color: on ? '#fff' : '#5d6480', background: on ? '#4e4feb' : 'transparent', boxShadow: on ? '0 10px 22px -12px rgba(78,79,235,.9)' : 'none', transition: 'all .18s' });
+    const plans = m ? this.state.ids.map(id => m.planById(id)).filter(Boolean) : [];
+    const cols = plans.map(p => { const monthly = yearly ? p.price * m.YEARLY_MONTHS / 12 : p.price; const primary = p.featured;
+      return { id: p.id, cat: p.catName, name: p.name, paid: p.price > 0, price: p.price === 0 ? 'Free' : f(monthly), hasWas: !!p.was, was: p.was ? f(yearly ? p.was * m.YEARLY_MONTHS / 12 : p.was) : '', caption: p.price === 0 ? 'No card needed' : yearly ? 'billed ' + f(p.price * m.YEARLY_MONTHS) + ' per year' : 'billed monthly · renews at this price',
+        orderLabel: p.price === 0 ? 'Start for free' : 'Order ' + p.name, order: () => { m.addPlanToCart(p.id, this.state.term); (window.__somionNav || (u => { location.href = u; }))('Checkout.dc.html'); }, remove: () => this.setIds(this.state.ids.filter(x => x !== p.id)),
+        thStyle: { textAlign: 'left', verticalAlign: 'top', padding: '20px 20px 18px', borderBottom: '1px solid #e5e7f2', background: p.featured ? '#f7f7ff' : '#fff', minWidth: 200, width: '26%' },
+        orderStyle: { marginTop: 6, height: 42, padding: '0 16px', borderRadius: 11, border: primary ? 0 : '1px solid #babcf6', background: primary ? '#4e4feb' : '#fff', color: primary ? '#fff' : '#2f30a8', font: "700 13px 'DM Sans', sans-serif", cursor: 'pointer', boxShadow: primary ? '0 12px 26px -14px rgba(78,79,235,.9)' : 'none', whiteSpace: 'nowrap' } }; });
+    // union of spec keys in catalogue order
+    const keys = []; if (m) for (const c of m.CATEGORIES) for (const [k] of c.specKeys) if (!keys.includes(k) && plans.some(p => k in p.specs)) keys.push(k);
+    let rows = keys.map(k => { const vals = plans.map(p => p.specs[k]); const norm = vals.map(v => v === undefined ? '__na' : String(v)); const differs = new Set(norm).size > 1;
+      return { key: k, label: m.specLabel(k), differs, labelStyle: { textAlign: 'left', padding: '14px 24px', fontWeight: 600, color: '#08133e', borderBottom: '1px solid #f0f1fb', background: differs ? '#fbfbff' : '#fff', position: 'sticky', left: 0, zIndex: 1 },
+        cells: plans.map(p => { const v = p.specs[k]; return { yes: v === true, no: v === false, na: v === undefined, text: typeof v === 'string', value: typeof v === 'string' ? m.specText(p.cat, k, v) : '', style: { padding: '14px 20px', borderBottom: '1px solid #f0f1fb', color: '#3f4660', background: differs ? (p.featured ? '#f3f3ff' : '#fbfbff') : (p.featured ? '#f7f7ff' : '#fff'), fontWeight: differs ? 600 : 400 } }; }) }; });
+    const allRows = rows.length; if (this.state.diffOnly) rows = rows.filter(r => r.differs);
+    const pickerCats = m ? m.CATEGORIES.map(c => ({ id: c.id, name: c.name })) : [];
+    const pc = m ? m.categoryById(this.state.pickerCat) : null;
+    const pickerPlans = pc ? pc.plans.filter(p => !this.state.ids.includes(p.id)).map(p => ({ id: p.id, name: p.name, price: p.price === 0 ? 'Free' : f(p.price) + '/mo', add: () => this.setIds(this.state.ids.concat(p.id).slice(0, 3)), style: { display: 'flex', justifyContent: 'space-between', gap: 10, height: 40, padding: '0 12px', borderRadius: 10, border: '1px solid #e5e7f2', background: '#fff', color: '#08133e', font: "600 13px 'DM Sans', sans-serif", cursor: 'pointer', textAlign: 'left', alignItems: 'center' } })) : [];
+    const n = plans.length; const d = this.state.diffOnly;
+    return { cols, rows, hasCols: !m || n > 0, empty: !!m && n === 0, canAdd: !!m && n < 3, colSpan: n + 2, colCountLabel: n + (n === 1 ? ' plan' : ' plans') + ' selected', currency: cur,
+      noDiffRows: d && rows.length === 0 && allRows > 0,
+      pickMonthly: () => this.setState({ term: 'monthly' }), pickYearly: () => this.setState({ term: 'yearly' }), monthlyStyle: seg(!yearly), yearlyStyle: seg(yearly),
+      diffOnly: d, toggleDiff: () => this.setState({ diffOnly: !d }),
+      diffStyle: { display: 'inline-flex', alignItems: 'center', gap: 10, height: 48, padding: '0 16px 0 8px', borderRadius: 999, border: '1px solid ' + (d ? '#4e4feb' : '#e5e7f2'), background: '#fff', color: d ? '#2f30a8' : '#5d6480', font: "700 14px 'DM Sans', sans-serif", cursor: 'pointer', transition: 'all .18s' },
+      diffKnobStyle: { position: 'relative', width: 36, height: 22, borderRadius: 999, background: d ? '#4e4feb' : '#d6d8ed', transition: 'background .18s', display: 'inline-block' },
+      diffDotStyle: { position: 'absolute', top: 3, left: 3, width: 16, height: 16, borderRadius: '50%', background: '#fff', transform: d ? 'translateX(14px)' : 'none', transition: 'transform .18s', boxShadow: '0 1px 3px rgba(8,19,62,.3)' },
+      pickerCat: this.state.pickerCat, pickerCats, pickerPlans, onPickerCat: e => this.setState({ pickerCat: e.target.value }),
+      quickTrio: () => this.setIds(['shared-ultra', 'wp-grow', 'cloud-2']) };
+  }
+}
+</script>
+</body>
+</html>

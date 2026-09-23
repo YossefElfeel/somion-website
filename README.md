@@ -1,31 +1,34 @@
 # Somion Web Services website
 
-Marketing site for Somion Web Services, designed in Claude Design and deployed on Vercel.
+Marketing site for Somion Web Services, deployed on Vercel. It was designed in Claude Design and unpacked into the plain static files in `public/`, which are now the source and are edited directly.
 
-## How it's built
+## Structure
 
-`Somion Website.html` is the standalone export from the design tool. Every page, script, font, image and the hero video are embedded in that one file, which the browser unpacks on every visit (about 14 MB before first paint).
-
-`npm run build` unpacks it once at build time into `dist/` as ordinary static files, so visitors download only what the current page uses and everything can be cached:
-
-| Output | Contents |
+| Path | Contents |
 | --- | --- |
-| `index.html` | App shell and hash router (`/#/Hosting`, `/#/Checkout`, …) |
-| `*.dc.html` | Page and section components, fetched by the runtime on demand |
-| `dc-runtime.js`, `vendor/` | Design runtime and React 18.3.1, self-hosted |
-| `somion-data.js` | Plans, prices, currencies, cart and account helpers |
-| `assets/`, `fonts/` | Images, icons, hero video, and the Manrope and DM Sans fonts, self-hosted |
+| `public/index.html` | App shell and hash router (`/#/Hosting`, `/#/Checkout`, …) |
+| `public/*.dc.html` | Page and section components (markup, styles and logic), fetched by the runtime on demand |
+| `public/somion-data.js` | Plans, prices, currencies, cart and account helpers |
+| `public/dc-runtime.js`, `public/vendor/` | Design runtime and React 18.3.1, self-hosted (generated, don't edit) |
+| `public/assets/`, `public/fonts/` | Images, icons, hero video, and the Manrope and DM Sans fonts |
+| `design/Somion Website.html` | The original standalone export, kept for reference and not deployed |
 
-It has no dependencies and needs Node 18 or later.
+There's no build step and no dependencies. The scripts need Node 18 or later.
 
 ```bash
-npm run build     # Somion Website.html → dist/
-npm run preview   # serve dist/ at http://localhost:4173
+npm run preview   # serve public/ at http://localhost:4173
+npm run check     # confirm every file the pages reference exists (Vercel runs this before each deploy)
 ```
 
-## Updating the site
+Pushing to `main` deploys to production.
 
-Export the design again as a standalone HTML file, replace `Somion Website.html`, then commit and push to `main`. Vercel builds and deploys it.
+## Importing a new Claude Design export
+
+`public/` has been edited by hand since the export, so don't copy a new export over it. Unpack the new export to a scratch folder, then merge the changes you want:
+
+```bash
+npm run unpack -- "path/to/New Export.html" design/unpacked
+```
 
 ## Good to know
 
