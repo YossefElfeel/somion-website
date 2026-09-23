@@ -16,6 +16,29 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
 @keyframes somionShimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
 @keyframes somionPop{0%{transform:scale(.96)}100%{transform:none}}
 @keyframes somionSlideUp{from{transform:translate(-50%,120%)}to{transform:translate(-50%,0)}}
+.sw-tld-cap{display:none}
+/* Phones: the four-column price table becomes one compact row per extension, with the renewal price kept in view */
+@media (max-width: 640px) {
+  .sw-tld { display: block; min-width: 0 !important; }
+  .sw-tld thead { display: none; }
+  .sw-tld tbody { display: block; }
+  .sw-tld tr { display: grid; grid-template-columns: minmax(0, 1fr) auto 44px; grid-template-areas: "ext first act" "ext renew act"; align-items: center; column-gap: 14px; row-gap: 2px; padding: 14px 16px; border-bottom: 1px solid #f0f1fb; }
+  .sw-tld tr:last-child { border-bottom: 0; }
+  .sw-tld td { display: block; padding: 0 !important; border: 0 !important; }
+  .sw-tld-ext { grid-area: ext; }
+  .sw-tld-first { grid-area: first; align-self: end; font-size: 16px; }
+  .sw-tld-renew { grid-area: renew; align-self: start; font-size: 12.5px; }
+  .sw-tld-act { grid-area: act; }
+  /* icon-only button; the label stays in the accessibility tree at zero size */
+  .sw-tld-act button { width: 44px; height: 44px !important; padding: 0 !important; justify-content: center; gap: 0 !important; font-size: 0 !important; }
+  .sw-tld-cap { display: inline; font-weight: 500; color: #8a91aa; }
+  .sw-tld-first .sw-tld-cap { font-size: 12.5px; }
+}
+@media (max-width: 380px) {
+  .sw-tld tr { grid-template-columns: minmax(0, 1fr) 44px; grid-template-areas: "ext act" "first act" "renew act"; row-gap: 3px; }
+  .sw-tld-first, .sw-tld-renew { text-align: left !important; align-self: auto; }
+  .sw-tld-first { margin-top: 6px; }
+}
 </style>
 </helmet>
 <div id="top" style="background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
@@ -48,7 +71,7 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
         <div data-enter="400" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px">
           <span style="font:600 13px 'DM Sans',sans-serif;color:rgba(255,255,255,.7);margin-right:2px">Popular</span>
           <sc-for list="{{ quickTlds }}" as="t" hint-placeholder-count="5">
-            <button type="button" onClick="{{ t.pick }}" style="{{ t.style }}" style-hover="background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5)" style-active="transform:scale(.96)">{{ t.tld }}<span style="font:600 12px 'DM Sans',sans-serif;color:rgba(255,255,255,.75)">{{ t.price }}</span></button>
+            <button type="button" onClick="{{ t.pick }}" class="sw-hit" style="{{ t.style }}" style-hover="background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5)" style-active="transform:scale(.96)">{{ t.tld }}<span style="font:600 12px 'DM Sans',sans-serif;color:rgba(255,255,255,.75)">{{ t.price }}</span></button>
           </sc-for>
         </div>
       </sc-if>
@@ -185,8 +208,8 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
         <sc-for list="{{ filters }}" as="fl" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{ fl.on }}" onClick="{{ fl.pick }}" style="{{ fl.style }}">{{ fl.label }}</button></sc-for>
       </div>
     </div>
-    <div data-reveal="1" style="margin-top:32px;overflow-x:auto;border:1px solid #e5e7f2;border-radius:22px;background:#fff;box-shadow:0 18px 40px -30px rgba(8,19,62,.25)">
-      <table style="width:100%;min-width:560px;border-collapse:separate;border-spacing:0;font-size:15px">
+    <div data-reveal="1" style="position:relative;margin-top:32px;overflow-x:auto;border:1px solid #e5e7f2;border-radius:22px;background:#fff;box-shadow:0 18px 40px -30px rgba(8,19,62,.25)">
+      <table class="sw-tld" style="width:100%;min-width:560px;border-collapse:separate;border-spacing:0;font-size:15px">
         <thead><tr>
           <th scope="col" style="text-align:left;padding:18px 24px;font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5d6480;border-bottom:1px solid #e5e7f2">Extension</th>
           <th scope="col" style="text-align:right;padding:18px 24px;font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5d6480;border-bottom:1px solid #e5e7f2">First year</th>
@@ -196,10 +219,10 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
         <tbody>
           <sc-for list="{{ tableRows }}" as="r" hint-placeholder-count="6">
             <tr style-hover="background:#fbfbff">
-              <td style="padding:14px 24px;border-bottom:1px solid #f0f1fb"><span style="display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font:800 18px 'Manrope',sans-serif">{{ r.tld }}</span><sc-if value="{{ r.popular }}" hint-placeholder-val="{{ false }}"><span style="padding:3px 8px;border-radius:999px;background:#eeeefe;color:#2f30a8;font:700 11px 'DM Sans',sans-serif">{{ r.badge }}</span></sc-if><span style="font-size:13px;color:#8a91aa">{{ r.note }}</span></span></td>
-              <td style="padding:14px 24px;border-bottom:1px solid #f0f1fb;text-align:right;font-weight:700;white-space:nowrap">{{ r.first }}</td>
-              <td style="padding:14px 24px;border-bottom:1px solid #f0f1fb;text-align:right;color:#5d6480;white-space:nowrap">{{ r.renew }}</td>
-              <td style="padding:14px 24px;border-bottom:1px solid #f0f1fb;text-align:right"><button type="button" onClick="{{ r.search }}" style="display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;border-radius:11px;border:1px solid #e5e7f2;background:#fff;color:#3435cc;font:700 13px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:all .18s" style-hover="border-color:#4e4feb;background:#f7f7ff" style-active="transform:scale(.96)"><span style="display:inline-block;width:14px;height:14px;background:currentColor;mask:url(assets/icons/search.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/search.svg) center/contain no-repeat"></span>Search {{ r.tld }}</button></td>
+              <td class="sw-tld-ext" style="padding:14px 24px;border-bottom:1px solid #f0f1fb"><span style="display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font:800 18px 'Manrope',sans-serif">{{ r.tld }}</span><sc-if value="{{ r.popular }}" hint-placeholder-val="{{ false }}"><span style="padding:3px 8px;border-radius:999px;background:#eeeefe;color:#2f30a8;font:700 11px 'DM Sans',sans-serif">{{ r.badge }}</span></sc-if><span style="font-size:13px;color:#8a91aa">{{ r.note }}</span></span></td>
+              <td class="sw-tld-first" style="padding:14px 24px;border-bottom:1px solid #f0f1fb;text-align:right;font-weight:700;white-space:nowrap">{{ r.first }}<span class="sw-tld-cap"> first year</span></td>
+              <td class="sw-tld-renew" style="padding:14px 24px;border-bottom:1px solid #f0f1fb;text-align:right;color:#5d6480;white-space:nowrap"><span class="sw-tld-cap">Renews </span>{{ r.renew }}</td>
+              <td class="sw-tld-act" style="padding:14px 24px;border-bottom:1px solid #f0f1fb;text-align:right"><button type="button" onClick="{{ r.search }}" style="display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;border-radius:11px;border:1px solid #e5e7f2;background:#fff;color:#3435cc;font:700 13px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:all .18s" style-hover="border-color:#4e4feb;background:#f7f7ff" style-active="transform:scale(.96)"><span style="display:inline-block;width:14px;height:14px;background:currentColor;mask:url(assets/icons/search.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/search.svg) center/contain no-repeat"></span>Search {{ r.tld }}</button></td>
             </tr>
           </sc-for>
         </tbody>
@@ -285,9 +308,9 @@ class Component extends DCLogic {
   renderVals() {
     const m = this.state.mod, cur = this.state.currency, st = this.state, res = st.res; const f = v => m ? m.fmt(v, cur) : '$' + v.toFixed(2);
     const icon = (n, c, s) => ({ display: 'inline-block', width: s, height: s, flex: 'none', background: c, mask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat', WebkitMask: 'url(assets/icons/' + n + '.svg) center/contain no-repeat' });
-    const seg = (on, dark) => ({ height: 40, padding: '0 16px', borderRadius: 999, border: 0, cursor: 'pointer', font: "700 13.5px 'DM Sans', sans-serif", whiteSpace: 'nowrap', transition: 'all .18s', color: on ? (dark ? '#1d1f8f' : '#fff') : (dark ? 'rgba(255,255,255,.8)' : '#5d6480'), background: on ? (dark ? '#fff' : '#4e4feb') : 'transparent', boxShadow: on ? '0 8px 18px -10px rgba(0,0,0,.5)' : 'none' });
+    const seg = (on, dark) => ({ height: st.narrow ? 44 : 40, padding: '0 16px', borderRadius: 999, border: 0, cursor: 'pointer', font: "700 13.5px 'DM Sans', sans-serif", whiteSpace: 'nowrap', transition: 'all .18s', color: on ? (dark ? '#1d1f8f' : '#fff') : (dark ? 'rgba(255,255,255,.8)' : '#5d6480'), background: on ? (dark ? '#fff' : '#4e4feb') : 'transparent', boxShadow: on ? '0 8px 18px -10px rgba(0,0,0,.5)' : 'none' });
     const reg = st.mode === 'register';
-    const addBtn = (added, big) => ({ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, height: big ? 52 : 42, minWidth: big ? 150 : 104, padding: big ? '0 20px' : '0 14px', borderRadius: big ? 14 : 12, cursor: 'pointer', font: (big ? '700 15px' : '700 13.5px') + " 'DM Sans', sans-serif", border: added ? '1.5px solid #2fb26b' : big ? 0 : '1.5px solid #4e4feb', background: added ? '#e9f8ef' : big ? 'linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4)' : '#fff', color: added ? '#146132' : big ? '#fff' : '#2f30a8', boxShadow: !added && big ? '0 14px 28px -14px rgba(78,79,235,.95)' : 'none', transition: 'all .18s', whiteSpace: 'nowrap' });
+    const addBtn = (added, big) => ({ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, height: big ? 52 : st.narrow ? 44 : 42, minWidth: big ? 150 : 104, padding: big ? '0 20px' : '0 14px', borderRadius: big ? 14 : 12, cursor: 'pointer', font: (big ? '700 15px' : '700 13.5px') + " 'DM Sans', sans-serif", border: added ? '1.5px solid #2fb26b' : big ? 0 : '1.5px solid #4e4feb', background: added ? '#e9f8ef' : big ? 'linear-gradient(135deg,#6667f3,#4e4feb 55%,#3b3cd4)' : '#fff', color: added ? '#146132' : big ? '#fff' : '#2f30a8', boxShadow: !added && big ? '0 14px 28px -14px rgba(78,79,235,.95)' : 'none', transition: 'all .18s', whiteSpace: 'nowrap' });
     // results
     let rows = [], totalCount = 0, availCount = 0, ex = null;
     if (res && !res.transfer && m) {
@@ -321,7 +344,7 @@ class Component extends DCLogic {
         btnStyle: { display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, height: 50, padding: '0 8px 0 18px', borderRadius: 14, border: hero ? 0 : '1px solid #dcdefa', background: '#fff', color: '#2f30a8', font: "700 14.5px 'DM Sans', sans-serif", cursor: 'pointer', transition: 'transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s, border-color .2s' },
         chipStyle: { width: 34, height: 34, borderRadius: 10, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: hero ? 'linear-gradient(135deg,#6667f3,#4e4feb)' : '#eeeefe', color: hero ? '#fff' : '#4e4feb' },
         choose: () => this.focusSearch(t.tld) }; }) : [];
-    const filters = [['all', 'All'], ['popular', 'Popular'], ['business', 'Business'], ['local', 'Local']].map(([id, label]) => { const on = st.filter === id; return { label, on, pick: () => this.setState({ filter: id }), style: { height: 40, padding: '0 16px', borderRadius: 999, border: '1px solid ' + (on ? '#4e4feb' : '#e5e7f2'), background: on ? '#4e4feb' : '#fff', color: on ? '#fff' : '#08133e', font: "700 13.5px 'DM Sans', sans-serif", cursor: 'pointer', transition: 'all .15s' } }; });
+    const filters = [['all', 'All'], ['popular', 'Popular'], ['business', 'Business'], ['local', 'Local']].map(([id, label]) => { const on = st.filter === id; return { label, on, pick: () => this.setState({ filter: id }), style: { height: st.narrow ? 44 : 40, padding: '0 16px', borderRadius: 999, border: '1px solid ' + (on ? '#4e4feb' : '#e5e7f2'), background: on ? '#4e4feb' : '#fff', color: on ? '#fff' : '#08133e', font: "700 13.5px 'DM Sans', sans-serif", cursor: 'pointer', transition: 'all .15s' } }; });
     const tableRows = m ? m.TLDS.filter(t => st.filter === 'all' || t.tags.includes(st.filter)).map(t => ({ tld: t.tld, note: t.note, popular: t.tags.includes('popular'), badge: t.tld === '.com' ? 'Most popular' : 'Popular', first: f(t.first), renew: f(t.renew), search: () => this.focusSearch(t.tld) })) : [];
     const n = m && st.q ? m.normalizeDomain(st.q) : { name: '' };
     return {

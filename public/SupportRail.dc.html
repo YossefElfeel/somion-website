@@ -10,7 +10,17 @@
 <helmet>
 <link href="fonts/6a51d61393.css" rel="stylesheet">
 <style>body{margin:0;background:#fbfbfe;font-family:'DM Sans',system-ui,sans-serif}a{color:#3435cc}a:hover{color:#4e4feb}
-@keyframes somionRail{from{transform:translateX(0)}to{transform:translateX(-50%)}}</style>
+@keyframes somionRail{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Touch screens can't hover to pause the marquee, and reduced-motion users shouldn't get one: show a swipeable strip instead */
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .sw-rail { overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: clamp(16px, 4vw, 40px); scrollbar-width: none; overscroll-behavior-x: contain; }
+  .sw-rail::-webkit-scrollbar { display: none; }
+  .sw-rail-fade { display: none; }
+  .sw-rail-track { animation: none !important; padding-left: clamp(16px, 4vw, 40px) !important; padding-right: clamp(16px, 4vw, 40px) !important; }
+  .sw-rail-card { scroll-snap-align: start; box-sizing: border-box; width: min(320px, 80vw) !important; }
+  .sw-rail-card[aria-hidden="true"] { display: none !important; }
+  .sw-rail .sw-rail-card:hover { transform: none !important; }
+}</style>
 </helmet>
 <section data-screen-label="Support rail" style="padding:104px 0 0;overflow:hidden;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
   <div data-reveal="1" style="max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:20px 48px;align-items:flex-end;justify-content:space-between">
@@ -26,15 +36,15 @@
       </div>
     </div>
   </div>
-  <div data-reveal="1" style="position:relative;margin-top:44px">
-    <div aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:min(12vw,140px);z-index:2;pointer-events:none;background:linear-gradient(90deg,#fbfbfe,rgba(251,251,254,0))"></div>
-    <div aria-hidden="true" style="position:absolute;right:0;top:0;bottom:0;width:min(12vw,140px);z-index:2;pointer-events:none;background:linear-gradient(270deg,#fbfbfe,rgba(251,251,254,0))"></div>
-    <div style="display:flex;width:max-content;padding:6px 0 18px;animation:somionRail 56s linear infinite" style-hover="animation-play-state:paused">
+  <div data-reveal="1" class="sw-rail" style="position:relative;margin-top:44px">
+    <div aria-hidden="true" class="sw-rail-fade" style="position:absolute;left:0;top:0;bottom:0;width:min(12vw,140px);z-index:2;pointer-events:none;background:linear-gradient(90deg,#fbfbfe,rgba(251,251,254,0))"></div>
+    <div aria-hidden="true" class="sw-rail-fade" style="position:absolute;right:0;top:0;bottom:0;width:min(12vw,140px);z-index:2;pointer-events:none;background:linear-gradient(270deg,#fbfbfe,rgba(251,251,254,0))"></div>
+    <div class="sw-rail-track" style="display:flex;width:max-content;padding:6px 0 18px;animation:somionRail 56s linear infinite" style-hover="animation-play-state:paused">
       <sc-for list="{{ cards }}" as="c" hint-placeholder-count="6">
-        <article aria-hidden="{{ c.dup }}" style="flex:none;width:300px;margin-right:16px;display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:24px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 1px 2px rgba(8,19,62,.03),0 20px 44px -36px rgba(8,19,62,.35);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .25s" style-hover="transform:translateY(-6px);border-color:#c7c9f9;box-shadow:0 1px 2px rgba(8,19,62,.03),0 34px 60px -34px rgba(78,79,235,.5)">
+        <article aria-hidden="{{ c.dup }}" class="sw-rail-card" style="flex:none;width:300px;margin-right:16px;display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:24px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 1px 2px rgba(8,19,62,.03),0 20px 44px -36px rgba(8,19,62,.35);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .25s" style-hover="transform:translateY(-6px);border-color:#c7c9f9;box-shadow:0 1px 2px rgba(8,19,62,.03),0 34px 60px -34px rgba(78,79,235,.5)">
           <span style="width:46px;height:46px;border-radius:15px;background:#eeeefe;border:1px solid #e3e4fb;display:inline-flex;align-items:center;justify-content:center"><span style="{{ c.iconStyle }}"></span></span>
           <div style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font:800 19px/1.2 'Manrope',sans-serif">{{ c.title }}</h3><p style="margin:0;font-size:14.5px;line-height:1.55;color:#5d6480">{{ c.text }}</p></div>
-          <a href="Contact.dc.html" tabIndex="{{ c.tab }}" style="margin-top:auto;display:inline-flex;align-self:flex-start;align-items:center;gap:7px;min-height:36px;font:700 13.5px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none" style-hover="color:#4e4feb">Ask support<span style="display:inline-block;width:14px;height:14px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+          <a href="Contact.dc.html" tabIndex="{{ c.tab }}" class="sw-hit" style="margin-top:auto;display:inline-flex;align-self:flex-start;align-items:center;gap:7px;min-height:36px;font:700 13.5px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none" style-hover="color:#4e4feb">Ask support<span style="display:inline-block;width:14px;height:14px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
         </article>
       </sc-for>
     </div>

@@ -45,7 +45,7 @@
               <span style="{{ s.numStyle }}"><span style="{{ s.dotStyle }}"></span>{{ s.num }} · {{ s.label }}</span>
               <h3 style="margin:0;font:800 clamp(28px,3vw,40px)/1.06 'Manrope',sans-serif;letter-spacing:-.025em;text-wrap:balance">{{ s.title }}</h3>
               <p style="margin:0;max-width:440px;font-size:17px;line-height:1.6;color:#5d6480">{{ s.text }}</p>
-              <a href="{{ s.href }}" style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;min-height:40px;font:700 14.5px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none" style-hover="color:#4e4feb">{{ s.cta }}<span style="display:inline-block;width:15px;height:15px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+              <a class="sw-hit" href="{{ s.href }}" style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;min-height:40px;font:700 14.5px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none" style-hover="color:#4e4feb">{{ s.cta }}<span style="display:inline-block;width:15px;height:15px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
             </li>
           </sc-for>
         </ol>
@@ -58,7 +58,7 @@
           <ul style="list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:10px">
             <sc-for list="{{ cur.points }}" as="pt" hint-placeholder-count="3"><li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#08133e"><span style="display:inline-block;width:16px;height:16px;flex:none;background:#4e4feb;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span>{{ pt }}</li></sc-for>
           </ul>
-          <a href="{{ cur.href }}" style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;min-height:40px;font:700 14.5px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none" style-hover="color:#4e4feb">{{ cur.cta }}<span style="display:inline-block;width:15px;height:15px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+          <a class="sw-hit" href="{{ cur.href }}" style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;min-height:40px;font:700 14.5px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none" style-hover="color:#4e4feb">{{ cur.cta }}<span style="display:inline-block;width:15px;height:15px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
         </div>
       </sc-if>
     </div>
@@ -75,7 +75,7 @@
                   <span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#4e4feb">Find your fit</span>
                   <span style="font:800 24px/1.15 'Manrope',sans-serif;letter-spacing:-.015em">What are you building?</span>
                   <div style="display:flex;flex-wrap:wrap;gap:8px">
-                    <sc-for list="{{ fitChips }}" as="c" hint-placeholder-count="3"><button type="button" onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for>
+                    <sc-for list="{{ fitChips }}" as="c" hint-placeholder-count="3"><button class="sw-hit" type="button" onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for>
                   </div>
                   <div data-sc-fit="1" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;border-radius:18px;background:#f5f5ff;border:1px solid #e3e4fb">
                     <span style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font:800 18px 'Manrope',sans-serif">{{ fit.name }}</span><span style="font-size:13px;color:#5d6480">{{ fit.cat }}</span></span>

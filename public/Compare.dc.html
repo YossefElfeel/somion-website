@@ -14,6 +14,34 @@
 html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#3435cc}a:hover{color:#4e4feb}
 @keyframes somionFadeUp{from{transform:translateY(10px)}to{transform:none}}
 @keyframes somionPop{0%{transform:scale(.96)}100%{transform:none}}
+.sw-cmpt-short{display:none}
+/* Phones: plans stay side by side. Each spec label becomes a full-width row heading with the plans' values in columns below it. */
+@media (max-width: 640px) {
+  .sw-cmpt { display: block; min-width: 0 !important; }
+  .sw-cmpt thead, .sw-cmpt tbody { display: block; }
+  .sw-cmpt tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sw-cols-1 tr { grid-template-columns: minmax(0, 1fr); }
+  .sw-cols-2 tr { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sw-cmpt th, .sw-cmpt td { display: block; position: static !important; min-width: 0 !important; width: auto !important; }
+  .sw-cmpt-caption, .sw-cmpt-label, .sw-cmpt-add { grid-column: 1 / -1; }
+  .sw-cmpt-caption { padding: 16px 14px 6px !important; border-bottom: 0 !important; }
+  .sw-cmpt-plan { padding: 10px 10px 14px !important; }
+  .sw-cmpt-plan + .sw-cmpt-plan, .sw-cmpt-val + .sw-cmpt-val { border-left: 1px solid #f0f1fb; }
+  .sw-cmpt-name { font-size: 17px !important; }
+  .sw-cmpt-price { font-size: 22px !important; }
+  .sw-cmpt-planbox { height: 100%; }
+  .sw-cmpt-order { width: 100%; height: 44px !important; padding: 0 8px !important; margin-top: auto !important; }
+  .sw-cmpt-label { padding: 14px 14px 4px !important; border-bottom: 0 !important; font-size: 12.5px; color: #5d6480 !important; }
+  .sw-cmpt-val { padding: 2px 10px 14px !important; font-size: 13.5px; overflow-wrap: anywhere; }
+  .sw-cmpt-pad { display: none !important; }
+  .sw-cmpt-add { padding: 14px !important; border-top: 1px solid #e5e7f2; }
+  .sw-cmpt-long { display: none; }
+  .sw-cmpt-short { display: inline; }
+}
+@media (max-width: 380px) {
+  .sw-cmpt-name { font-size: 15px !important; }
+  .sw-cmpt-price { font-size: 19px !important; }
+}
 </style>
 </helmet>
 <div id="top" style="background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column">
@@ -22,14 +50,14 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
   <section data-screen-label="Compare intro" style="background:radial-gradient(800px 380px at 80% 0%,#e6e7ff 0%,rgba(230,231,255,0) 70%),#fbfbfe;border-bottom:1px solid #e5e7f2">
     <div style="max-width:1180px;margin:0 auto;padding:56px clamp(16px,4vw,40px) 40px;display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end;justify-content:space-between">
       <div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
-        <a href="Hosting.dc.html" style="font:700 13px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none">← Back to all plans</a>
+        <a href="Hosting.dc.html" class="sw-hit" style="font:700 13px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none">← Back to all plans</a>
         <h1 data-enter="0" style="margin:0;font:800 clamp(34px,4.6vw,58px)/1.02 'Manrope',sans-serif;letter-spacing:-.025em;text-wrap:balance">Compare plans side by side.</h1>
         <p data-enter="80" style="margin:0;font-size:17px;line-height:1.55;color:#5d6480">Pick up to three plans from any category. Rows where the plans differ are highlighted, so the decision is about what changes — not what stays the same.</p>
       </div>
       <div data-enter="160" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
         <div role="group" aria-label="Billing period" style="display:inline-flex;padding:4px;border-radius:999px;background:#fff;border:1px solid #e5e7f2">
-          <button type="button" onClick="{{ pickMonthly }}" style="{{ monthlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Monthly</button>
-          <button type="button" onClick="{{ pickYearly }}" style="{{ yearlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Yearly</button>
+          <button type="button" onClick="{{ pickMonthly }}" class="sw-hit" style="{{ monthlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Monthly</button>
+          <button type="button" onClick="{{ pickYearly }}" class="sw-hit" style="{{ yearlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Yearly</button>
         </div>
         <button type="button" onClick="{{ toggleDiff }}" aria-pressed="{{ diffOnly }}" style="{{ diffStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)"><span style="{{ diffKnobStyle }}"><span style="{{ diffDotStyle }}"></span></span>Differences only</button>
       </div>
@@ -52,26 +80,26 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
 
     <sc-if value="{{ hasCols }}" hint-placeholder-val="{{ true }}">
       <div style="overflow-x:auto;border:1px solid #e5e7f2;border-radius:24px;background:#fff;box-shadow:0 24px 50px -36px rgba(8,19,62,.3)">
-        <table style="width:100%;min-width:760px;border-collapse:separate;border-spacing:0;font-size:14px">
+        <table class="{{ tableClass }}" style="width:100%;min-width:760px;border-collapse:separate;border-spacing:0;font-size:14px">
           <thead>
             <tr>
-              <th scope="col" style="text-align:left;vertical-align:bottom;padding:24px 24px 18px;font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5d6480;border-bottom:1px solid #e5e7f2;background:#fff;position:sticky;left:0;z-index:2;min-width:180px">{{ colCountLabel }}</th>
+              <th scope="col" class="sw-cmpt-caption" style="text-align:left;vertical-align:bottom;padding:24px 24px 18px;font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5d6480;border-bottom:1px solid #e5e7f2;background:#fff;position:sticky;left:0;z-index:2;min-width:180px">{{ colCountLabel }}</th>
               <sc-for list="{{ cols }}" as="c" hint-placeholder-count="3">
-                <th scope="col" style="{{ c.thStyle }}">
-                  <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start;animation:somionPop .3s ease both">
+                <th scope="col" class="sw-cmpt-plan" style="{{ c.thStyle }}">
+                  <div class="sw-cmpt-planbox" style="display:flex;flex-direction:column;gap:8px;align-items:flex-start;animation:somionPop .3s ease both">
                     <div style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:8px">
-                      <span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#5d6480">{{ c.cat }}</span>
-                      <button type="button" onClick="{{ c.remove }}" aria-label="Remove plan" style="width:28px;height:28px;border-radius:8px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font-size:16px;line-height:1;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">×</button>
+                      <span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#5d6480"><span class="sw-cmpt-long">{{ c.cat }}</span><span class="sw-cmpt-short">{{ c.catShort }}</span></span>
+                      <button type="button" onClick="{{ c.remove }}" aria-label="Remove {{ c.name }}" class="sw-hit" style="flex:none;width:28px;height:28px;border-radius:8px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font-size:16px;line-height:1;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">×</button>
                     </div>
-                    <span style="font:800 22px/1.1 'Manrope',sans-serif;letter-spacing:-.01em">{{ c.name }}</span>
-                    <span style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap"><span style="font:800 30px/1 'Manrope',sans-serif;letter-spacing:-.02em">{{ c.price }}</span><sc-if value="{{ c.paid }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;color:#5d6480;font-weight:400">/ mo</span></sc-if><sc-if value="{{ c.hasWas }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#8a91aa;text-decoration:line-through;font-weight:400">{{ c.was }}</span></sc-if></span>
+                    <span class="sw-cmpt-name" style="font:800 22px/1.1 'Manrope',sans-serif;letter-spacing:-.01em">{{ c.name }}</span>
+                    <span style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap"><span class="sw-cmpt-price" style="font:800 30px/1 'Manrope',sans-serif;letter-spacing:-.02em">{{ c.price }}</span><sc-if value="{{ c.paid }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;color:#5d6480;font-weight:400">/ mo</span></sc-if><sc-if value="{{ c.hasWas }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#8a91aa;text-decoration:line-through;font-weight:400">{{ c.was }}</span></sc-if></span>
                     <span style="font-size:12px;color:#5d6480;font-weight:400">{{ c.caption }}</span>
-                    <button type="button" onClick="{{ c.order }}" style="{{ c.orderStyle }}" style-hover="transform:translateY(-2px);box-shadow:0 16px 32px -16px rgba(78,79,235,.7);filter:brightness(1.05)" style-active="transform:scale(.97)">{{ c.orderLabel }}</button>
+                    <button type="button" onClick="{{ c.order }}" aria-label="{{ c.orderLabel }}" class="sw-cmpt-order" style="{{ c.orderStyle }}" style-hover="transform:translateY(-2px);box-shadow:0 16px 32px -16px rgba(78,79,235,.7);filter:brightness(1.05)" style-active="transform:scale(.97)"><span class="sw-cmpt-long">{{ c.orderLabel }}</span><span class="sw-cmpt-short">{{ c.orderShort }}</span></button>
                   </div>
                 </th>
               </sc-for>
               <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ false }}">
-                <th scope="col" style="text-align:left;vertical-align:top;padding:20px;border-bottom:1px solid #e5e7f2;background:#fbfbfe;min-width:220px">
+                <th scope="col" class="sw-cmpt-add" style="text-align:left;vertical-align:top;padding:20px;border-bottom:1px solid #e5e7f2;background:#fbfbfe;min-width:220px">
                   <div style="display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;border:1px dashed #babcf6;background:#fff">
                     <span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#4e4feb">Add a plan</span>
                     <select value="{{ pickerCat }}" onChange="{{ onPickerCat }}" aria-label="Category" style="height:40px;padding:0 10px;border-radius:10px;border:1px solid #e5e7f2;background:#fff;color:#08133e;font:600 13px 'DM Sans',sans-serif">
@@ -90,16 +118,16 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
           <tbody>
             <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
               <tr>
-                <th scope="row" style="{{ r.labelStyle }}"><span style="display:inline-flex;align-items:center;gap:8px">{{ r.label }}<sc-if value="{{ r.differs }}" hint-placeholder-val="{{ false }}"><span style="width:6px;height:6px;border-radius:50%;background:#4e4feb"></span></sc-if></span></th>
+                <th scope="row" class="sw-cmpt-label" style="{{ r.labelStyle }}"><span style="display:inline-flex;align-items:center;gap:8px">{{ r.label }}<sc-if value="{{ r.differs }}" hint-placeholder-val="{{ false }}"><span style="width:6px;height:6px;border-radius:50%;background:#4e4feb"></span></sc-if></span></th>
                 <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="3">
-                  <td style="{{ c.style }}">
+                  <td class="sw-cmpt-val" style="{{ c.style }}">
                     <sc-if value="{{ c.yes }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:#eeeefe;align-items:center;justify-content:center"><span style="display:inline-block;width:12px;height:12px;background:#4e4feb;mask:url(assets/icons/check.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/check.svg) center/contain no-repeat"></span></span></sc-if>
                     <sc-if value="{{ c.no }}" hint-placeholder-val="{{ false }}"><span style="color:#b7bccf;font-size:16px">—</span></sc-if>
                     <sc-if value="{{ c.na }}" hint-placeholder-val="{{ false }}"><span style="color:#b7bccf;font-size:12px">n/a</span></sc-if>
                     <sc-if value="{{ c.text }}" hint-placeholder-val="{{ true }}"><span style="font-weight:600">{{ c.value }}</span></sc-if>
                   </td>
                 </sc-for>
-                <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ false }}"><td style="border-bottom:1px solid #f0f1fb;background:#fbfbfe"></td></sc-if>
+                <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ false }}"><td class="sw-cmpt-pad" style="border-bottom:1px solid #f0f1fb;background:#fbfbfe"></td></sc-if>
               </tr>
             </sc-for>
             <sc-if value="{{ noDiffRows }}" hint-placeholder-val="{{ false }}"><tr><td colSpan="{{ colSpan }}" style="padding:28px 24px;color:#5d6480;text-align:center">These plans are identical on every listed spec. Only price differs.</td></tr></sc-if>
@@ -140,7 +168,7 @@ class Component extends DCLogic {
     const seg = on => ({ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 16px', borderRadius: 999, border: 0, cursor: 'pointer', font: "700 14px 'DM Sans', sans-serif", color: on ? '#fff' : '#5d6480', background: on ? '#4e4feb' : 'transparent', boxShadow: on ? '0 10px 22px -12px rgba(78,79,235,.9)' : 'none', transition: 'all .18s' });
     const plans = m ? this.state.ids.map(id => m.planById(id)).filter(Boolean) : [];
     const cols = plans.map(p => { const monthly = yearly ? p.price * m.YEARLY_MONTHS / 12 : p.price; const primary = p.featured;
-      return { id: p.id, cat: p.catName, name: p.name, paid: p.price > 0, price: p.price === 0 ? 'Free' : f(monthly), hasWas: !!p.was, was: p.was ? f(yearly ? p.was * m.YEARLY_MONTHS / 12 : p.was) : '', caption: p.price === 0 ? 'No card needed' : yearly ? 'billed ' + f(p.price * m.YEARLY_MONTHS) + ' per year' : 'billed monthly · renews at this price',
+      return { id: p.id, cat: p.catName, catShort: (m.categoryById(p.cat) || {}).short || p.catName, orderShort: p.price === 0 ? 'Start free' : 'Order', name: p.name, paid: p.price > 0, price: p.price === 0 ? 'Free' : f(monthly), hasWas: !!p.was, was: p.was ? f(yearly ? p.was * m.YEARLY_MONTHS / 12 : p.was) : '', caption: p.price === 0 ? 'No card needed' : yearly ? 'billed ' + f(p.price * m.YEARLY_MONTHS) + ' per year' : 'billed monthly · renews at this price',
         orderLabel: p.price === 0 ? 'Start for free' : 'Order ' + p.name, order: () => { m.addPlanToCart(p.id, this.state.term); (window.__somionNav || (u => { location.href = u; }))('Checkout.dc.html'); }, remove: () => this.setIds(this.state.ids.filter(x => x !== p.id)),
         thStyle: { textAlign: 'left', verticalAlign: 'top', padding: '20px 20px 18px', borderBottom: '1px solid #e5e7f2', background: p.featured ? '#f7f7ff' : '#fff', minWidth: 200, width: '26%' },
         orderStyle: { marginTop: 6, height: 42, padding: '0 16px', borderRadius: 11, border: primary ? 0 : '1px solid #babcf6', background: primary ? '#4e4feb' : '#fff', color: primary ? '#fff' : '#2f30a8', font: "700 13px 'DM Sans', sans-serif", cursor: 'pointer', boxShadow: primary ? '0 12px 26px -14px rgba(78,79,235,.9)' : 'none', whiteSpace: 'nowrap' } }; });
@@ -154,7 +182,7 @@ class Component extends DCLogic {
     const pc = m ? m.categoryById(this.state.pickerCat) : null;
     const pickerPlans = pc ? pc.plans.filter(p => !this.state.ids.includes(p.id)).map(p => ({ id: p.id, name: p.name, price: p.price === 0 ? 'Free' : f(p.price) + '/mo', add: () => this.setIds(this.state.ids.concat(p.id).slice(0, 3)), style: { display: 'flex', justifyContent: 'space-between', gap: 10, height: 40, padding: '0 12px', borderRadius: 10, border: '1px solid #e5e7f2', background: '#fff', color: '#08133e', font: "600 13px 'DM Sans', sans-serif", cursor: 'pointer', textAlign: 'left', alignItems: 'center' } })) : [];
     const n = plans.length; const d = this.state.diffOnly;
-    return { cols, rows, hasCols: !m || n > 0, empty: !!m && n === 0, canAdd: !!m && n < 3, colSpan: n + 2, colCountLabel: n + (n === 1 ? ' plan' : ' plans') + ' selected', currency: cur,
+    return { cols, rows, tableClass: 'sw-cmpt sw-cols-' + n, hasCols: !m || n > 0, empty: !!m && n === 0, canAdd: !!m && n < 3, colSpan: n + 2, colCountLabel: n + (n === 1 ? ' plan' : ' plans') + ' selected', currency: cur,
       noDiffRows: d && rows.length === 0 && allRows > 0,
       pickMonthly: () => this.setState({ term: 'monthly' }), pickYearly: () => this.setState({ term: 'yearly' }), monthlyStyle: seg(!yearly), yearlyStyle: seg(yearly),
       diffOnly: d, toggleDiff: () => this.setState({ diffOnly: !d }),

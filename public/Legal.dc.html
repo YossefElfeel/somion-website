@@ -12,6 +12,12 @@
 <style>
 :focus-visible{outline:2px solid #6b6cf5;outline-offset:3px}::selection{background:#c7c9f9;color:#08133e}
 html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#3435cc}a:hover{color:#4e4feb}
+/* Phones: the sticky sidebar would float over the text, so it becomes a plain three-way switcher above it */
+@media (max-width: 720px) {
+  .sw-legal-nav { position: static !important; flex: 1 1 100% !important; flex-direction: row !important; }
+  .sw-legal-nav > a { flex: 1 1 0; justify-content: center; text-align: center; padding: 6px 8px !important; line-height: 1.2; }
+  .sw-legal-ico { display: none !important; }
+}
 </style>
 </helmet>
 <div id="top" style="background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
@@ -26,9 +32,9 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
   </section>
 
   <section data-screen-label="Legal content" style="max-width:1180px;margin:0 auto;padding:48px clamp(16px,4vw,40px) 96px;display:flex;flex-wrap:wrap;gap:32px 56px;align-items:flex-start">
-    <nav aria-label="Legal sections" style="flex:0 1 240px;position:sticky;top:100px;display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:18px;background:#fff;border:1px solid #e5e7f2">
+    <nav aria-label="Legal sections" class="sw-legal-nav" style="flex:0 1 240px;position:sticky;top:100px;display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:18px;background:#fff;border:1px solid #e5e7f2">
       <sc-for list="{{ docs }}" as="d" hint-placeholder-count="3">
-        <a href="{{ d.href }}" onClick="{{ d.pick }}" style="{{ d.navStyle }}" style-hover="background:#f0f1fb" style-active="transform:scale(.97)"><span style="{{ d.iconStyle }}"></span>{{ d.title }}</a>
+        <a href="{{ d.href }}" onClick="{{ d.pick }}" style="{{ d.navStyle }}" style-hover="background:#f0f1fb" style-active="transform:scale(.97)"><span class="sw-legal-ico" style="{{ d.iconStyle }}"></span>{{ d.title }}</a>
       </sc-for>
     </nav>
     <div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:22px">
@@ -48,7 +54,7 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
           </ol>
         </article>
       </sc-for>
-      <p style="margin:0;font-size:14px;color:#5d6480">Questions about these terms? <a href="mailto:info@somion.ch" style="font-weight:700">info@somion.ch</a> · Muristrasse 3, 3123 Belp, Switzerland</p>
+      <p style="margin:0;font-size:14px;color:#5d6480">Questions about these terms? <a class="sw-hit" href="mailto:info@somion.ch" style="font-weight:700">info@somion.ch</a> · Muristrasse 3, 3123 Belp, Switzerland</p>
     </div>
   </section>
 

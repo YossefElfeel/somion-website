@@ -22,6 +22,11 @@ npm run check     # confirm every file the pages reference exists (Vercel runs t
 
 Pushing to `main` deploys to production.
 
+## Mobile conventions
+
+- Phone layouts live in each component's `<helmet><style>` block as `@media` rules that target `sw-` classes. Desktop styles stay inline and unchanged.
+- On touch screens, `class="sw-hit"` gives a small control an invisible touch area of at least 44×44 without changing how it looks. Form fields use 16px text so iOS doesn't zoom in on focus. Both rules are in `public/index.html`.
+
 ## Importing a new Claude Design export
 
 `public/` has been edited by hand since the export, so don't copy a new export over it. Unpack the new export to a scratch folder, then merge the changes you want:

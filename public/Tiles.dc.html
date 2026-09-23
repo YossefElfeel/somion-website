@@ -9,7 +9,13 @@
 <x-dc>
 <helmet>
 <link href="fonts/6a51d61393.css" rel="stylesheet">
-<style>body{margin:0;background:#fbfbfe;font-family:'DM Sans',system-ui,sans-serif}a{color:#3435cc}a:hover{color:#4e4feb}</style>
+<style>body{margin:0;background:#fbfbfe;font-family:'DM Sans',system-ui,sans-serif}a{color:#3435cc}a:hover{color:#4e4feb}
+/* One column on phones: the equal-height minimum only leaves empty space, so cards size to their content */
+@media (max-width: 639px) {
+  .sw-tile { min-height: 0 !important; gap: 12px !important; padding: 20px !important; }
+  .sw-tile-ico { width: 44px !important; height: 44px !important; border-radius: 14px !important; }
+  .sw-tile-foot { padding-top: 12px !important; }
+}</style>
 </helmet>
 <section data-screen-label="{{ label }}" style="max-width:1180px;margin:0 auto;padding:104px clamp(16px,4vw,40px) 0;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
   <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:20px 48px;align-items:flex-end;justify-content:space-between">
@@ -21,14 +27,14 @@
   </div>
   <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ true }}"><div style="{{ gridStyle }}">
     <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="4">
-      <a href="{{ t.href }}" data-reveal="1" data-tilt="1" style="position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;gap:16px;min-height:240px;padding:24px;border-radius:24px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 1px 2px rgba(8,19,62,.03),0 22px 46px -38px rgba(8,19,62,.35);text-decoration:none;color:#08133e;transition:box-shadow .3s,border-color .3s" style-hover="border-color:#c7c9f9;box-shadow:0 1px 2px rgba(8,19,62,.03),0 36px 64px -36px rgba(78,79,235,.5);color:#08133e">
+      <a href="{{ t.href }}" data-reveal="1" data-tilt="1" class="sw-tile" style="position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;gap:16px;min-height:240px;padding:24px;border-radius:24px;background:#fff;border:1px solid #e5e7f2;box-shadow:0 1px 2px rgba(8,19,62,.03),0 22px 46px -38px rgba(8,19,62,.35);text-decoration:none;color:#08133e;transition:box-shadow .3s,border-color .3s" style-hover="border-color:#c7c9f9;box-shadow:0 1px 2px rgba(8,19,62,.03),0 36px 64px -36px rgba(78,79,235,.5);color:#08133e">
         <div data-glow="1" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .35s;pointer-events:none"></div>
         <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
-          <span style="width:50px;height:50px;border-radius:16px;background:linear-gradient(135deg,#7c7dff,#4e4feb 60%,#3b3cd4);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 14px 26px -14px rgba(78,79,235,.85)"><span style="{{ t.iconStyle }}"></span></span>
+          <span class="sw-tile-ico" style="width:50px;height:50px;border-radius:16px;background:linear-gradient(135deg,#7c7dff,#4e4feb 60%,#3b3cd4);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 14px 26px -14px rgba(78,79,235,.85)"><span style="{{ t.iconStyle }}"></span></span>
           <sc-if value="{{ t.hasBadge }}" hint-placeholder-val="{{ false }}"><span style="padding:5px 10px;border-radius:999px;background:#e9f8ef;border:1px solid #c7e9d3;color:#146132;font:800 11px 'DM Sans',sans-serif;white-space:nowrap">{{ t.badge }}</span></sc-if>
         </div>
         <div style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font:800 20px/1.2 'Manrope',sans-serif;letter-spacing:-.01em">{{ t.title }}</h3><p style="margin:0;font-size:14.5px;line-height:1.55;color:#5d6480">{{ t.text }}</p></div>
-        <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;border-top:1px solid #f0f1fb">
+        <div class="sw-tile-foot" style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;border-top:1px solid #f0f1fb">
           <span style="font:700 14px 'DM Sans',sans-serif;color:#2f30a8">{{ t.from }}</span>
           <span style="width:36px;height:36px;border-radius:11px;background:#eeeefe;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="display:inline-block;width:16px;height:16px;background:#4e4feb;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></span>
         </div>

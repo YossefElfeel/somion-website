@@ -14,6 +14,22 @@
 html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#3435cc}a:hover{color:#4e4feb}
 @keyframes somionFadeUp{from{transform:translateY(10px)}to{transform:none}}
 @keyframes somionPop{0%{transform:scale(.9)}100%{transform:none}}
+.sw-co-due{display:none}
+/* Phones */
+@media (max-width: 640px) {
+  /* stepper fits one row: only the current step keeps its label on screen (screen readers still get all four) */
+  .sw-step button { position: relative; }
+  .sw-step:not(.sw-step-on) button { padding-right: 6px !important; }
+  .sw-step:not(.sw-step-on) .sw-step-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  /* actions: Back stays compact, the primary button takes the rest of the row */
+  .sw-co-row { flex-wrap: nowrap !important; }
+  .sw-co-primary { flex: 1 1 auto; }
+  .sw-co-row-cart { flex-wrap: wrap !important; }
+  .sw-co-row-cart .sw-co-primary { flex-basis: 100%; }
+  .sw-co-due { display: flex; flex-basis: 100%; align-items: baseline; justify-content: space-between; padding: 14px 2px 2px; border-top: 1px solid #e5e7f2; font: 600 14px 'DM Sans', sans-serif; color: #5d6480; }
+  .sw-co-due strong { font: 800 22px 'Manrope', sans-serif; letter-spacing: -.02em; color: #08133e; }
+  .sw-co-summary { position: static !important; }
+}
 </style>
 </helmet>
 <div id="top" style="background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column">
@@ -22,13 +38,13 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
   <section data-screen-label="Checkout" style="max-width:1180px;width:100%;box-sizing:border-box;margin:0 auto;padding:40px clamp(16px,4vw,40px) 96px;flex:1">
     <div style="display:flex;flex-wrap:wrap;gap:18px 32px;align-items:flex-end;justify-content:space-between">
       <div style="display:flex;flex-direction:column;gap:8px;flex:1 1 260px">
-        <a href="Hosting.dc.html" style="font:700 13px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none">← Continue shopping</a>
+        <a href="Hosting.dc.html" class="sw-hit" style="font:700 13px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none">← Continue shopping</a>
         <h1 style="margin:0;font:800 clamp(30px,4vw,44px)/1.05 'Manrope',sans-serif;letter-spacing:-.02em">{{ title }}</h1>
       </div>
       <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center">
         <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
-          <li style="display:flex;align-items:center;gap:6px">
-            <button type="button" onClick="{{ s.go }}" style="{{ s.style }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)"><span style="{{ s.numStyle }}">{{ s.num }}</span>{{ s.label }}</button>
+          <li class="{{ s.cls }}" style="display:flex;align-items:center;gap:6px">
+            <button type="button" onClick="{{ s.go }}" aria-current="{{ s.current }}" class="sw-hit" style="{{ s.style }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)"><span style="{{ s.numStyle }}">{{ s.num }}</span><span class="sw-step-label">{{ s.label }}</span></button>
             <sc-if value="{{ s.notLast }}" hint-placeholder-val="{{ true }}"><span style="width:18px;height:1px;background:#d6d8ed"></span></sc-if>
           </li>
         </sc-for>
@@ -75,8 +91,8 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
                 </div>
                 <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
                   <div role="group" aria-label="Billing term" style="display:inline-flex;padding:3px;border-radius:999px;background:#f0f1fb">
-                    <button type="button" onClick="{{ it.setMonthly }}" style="{{ it.monthlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Monthly</button>
-                    <button type="button" onClick="{{ it.setYearly }}" style="{{ it.yearlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Yearly · 2 months free</button>
+                    <button class="sw-hit" type="button" onClick="{{ it.setMonthly }}" style="{{ it.monthlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Monthly</button>
+                    <button class="sw-hit" type="button" onClick="{{ it.setYearly }}" style="{{ it.yearlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Yearly · 2 months free</button>
                   </div>
                   <span style="font:800 22px 'Manrope',sans-serif">{{ it.priceLabel }} <span style="font:400 13px 'DM Sans',sans-serif;color:#5d6480">{{ it.per }}</span></span>
                 </div>
@@ -121,8 +137,8 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
                 </div>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-                <a href="Compare.dc.html" style="font:600 13px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none">Compare with other plans</a>
-                <button type="button" onClick="{{ it.remove }}" style="height:36px;padding:0 12px;border-radius:10px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font:600 13px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#b3181b;color:#b3181b;background:#fff6f6;transform:translateY(-1px)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Remove</button>
+                <a href="Compare.dc.html" class="sw-hit" style="font:600 13px 'DM Sans',sans-serif;color:#3435cc;text-decoration:none">Compare with other plans</a>
+                <button type="button" onClick="{{ it.remove }}" class="sw-hit" style="height:36px;padding:0 12px;border-radius:10px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font:600 13px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#b3181b;color:#b3181b;background:#fff6f6;transform:translateY(-1px)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Remove</button>
               </div>
             </article>
           </sc-for>
@@ -137,9 +153,10 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
             </article>
           </sc-for>
           <sc-if value="{{ cartHasItems }}" hint-placeholder-val="{{ true }}">
-            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center">
-              <div style="display:flex;gap:14px;flex-wrap:wrap;font:600 13px 'DM Sans',sans-serif"><a href="Hosting.dc.html" style="color:#3435cc;text-decoration:none">+ Add another plan</a><a href="Domains.dc.html" style="color:#3435cc;text-decoration:none">+ Add a domain</a></div>
-              <button type="button" onClick="{{ next }}" style="height:52px;padding:0 26px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Continue to account →</button>
+            <div class="sw-co-row sw-co-row-cart" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center">
+              <div style="display:flex;gap:14px;flex-wrap:wrap;font:600 13px 'DM Sans',sans-serif"><a href="Hosting.dc.html" class="sw-hit" style="color:#3435cc;text-decoration:none">+ Add another plan</a><a href="Domains.dc.html" class="sw-hit" style="color:#3435cc;text-decoration:none">+ Add a domain</a></div>
+              <div class="sw-co-due"><span>Due today</span><strong>{{ total }}</strong></div>
+              <button type="button" onClick="{{ next }}" class="sw-co-primary" style="height:52px;padding:0 26px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Continue to account →</button>
             </div>
           </sc-if>
         </sc-if>
@@ -171,9 +188,9 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
             </sc-if>
             </sc-if>
             <sc-if value="{{ accError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;padding:10px 14px;border-radius:10px;background:#fdecec;color:#b3181b;font-size:13px;font-weight:600">{{ accErrorText }}</p></sc-if>
-            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-top:6px">
+            <div class="sw-co-row" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-top:6px">
               <button type="button" onClick="{{ back }}" style="height:48px;padding:0 16px;border-radius:12px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font:600 14px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">← Back to cart</button>
-              <button type="submit" style="height:52px;padding:0 26px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Continue to payment →</button>
+              <button type="submit" class="sw-co-primary" style="height:52px;padding:0 26px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Continue to payment →</button>
             </div>
           </form>
         </sc-if>
@@ -207,9 +224,9 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
               <p style="margin:0;padding:14px 18px;border-radius:16px;background:#f7f7ff;border:1px solid #e5e7f2;font-size:14px;line-height:1.55;color:#5d6480">You will be redirected to complete the payment securely, then brought back here to your receipt.</p>
             </sc-if>
             <sc-if value="{{ payError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;padding:10px 14px;border-radius:10px;background:#fdecec;color:#b3181b;font-size:13px;font-weight:600">{{ payErrorText }}</p></sc-if>
-            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-top:6px">
+            <div class="sw-co-row" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-top:6px">
               <button type="button" onClick="{{ back }}" style="height:48px;padding:0 16px;border-radius:12px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font:600 14px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">← Back</button>
-              <button type="submit" style="height:52px;padding:0 26px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Review order →</button>
+              <button type="submit" class="sw-co-primary" style="height:52px;padding:0 26px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Review order →</button>
             </div>
           </form>
         </sc-if>
@@ -231,15 +248,15 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
               <span>I agree to the <a href="Legal.dc.html#terms" target="_blank" style="color:#3435cc">Terms of Service</a> and <a href="Legal.dc.html#aup" target="_blank" style="color:#3435cc">Acceptable Use Policy</a>, and understand plans renew at the price shown.</span>
             </label>
             <sc-if value="{{ agreeError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;padding:10px 14px;border-radius:10px;background:#fdecec;color:#b3181b;font-size:13px;font-weight:600">Please accept the terms to place the order.</p></sc-if>
-            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-top:6px">
+            <div class="sw-co-row" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-top:6px">
               <button type="button" onClick="{{ back }}" style="height:48px;padding:0 16px;border-radius:12px;border:1px solid #e5e7f2;background:#fff;color:#5d6480;font:600 14px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="border-color:#4e4feb;background:#f7f7ff;color:#2f30a8;transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(78,79,235,.75)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">← Back</button>
-              <button type="button" onClick="{{ placeOrder }}" style="height:54px;padding:0 28px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Place order · {{ total }}</button>
+              <button type="button" onClick="{{ placeOrder }}" class="sw-co-primary" style="height:54px;padding:0 28px;border-radius:12px;border:0;background:#4e4feb;color:#fff;font:700 16px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 14px 30px -14px rgba(78,79,235,.9);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(78,79,235,.75);filter:brightness(1.08) saturate(1.05);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Place order · {{ total }}</button>
             </div>
           </div>
         </sc-if>
       </div>
 
-      <aside data-screen-label="Order summary" style="flex:0 1 360px;min-width:min(100%,300px);position:sticky;top:96px;display:flex;flex-direction:column;gap:14px">
+      <aside data-screen-label="Order summary" class="sw-co-summary" style="flex:0 1 360px;min-width:min(100%,300px);position:sticky;top:96px;display:flex;flex-direction:column;gap:14px">
         <div style="display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:22px;background:#07122f;color:#fff;box-shadow:0 30px 60px -30px rgba(5,13,37,.7)">
           <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)">Order summary</span><span style="font-size:12px;color:rgba(255,255,255,.6)">{{ currency }}</span></div>
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14px">
@@ -250,8 +267,8 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
           </ul>
           <div style="height:1px;background:rgba(255,255,255,.14)"></div>
           <form onSubmit="{{ applyPromo }}" style="display:flex;gap:8px">
-            <input type="text" value="{{ promo }}" onChange="{{ onPromo }}" placeholder="Promo code" aria-label="Promo code" style="flex:1;min-width:0;height:40px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font:600 13px 'DM Sans',sans-serif;outline:none" style-focus="border-color:#c7c9f9"></input>
-            <button type="submit" style="height:40px;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font:700 13px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);transform:translateY(-1px);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Apply</button>
+            <input class="sw-tap-field" type="text" value="{{ promo }}" onChange="{{ onPromo }}" placeholder="Promo code" aria-label="Promo code" style="flex:1;min-width:0;height:40px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font:600 13px 'DM Sans',sans-serif;outline:none" style-focus="border-color:#c7c9f9"></input>
+            <button class="sw-hit" type="submit" style="height:40px;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font:700 13px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);transform:translateY(-1px);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Apply</button>
           </form>
           <sc-if value="{{ promoMsg }}" hint-placeholder-val="{{ false }}"><span style="font-size:12.5px;color:#c7f7e2">{{ promoMsgText }}</span></sc-if>
           <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
@@ -324,7 +341,7 @@ class Component extends DCLogic {
     const L = this.lines(); const promoOff = st.promoOk ? L.subtotal * 0.1 : 0; const total = Math.max(0, L.subtotal - promoOff);
     const lines = L.lines.map(l => ({ label: l.label, sub: l.sub, amount: f(l.amount) }));
     const stepDefs = [[1, 'Cart'], [2, 'Account'], [3, 'Payment'], [4, 'Review']];
-    const steps = stepDefs.map(([n, label], i) => { const on = st.step === n, past = st.step > n; return { num: past ? '✓' : String(n), label, notLast: i < 3, go: () => { if (past || (n === 1)) this.go(n); },
+    const steps = stepDefs.map(([n, label], i) => { const on = st.step === n, past = st.step > n; return { num: past ? '✓' : String(n), label, notLast: i < 3, cls: on ? 'sw-step sw-step-on' : 'sw-step', current: on ? 'step' : 'false', go: () => { if (past || (n === 1)) this.go(n); },
       style: { display: 'inline-flex', alignItems: 'center', gap: 8, height: 36, padding: '0 12px 0 6px', borderRadius: 999, border: '1px solid ' + (on ? '#4e4feb' : '#e5e7f2'), background: on ? '#fff' : past ? '#f0f1fb' : '#fff', color: on ? '#08133e' : past ? '#2f30a8' : '#8a91aa', font: "700 13px 'DM Sans', sans-serif", cursor: past || n === 1 ? 'pointer' : 'default' },
       numStyle: { width: 24, height: 24, borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, background: on ? '#4e4feb' : past ? '#4e4feb' : '#f0f1fb', color: on || past ? '#fff' : '#8a91aa' } }; });
     const methods = m ? m.PAYMENT_METHODS.map(pm => { const on = st.pay.method === pm.id; return { id: pm.id, name: pm.name, desc: pm.desc, logos: pm.logos.map(src => ({ name: src.replace(/^.*pay-|\.\w+$/g, ''), style: { width: 40, height: 26, borderRadius: 5, background: '#fff url(' + src + ') center/72% auto no-repeat', border: '1px solid #e5e7f2', boxSizing: 'border-box', display: 'inline-block' } })), on, pick: () => this.setState({ pay: Object.assign({}, st.pay, { method: pm.id }), payError: '' }),

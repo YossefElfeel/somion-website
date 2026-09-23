@@ -15,6 +15,28 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
 @keyframes somionFadeUp{from{transform:translateY(10px)}to{transform:none}}
 @keyframes somionSlideUp{from{transform:translateY(100%)}to{transform:none}}
 @keyframes somionPop{0%{transform:scale(.96)}100%{transform:none}}
+.sw-plans-scope{display:contents}
+.sw-cmp-names,.sw-cmp-clear-icon{display:none}
+/* Phones */
+@media (max-width: 640px) {
+  /* keep the category bar pinned only while browsing plans, not over the rest of the page */
+  .sw-plans-scope { display: block; }
+  /* compare tray: one compact row instead of four stacked rows */
+  .sw-cmp { flex-wrap: nowrap !important; gap: 10px !important; padding: 10px 10px 10px 16px !important; border-radius: 18px !important; }
+  .sw-cmp-summary { min-width: 0 !important; flex: 1 1 auto; }
+  .sw-cmp-count, .sw-cmp-chips, .sw-cmp-word, .sw-cmp-clear-text { display: none !important; }
+  .sw-cmp-names { display: block; font: 700 14px 'DM Sans', sans-serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sw-cmp-actions { margin-left: 0 !important; flex: none; }
+  .sw-cmp-clear { width: 44px; padding: 0 !important; display: inline-flex; align-items: center; justify-content: center; }
+  .sw-cmp-clear-icon { display: inline-block; }
+  /* type tiles: show the whole category name */
+  .sw-type-label { white-space: normal !important; }
+  .sw-type-tile { gap: 8px !important; padding: 10px !important; }
+  .sw-type-ico { width: 32px !important; height: 32px !important; }
+}
+@media (max-width: 380px) {
+  .sw-type-tile { flex-direction: column; align-items: flex-start !important; }
+}
 </style>
 </helmet>
 <div id="top" style="background:#fbfbfe;color:#08133e;font-family:'DM Sans',system-ui,sans-serif">
@@ -27,8 +49,8 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
     <div aria-hidden="true" style="position:absolute;right:-10%;top:10%;width:58vw;max-width:860px;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(124,125,255,.28),rgba(124,125,255,0));z-index:0;pointer-events:none"></div>
     <div style="position:relative;z-index:1;flex:1;width:100%;max-width:1180px;box-sizing:border-box;margin:0 auto;padding:148px clamp(16px,4vw,40px) 32px;display:flex;flex-wrap:wrap;gap:44px 56px;align-items:center;justify-content:space-between">
       <div style="flex:1 1 500px;min-width:0;max-width:620px;display:flex;flex-direction:column;align-items:flex-start;gap:26px">
-        <span data-enter="0" style="display:inline-flex;align-items:center;gap:12px;padding:5px 16px 5px 5px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font:600 13.5px 'DM Sans',sans-serif;color:rgba(255,255,255,.92);white-space:nowrap"><span style="display:inline-flex;align-items:center;height:26px;padding:0 11px;border-radius:999px;background:#fff;color:#2f30a8;font:800 10.5px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase">{{ heroCount }} plans</span>Simple, transparent pricing</span>
-        <h1 data-words="1" style="margin:0;font:800 clamp(44px,6vw,80px)/.98 'Manrope',sans-serif;letter-spacing:-.04em;text-wrap:balance">Hosting plans, <span style="display:inline-block;padding-bottom:.12em;margin-bottom:-.12em;background:linear-gradient(95deg,#c7c9f9 0%,#ffffff 46%,#a5a7ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent">priced the way they renew.</span></h1>
+        <span data-enter="0" style="display:inline-flex;align-items:center;gap:12px;padding:5px 16px 5px 5px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font:600 13.5px 'DM Sans',sans-serif;color:rgba(255,255,255,.92);white-space:nowrap"><span style="display:inline-flex;align-items:center;height:26px;padding:0 11px;border-radius:999px;background:#fff;color:#2f30a8;font:800 10.5px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase">{{ heroCount }}&nbsp;plans</span>Simple, transparent pricing</span>
+        <h1 data-words="1" style="margin:0;font:800 clamp(min(44px,12.5vw),6vw,80px)/.98 'Manrope',sans-serif;letter-spacing:-.04em;text-wrap:balance">Hosting plans, <span style="display:inline-block;padding-bottom:.12em;margin-bottom:-.12em;background:linear-gradient(95deg,#c7c9f9 0%,#ffffff 46%,#a5a7ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent">priced the way they renew.</span></h1>
         <p data-enter="160" style="margin:-4px 0 0;max-width:540px;font-size:clamp(17px,1.35vw,18.5px);line-height:1.6;color:rgba(255,255,255,.8)">Every plan includes cPanel, SSL, backups, and expert support. Compare up to three plans side by side — across categories too.</p>
         <div data-enter="240" style="display:flex;flex-wrap:wrap;gap:12px">
           <a href="#plans" style="display:inline-flex;align-items:center;gap:16px;height:58px;padding:0 8px 0 26px;border-radius:16px;background:#fff;color:#1d1f8f;font:700 16px 'DM Sans',sans-serif;text-decoration:none;white-space:nowrap;box-shadow:0 24px 48px -20px rgba(3,6,30,.85);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 30px 56px -20px rgba(78,79,235,.75);color:#1d1f8f" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">View plans<span style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#6667f3,#4e4feb);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 8px 16px -8px rgba(78,79,235,.9)"><span style="display:inline-block;width:18px;height:18px;background:#fff;transform:rotate(90deg);mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></span></a>
@@ -43,9 +65,9 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
             <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 4px 0"><span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)">Browse by type</span><span style="font:600 12px 'DM Sans',sans-serif;color:rgba(255,255,255,.55)">{{ currency }} · per month</span></div>
             <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
               <sc-for list="{{ heroCats }}" as="hc" hint-placeholder-count="8">
-                <button type="button" onClick="{{ hc.pick }}" style="display:flex;align-items:center;gap:11px;min-height:60px;padding:10px 12px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#fff;text-align:left;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,filter .2s ease" style-hover="background:rgba(255,255,255,.12);border-color:rgba(199,201,249,.5);transform:translateY(-1px)" style-active="transform:scale(.97)">
-                  <span style="width:36px;height:36px;border-radius:11px;background:rgba(124,125,255,.18);border:1px solid rgba(199,201,249,.22);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="{{ hc.iconStyle }}"></span></span>
-                  <span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font:700 14px/1.2 'DM Sans',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ hc.short }}</span><span style="font:600 12px 'DM Sans',sans-serif;color:#c7c9f9;white-space:nowrap">{{ hc.from }}</span></span>
+                <button type="button" onClick="{{ hc.pick }}" class="sw-type-tile" style="display:flex;align-items:center;gap:11px;min-height:60px;padding:10px 12px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#fff;text-align:left;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,filter .2s ease" style-hover="background:rgba(255,255,255,.12);border-color:rgba(199,201,249,.5);transform:translateY(-1px)" style-active="transform:scale(.97)">
+                  <span class="sw-type-ico" style="width:36px;height:36px;border-radius:11px;background:rgba(124,125,255,.18);border:1px solid rgba(199,201,249,.22);display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="{{ hc.iconStyle }}"></span></span>
+                  <span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="sw-type-label" style="font:700 14px/1.2 'DM Sans',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ hc.short }}</span><span style="font:600 12px 'DM Sans',sans-serif;color:#c7c9f9;white-space:nowrap">{{ hc.from }}</span></span>
                 </button>
               </sc-for>
             </div>
@@ -56,10 +78,11 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
     </div>
   </section>
 
+  <div class="sw-plans-scope">
   <div data-screen-label="Category switcher" style="position:sticky;top:73px;z-index:40;background:rgba(251,251,254,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #e5e7f2">
     <div role="tablist" aria-label="Hosting categories" style="max-width:1180px;margin:0 auto;padding:12px clamp(16px,4vw,40px);scroll-padding-inline:40px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none">
       <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
-        <button type="button" role="tab" aria-selected="{{ c.active }}" onClick="{{ c.pick }}" style="{{ c.style }}" style-hover="border-color:#4e4feb;box-shadow:0 10px 22px -16px rgba(78,79,235,.7);transform:translateY(-1px)" style-active="transform:scale(.97)">{{ c.short }} <span style="{{ c.countStyle }}">{{ c.count }}</span></button>
+        <button class="sw-hit" type="button" role="tab" aria-selected="{{ c.active }}" onClick="{{ c.pick }}" style="{{ c.style }}" style-hover="border-color:#4e4feb;box-shadow:0 10px 22px -16px rgba(78,79,235,.7);transform:translateY(-1px)" style-active="transform:scale(.97)">{{ c.short }} <span style="{{ c.countStyle }}">{{ c.count }}</span></button>
       </sc-for>
     </div>
     <div aria-hidden="true" style="position:absolute;right:0;top:0;bottom:1px;width:56px;background:linear-gradient(270deg,#fbfbfe 25%,rgba(251,251,254,0));pointer-events:none"></div>
@@ -73,12 +96,12 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
         <div role="group" aria-label="Billing period" style="display:inline-flex;padding:4px;border-radius:999px;background:#fff;border:1px solid #e5e7f2">
-          <button type="button" onClick="{{ pickMonthly }}" style="{{ monthlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Monthly</button>
-          <button type="button" onClick="{{ pickYearly }}" style="{{ yearlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Yearly <span style="{{ yearlyBadgeStyle }}">2 months free</span></button>
+          <button class="sw-hit" type="button" onClick="{{ pickMonthly }}" style="{{ monthlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Monthly</button>
+          <button class="sw-hit" type="button" onClick="{{ pickYearly }}" style="{{ yearlyStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Yearly <span style="{{ yearlyBadgeStyle }}">2 months free</span></button>
         </div>
         <div role="group" aria-label="View" style="display:inline-flex;padding:4px;border-radius:999px;background:#fff;border:1px solid #e5e7f2">
-          <button type="button" onClick="{{ pickCards }}" style="{{ cardsStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Cards</button>
-          <button type="button" onClick="{{ pickTable }}" style="{{ tableStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Spec table</button>
+          <button class="sw-hit" type="button" onClick="{{ pickCards }}" style="{{ cardsStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Cards</button>
+          <button class="sw-hit" type="button" onClick="{{ pickTable }}" style="{{ tableStyle }}" style-hover="box-shadow:inset 0 0 0 1.5px rgba(78,79,235,.4)" style-active="transform:scale(.97)">Spec table</button>
         </div>
       </div>
     </div>
@@ -115,7 +138,7 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
               </ul>
               <div style="margin-top:auto;display:flex;flex-direction:column;gap:8px;padding-top:6px">
                 <button type="button" onClick="{{ p.order }}" style="{{ p.orderStyle }}" style-hover="transform:translateY(-2px);box-shadow:0 16px 32px -16px rgba(78,79,235,.7);filter:brightness(1.05)" style-active="transform:scale(.97)">{{ p.orderLabel }}</button>
-                <button type="button" onClick="{{ p.toggleCompare }}" aria-pressed="{{ p.comparing }}" style="{{ p.compareStyle }}" style-hover="border-color:#4e4feb;box-shadow:0 10px 22px -16px rgba(78,79,235,.7);transform:translateY(-1px)" style-active="transform:scale(.97)">{{ p.compareLabel }}</button>
+                <button class="sw-hit" type="button" onClick="{{ p.toggleCompare }}" aria-pressed="{{ p.comparing }}" style="{{ p.compareStyle }}" style-hover="border-color:#4e4feb;box-shadow:0 10px 22px -16px rgba(78,79,235,.7);transform:translateY(-1px)" style-active="transform:scale(.97)">{{ p.compareLabel }}</button>
               </div>
             </article>
           </div>
@@ -171,6 +194,7 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
     </sc-if>
     <p style="margin:18px 0 0;font-size:13px;color:#8a91aa">Prices shown in {{ currency }}. Renewal price is the price on the card — no surprise at year two. Yearly billing pays for 10 months and covers 12.</p>
   </section>
+  </div>
 
   <dc-import name="Showcase" mode="tabs" hint-size="100%,820px"></dc-import>
 
@@ -224,7 +248,7 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
         <p style="margin:0;font-size:16px;line-height:1.6;color:#e2e3ff">Choose a plan that fits today. Somion keeps the hosting part simple as you grow.</p>
         <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px">
           <a href="Compare.dc.html" style="display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:12px;background:#fff;color:#3435cc;font:700 16px 'DM Sans',sans-serif;text-decoration:none;box-shadow:0 18px 40px -18px rgba(5,13,37,.6);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 20px 40px -18px rgba(5,13,37,.6);background:#f4f4ff;color:#3435cc" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Compare plans <span style="display:inline-block;width:18px;height:18px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
-          <a href="Domains.dc.html" style="display:inline-flex;align-items:center;gap:10px;color:#fff;font:700 16px 'DM Sans',sans-serif;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Find your domain <span style="display:inline-block;width:18px;height:18px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+          <a class="sw-hit" href="Domains.dc.html" style="display:inline-flex;align-items:center;gap:10px;color:#fff;font:700 16px 'DM Sans',sans-serif;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Find your domain <span style="display:inline-block;width:18px;height:18px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
         </div>
       </div>
     </div>
@@ -235,12 +259,13 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
   <sc-if value="{{ hasCompare }}" hint-placeholder-val="{{ false }}">
     <div style="height:96px"></div>
     <div data-screen-label="Compare bar" style="position:fixed;left:0;right:0;bottom:0;z-index:55;padding:0 clamp(12px,3vw,40px) clamp(12px,2vw,20px);pointer-events:none">
-      <div style="pointer-events:auto;max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:14px 16px 14px 20px;border-radius:20px;background:#07122f;color:#fff;box-shadow:0 30px 60px -20px rgba(5,13,37,.6),0 0 0 1px rgba(255,255,255,.06);animation:somionSlideUp .35s cubic-bezier(.2,.7,.2,1) both">
-        <div style="display:flex;flex-direction:column;gap:2px;min-width:120px">
+      <div class="sw-cmp" style="pointer-events:auto;max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:14px 16px 14px 20px;border-radius:20px;background:#07122f;color:#fff;box-shadow:0 30px 60px -20px rgba(5,13,37,.6),0 0 0 1px rgba(255,255,255,.06);animation:somionSlideUp .35s cubic-bezier(.2,.7,.2,1) both">
+        <div class="sw-cmp-summary" style="display:flex;flex-direction:column;gap:2px;min-width:120px">
           <span style="font:800 11px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)">Compare</span>
-          <span style="font:700 14px 'DM Sans',sans-serif">{{ compareCount }} of 3 selected</span>
+          <span class="sw-cmp-count" style="font:700 14px 'DM Sans',sans-serif">{{ compareCount }} of 3 selected</span>
+          <span class="sw-cmp-names">{{ compareNames }}</span>
         </div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;flex:1 1 300px">
+        <div class="sw-cmp-chips" style="display:flex;flex-wrap:wrap;gap:8px;flex:1 1 300px">
           <sc-for list="{{ compareChips }}" as="c" hint-placeholder-count="2">
             <span style="display:inline-flex;align-items:center;gap:10px;padding:8px 8px 8px 12px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-size:13px;animation:somionPop .25s ease both">
               <span style="display:flex;flex-direction:column;line-height:1.2"><span style="font-weight:700">{{ c.name }}</span><span style="font-size:11px;color:rgba(255,255,255,.65)">{{ c.cat }} · {{ c.price }}</span></span>
@@ -249,9 +274,9 @@ html{scroll-behavior:smooth}body{margin:0;background:#fbfbfe;color:#08133e;font-
           </sc-for>
           <sc-if value="{{ compareHint }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;padding:8px 12px;border-radius:12px;border:1px dashed rgba(255,255,255,.3);font-size:12.5px;color:rgba(255,255,255,.7)">Add one more plan to compare</span></sc-if>
         </div>
-        <div style="display:flex;gap:8px;margin-left:auto">
-          <button type="button" onClick="{{ clearCompare }}" style="height:44px;padding:0 14px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font:600 13px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);transform:translateY(-1px);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Clear</button>
-          <a href="Compare.dc.html" style="{{ compareBtnStyle }}">Compare {{ compareCount }} plans <span style="display:inline-block;width:18px;height:18px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
+        <div class="sw-cmp-actions" style="display:flex;gap:8px;margin-left:auto">
+          <button type="button" onClick="{{ clearCompare }}" aria-label="Clear comparison" class="sw-cmp-clear" style="height:44px;padding:0 14px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font:600 13px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);transform:translateY(-1px);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span class="sw-cmp-clear-text">Clear</span><span class="sw-cmp-clear-icon" style="width:16px;height:16px;background:currentColor;mask:url(assets/icons/x.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/x.svg) center/contain no-repeat"></span></button>
+          <a href="Compare.dc.html" style="{{ compareBtnStyle }}">Compare {{ compareCount }} <span class="sw-cmp-word">plans</span> <span style="display:inline-block;width:18px;height:18px;background:currentColor;mask:url(assets/icons/arrow-right.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-right.svg) center/contain no-repeat"></span></a>
         </div>
       </div>
     </div>
@@ -315,7 +340,7 @@ class Component extends DCLogic {
       pickMonthly: () => this.setState({ term: 'monthly' }), pickYearly: () => this.setState({ term: 'yearly' }), monthlyStyle: seg(!yearly), yearlyStyle: seg(yearly),
       yearlyBadgeStyle: { padding: '2px 8px', borderRadius: 999, fontSize: 10.5, fontWeight: 800, background: yearly ? 'rgba(255,255,255,.2)' : '#e6f6ec', color: yearly ? '#fff' : '#146132' },
       isCards: this.state.view === 'cards', isTable: this.state.view === 'table', pickCards: () => this.setState({ view: 'cards' }), pickTable: () => this.setState({ view: 'table' }), cardsStyle: seg(this.state.view === 'cards'), tableStyle: seg(this.state.view === 'table'),
-      plans, rows, hasCompare: chips.length > 0, compareCount: chips.length, compareChips: chips, compareHint: chips.length === 1, clearCompare: () => { m.setCompare([]); this.setState({ compare: [] }); },
+      plans, rows, hasCompare: chips.length > 0, compareCount: chips.length, compareChips: chips, compareNames: chips.map(c => c.name).join(' · '), compareHint: chips.length === 1, clearCompare: () => { m.setCompare([]); this.setState({ compare: [] }); },
       compareBtnStyle: { display: 'inline-flex', alignItems: 'center', gap: 8, height: 44, padding: '0 18px', borderRadius: 12, background: chips.length >= 2 ? '#4e4feb' : 'rgba(255,255,255,.12)', color: chips.length >= 2 ? '#fff' : 'rgba(255,255,255,.5)', font: "700 14px 'DM Sans', sans-serif", textDecoration: 'none', pointerEvents: chips.length >= 2 ? 'auto' : 'none', boxShadow: chips.length >= 2 ? '0 14px 30px -14px rgba(78,79,235,.9)' : 'none', whiteSpace: 'nowrap' },
       hasToast: !!this.state.toast, toast: this.state.toast,
     };

@@ -9,7 +9,16 @@
 <x-dc>
 <helmet>
 <link href="fonts/6a51d61393.css" rel="stylesheet">
-<style>body{margin:0;font-family:'DM Sans',system-ui,sans-serif}</style>
+<style>body{margin:0;font-family:'DM Sans',system-ui,sans-serif}
+/* Phones: link groups side by side instead of one long column */
+@media (max-width: 560px) {
+  .sw-foot-links { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 32px 20px !important; }
+  .sw-foot-social { grid-column: 1 / -1; }
+}
+@media (pointer: coarse) {
+  .sw-foot-links a, .sw-foot-legal a { min-height: 44px !important; display: inline-flex; align-items: center; }
+  .sw-foot-legal { row-gap: 0 !important; }
+}</style>
 </helmet>
 <footer style="position:relative;overflow:hidden;background:#050d25;color:#e5e8f3;font-family:'DM Sans',system-ui,sans-serif">
   <div style="position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,#4e4feb 0%,#7c7dff 35%,#c7c9f9 60%,rgba(199,201,249,0) 100%)"></div>
@@ -32,7 +41,7 @@
       </form>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:36px 32px;padding:52px 0 44px;border-bottom:1px solid rgba(255,255,255,.1)">
+    <div class="sw-foot-links" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:36px 32px;padding:52px 0 44px;border-bottom:1px solid rgba(255,255,255,.1)">
       <div style="display:flex;flex-direction:column;gap:2px">
         <div style="color:#818baa;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px">Explore</div>
         <a href="Hosting.dc.html" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">Shared hosting</a>
@@ -54,11 +63,11 @@
         <a href="tel:+41318127484" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">+41 31 812 74 84</a>
         <a href="mailto:info@somion.ch" style="text-decoration:none;font-size:14.5px;color:#cbd1e2;display:inline-flex;align-items:center;align-self:flex-start;min-height:36px" style-hover="color:#fff">info@somion.ch</a>
       </div>
-      <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="sw-foot-social" style="display:flex;flex-direction:column;gap:14px">
         <div style="color:#818baa;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase">Follow Somion</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px">
           <sc-for list="{{ socials }}" as="s" hint-placeholder-count="7">
-            <a href="{{ s.href }}" aria-label="{{ s.label }}" title="{{ s.label }}" style="width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:linear-gradient(135deg,#7c7dff,#4e4feb);border-color:transparent;transform:translateY(-2px)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span style="{{ s.iconStyle }}"></span></a>
+            <a class="sw-hit" href="{{ s.href }}" aria-label="{{ s.label }}" title="{{ s.label }}" style="width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease" style-hover="background:linear-gradient(135deg,#7c7dff,#4e4feb);border-color:transparent;transform:translateY(-2px)" style-active="transform:translateY(0) scale(.97);transition-duration:.08s"><span style="{{ s.iconStyle }}"></span></a>
           </sc-for>
         </div>
         <div style="color:#818baa;font-size:12.5px;line-height:1.5">Muristrasse 3, 3123 Belp<br>Switzerland</div>
@@ -83,8 +92,8 @@
 
     <div style="padding-top:22px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;color:#78829f;font-size:12.5px;white-space:nowrap">
       <span>© 2026 Somion. All rights reserved.</span>
-      <div style="display:flex;flex-wrap:wrap;gap:6px 18px"><a href="Legal.dc.html#terms" style="color:#9aa3bf;text-decoration:none" style-hover="color:#fff">Terms of Service</a><a href="Legal.dc.html#privacy" style="color:#9aa3bf;text-decoration:none" style-hover="color:#fff">Privacy</a><a href="Legal.dc.html#aup" style="color:#9aa3bf;text-decoration:none" style-hover="color:#fff">Acceptable Use</a><span>Made by <a href="Home.dc.html" style="color:#fff;font-weight:700;text-decoration:none">Somion</a></span></div>
-      <button type="button" onClick="{{ toTop }}" aria-label="Back to top" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 6px 0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#cbd1e2;font:700 12.5px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease;white-space:nowrap" style-hover="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);transform:translateY(-1px);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Back to top <span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7c7dff,#4e4feb);display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:14px;height:14px;background:#fff;mask:url(assets/icons/arrow-up.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-up.svg) center/contain no-repeat"></span></span></button>
+      <div class="sw-foot-legal" style="display:flex;flex-wrap:wrap;gap:6px 18px"><a class="sw-hit" href="Legal.dc.html#terms" style="color:#9aa3bf;text-decoration:none" style-hover="color:#fff">Terms of Service</a><a class="sw-hit" href="Legal.dc.html#privacy" style="color:#9aa3bf;text-decoration:none" style-hover="color:#fff">Privacy</a><a class="sw-hit" href="Legal.dc.html#aup" style="color:#9aa3bf;text-decoration:none" style-hover="color:#fff">Acceptable Use</a><span>Made by <a href="Home.dc.html" style="color:#fff;font-weight:700;text-decoration:none">Somion</a></span></div>
+      <button type="button" onClick="{{ toTop }}" aria-label="Back to top" class="sw-hit" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 6px 0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#cbd1e2;font:700 12.5px 'DM Sans',sans-serif;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,color .2s ease,filter .2s ease;white-space:nowrap" style-hover="background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);transform:translateY(-1px);color:#fff" style-active="transform:translateY(0) scale(.97);transition-duration:.08s">Back to top <span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7c7dff,#4e4feb);display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-block;width:14px;height:14px;background:#fff;mask:url(assets/icons/arrow-up.svg) center/contain no-repeat;-webkit-mask:url(assets/icons/arrow-up.svg) center/contain no-repeat"></span></span></button>
     </div>
   </div>
 </footer>

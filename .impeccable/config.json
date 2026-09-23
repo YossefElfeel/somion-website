@@ -1,0 +1,251 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "public/Home.dc.html"
+        ],
+        "createdAt": "2026-09-23T05:34:48.408Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/Home.dc.html"
+        ],
+        "createdAt": "2026-09-23T05:34:48.521Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "public/Domains.dc.html"
+        ],
+        "createdAt": "2026-09-23T05:34:48.646Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/Domains.dc.html"
+        ],
+        "createdAt": "2026-09-23T05:34:48.765Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "public/Hosting.dc.html"
+        ],
+        "createdAt": "2026-09-23T05:44:08.083Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/Hosting.dc.html"
+        ],
+        "createdAt": "2026-09-23T05:44:08.220Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "public/About.dc.html"
+        ],
+        "createdAt": "2026-09-23T05:55:40.385Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/About.dc.html"
+        ],
+        "createdAt": "2026-09-23T05:55:40.533Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/Checkout.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:00:38.465Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/SupportRail.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:03:32.829Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/Footer.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:07:07.429Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/Login.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:09:36.033Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "public/Contact.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:09:36.184Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/Contact.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:09:36.293Z",
+        "reason": "incumbent design: present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual identity"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "public/Domains.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:26.076Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "public/Home.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:26.215Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "public/Home.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:26.344Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "public/Home.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:26.462Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "public/Hosting.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:26.606Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "public/Compare.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:26.728Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "public/About.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:26.844Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "public/About.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:26.976Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "public/Legal.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:27.101Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "public/Checkout.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:27.241Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "public/Footer.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:27.369Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "public/Login.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:27.509Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "public/Contact.dc.html"
+        ],
+        "createdAt": "2026-09-23T06:50:27.695Z",
+        "reason": "incumbent design: pattern present in the original Claude Design export (design/Somion Website.html); this change is a mobile-only refinement that preserves the existing visual system"
+      }
+    ]
+  }
+}
