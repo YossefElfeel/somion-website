@@ -14,7 +14,7 @@
 <div style="height:0;position:relative;z-index:61;font-family:'DM Sans',system-ui,sans-serif">
   <header style="{{ barStyle }}">
     <div style="max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px">
-      <a href="Home.dc.html" aria-label="Somion home" style="{{ logoStyle }}"><img src="assets/somion-logo.png" alt="Somion Web Services" style="{{ logoImgStyle }}"></img></a>
+      <a href="Home.dc.html" aria-label="OrgTik home" style="{{ logoStyle }}"><img src="assets/orgtik-logo.svg" alt="OrgTik" width="366" height="283" style="{{ logoImgStyle }}"></img></a>
       <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
         <nav aria-label="Primary" style="{{ navStyle }}">
           <sc-for list="{{ links }}" as="link" hint-placeholder-count="5">
@@ -153,7 +153,7 @@ class Component extends DCLogic {
     return { links, currencies, currency: cur,
       barStyle: { position: 'fixed', top: 0, left: 0, right: 0, zIndex: 60, background: onDark ? 'transparent' : 'rgba(251,251,254,.88)', backdropFilter: onDark ? 'none' : 'blur(18px) saturate(1.4)', WebkitBackdropFilter: onDark ? 'none' : 'blur(18px) saturate(1.4)', borderBottom: '1px solid ' + (onDark ? 'transparent' : 'rgba(229,231,242,.9)'), boxShadow: onDark ? 'none' : '0 12px 32px -24px rgba(8,19,62,.35)', transition: 'box-shadow .3s, background .3s, border-color .3s' },
       logoStyle: { display: 'flex', alignItems: 'center', flex: 'none', minHeight: st.desktop ? 0 : 44 },
-      logoImgStyle: { height: 36, width: 'auto', display: 'block', filter: onDark ? 'brightness(0) invert(1)' : 'none', transition: 'filter .3s' },
+      logoImgStyle: { height: 56, width: 'auto', display: 'block', filter: onDark ? 'brightness(0) invert(1)' : 'none', transition: 'filter .3s' },
       accountHref: 'Login.dc.html', accountLabel: st.account ? ((st.account.name || st.account.email || 'Account').split(/[\s@]/)[0]) : 'Login / Sign up', accountAria: st.account ? 'Your account' : 'Log in or create an account',
       signedIn: !!st.account, signedOut: !st.account, initials: st.account && st.mod ? st.mod.initials(st.account.name || st.account.email) : '',
       avatarStyle: { width: 26, height: 26, marginLeft: -8, borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', font: "800 11px 'Manrope', sans-serif", background: onDark ? 'linear-gradient(135deg,#7c7dff,#4e4feb)' : '#fff', color: onDark ? '#fff' : '#2f30a8', flex: 'none' },
