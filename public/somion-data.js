@@ -125,11 +125,12 @@ const read = (k, d) => { try { const v = localStorage.getItem(k); return v == nu
 const write = (k, v, ev) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} window.dispatchEvent(new CustomEvent(ev, { detail: v })); };
 export const getCurrency = () => { const c = read(KEYS.currency, 'USD'); return RATES[c] ? c : 'USD'; };
 export const setCurrency = c => write(KEYS.currency, c, 'somion:currency');
-export const getCart = () => read(KEYS.cart, []);
+// Keep carts saved before the removal of "Decide later" on a visible domain choice.
+export const getCart = () => read(KEYS.cart, []).map(item => item.type === 'plan' && (!item.domainMode || item.domainMode === 'later') ? { ...item, domainMode: 'new' } : item);
 export const setCart = items => write(KEYS.cart, items, 'somion:cart');
 export function addPlanToCart(planId, term = 'monthly') {
   const cart = getCart().filter(i => !(i.type === 'plan' && i.planId === planId));
-  cart.push({ key: 'p-' + planId + '-' + Date.now(), type: 'plan', planId, term, domainMode: 'later', domainName: '', addons: [] });
+  cart.push({ key: 'p-' + planId + '-' + Date.now(), type: 'plan', planId, term, domainMode: 'new', domainName: '', addons: [] });
   setCart(cart); return cart;
 }
 export function addDomainToCart(name, tld) {
